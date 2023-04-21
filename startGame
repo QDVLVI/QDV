@@ -1,0 +1,161 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+    //角色属性
+    struct role{
+        int cash;
+        int total_assets;
+        int health;
+        int fame;
+        int age;
+        int retire_age;
+        int warehouse_capacity; //仓库容量 
+    };
+
+    //商品属性
+    struct goods{
+        char name;
+        int high_price;
+        int normal_price;
+        int low_price;
+        int high_price_possiblity;
+        int normal_price_possibility;
+        int low_price_possibility;
+    };
+
+    //仓库物品
+    struct product{
+        goods name;
+        int number;
+    };
+
+    //伴侣属性 (待定，感觉有些复杂)
+    /*附部分伴侣属性：
+        1.小学同学：触发条件：开局随机生成，约会有几率， 结成伴侣条件：任意车，            技能：健康每年加三
+        2.大学师兄：触发条件：开局随机生成，约会有几率， 结成伴侣条件：年龄<25,            技能：仓库每年+3
+        3.初中师妹：触发条件：开局随机生成，约会有几率， 结成伴侣条件：任意房              技能：每年现金+5w
+        4.篮球队长：触发条件：开局随机生成，约会有几率， 结成伴侣条件：健康>90，           技能：每年加2声望2健康
+        5.金融巨子：触发条件：约会有几率，              结成伴侣条件：名声>200，           技能：创办企业收益加1%
+        6.公益女神：触发条件：约会有几率                结成伴侣条件：名声>250，          技能：每年名声+10，现金-10w
+        7.大哥：    触发条件：约会有几率               结成伴侣条件：年龄<30,            技能：每年现金+15w
+        8.护士姐姐：触发条件：健康低于50后进医院，      结成伴侣条件：年龄<30，            技能：治疗6折
+        9.包租婆：  触发条件：买两套房，               结成伴侣条件：购买一套“城郊别墅”，  技能：每年加30w现金
+        10.拜金女： 触发条件：总资产>300w，            结成伴侣条件：购买一辆“宝马”       技能：每年现金-10w，买车8折
+    */
+    
+
+    //商品，to be completed
+    goods good_list[8];
+    goods liquor;        //白酒
+    goods imported_car;  //进口汽车
+    goods jade;          //玉石
+    goods melon_seed;    //瓜子
+    goods domian_name;   //域名
+    goods gold;          //黄金
+    goods copycat_phone; //山寨手机
+    goods bit_coin;      //比特币
+
+    //伴侣，to be completed
+
+int startGame(){
+    role player;
+
+    //选择读取存档（Load game) 或开始新游戏 (New game)
+    cout << "..." << endl; //游戏界面，选择存档或新游戏, to be completed
+    int temp;
+    if (temp == 2){
+        //读取存档，to be complete,从file中获取角色信息
+        //to be completed
+    }
+
+    if (temp == 1){
+        //初始化角色
+        cout << "Please enter your character name: " << endl;
+        char name;
+        cin >> name;
+        player = {100000, 100000, 100, 0, 20, 70, 100};
+
+        //建立一个文档储存数据,to be completed
+        ifstream fin;
+
+    }
+
+
+    //游戏主循环
+    int last_year_money = 100000;
+    while (player.age <= player.retire_age){
+        player.age += 1;
+        cout << "..." << endl; // 游戏界面,从8个商品选5个出来展示，可以用file或直接cout,to be completed
+
+        //随机事件
+        if (player.total_assets > last_year_money){
+            //随机奖励（年度最佳新人奖，x%触发，奖励10000-100000）
+            //to be completed
+        }
+
+        last_year_money = player.total_assets;
+
+        //买卖（market），创业（business）会损失健康值，
+        if (player.health <= 50){
+            //有几率住院
+            bool isSick = false; //设置一个random判断是否要住院一年, to be completed
+            if (isSick){
+                player.health = 100;
+                cout << "..." << endl; //you are sick, and u r not able to do anything this year
+                continue; //有几率认识伴侣：护士姐姐,to be completed
+            }
+        }
+        
+        else{
+            char input;
+            bool GoToNextYear = false;
+            while (cin >> input){
+                 switch (input){
+
+                    //market, 市场
+                    case 'm':
+                        cout << '...' << endl; //游戏界面
+                        //function, to be completed
+                        break;
+                    
+                    //business, 创业
+                    case 'b':
+                        cout << '...' << endl; 
+                        //function，to be completed
+                        break;
+
+                    //spend money，花钱
+                    case 's':
+                        cout << '...' << endl;
+                        //function, to be completed
+                        break;
+
+                    //dating, 约会
+                    case 'd':
+                        cout << '...' << endl;
+                        //function, to be completed
+                        break;
+
+                    //next year
+                    case 'n':
+                        GoToNextYear = true;
+                        break;
+
+                    default:
+                        break;
+                    
+                    //将更新后的数据储存到文档，to be completed
+
+                    if (GoToNextYear){
+                        break;
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    //游戏结束，结算界面（x岁资产超百万，y岁资产超千万，z岁资产过亿，a岁资产最多为m，退休时资产为n，etc.）
+    cout << '...' << endl;
+}
