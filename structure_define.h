@@ -1,6 +1,8 @@
 #ifndef NEW_STRUCT
 #define NEW_STRUCT
 
+//define your struct here
+
 //商品属性
 struct goods{
         char name;
