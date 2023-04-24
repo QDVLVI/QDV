@@ -5,13 +5,12 @@
 
 //商品属性
 struct goods{
-        char name;
         int high_price;
         int normal_price;
         int low_price;
-        int high_price_possiblity;
-        int normal_price_possibility;
-        int low_price_possibility;
+        double high_price_possiblity;
+        double normal_price_possibility;
+        double low_price_possibility;
     };
 
 //角色属性
