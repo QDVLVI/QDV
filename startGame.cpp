@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <ctime>
 #include "little_target.h"
 #include "structure_define.h"
 using namespace std;
@@ -105,7 +106,7 @@ int startGame(){
         }
 
         cout << "..." << endl; // 游戏界面,从8个商品选5个出来展示，可以用file或直接cout,to be completed
-
+        
 
 
 
