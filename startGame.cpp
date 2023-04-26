@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <ctime>
 #include "little_target.h"
 #include "structure_define.h"
 using namespace std;
