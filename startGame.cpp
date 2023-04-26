@@ -176,6 +176,12 @@ int startGame(){
                 else{
 
                 }
+                
+                for (int i = 0; i < 5; i++){
+                    if (isSetUpCompany[i]){
+                        market_value = company_list[i].market_value();
+                    }
+                }
                         
                 player.total_assets = player.cash + market_value;  //还要再加车的价值和房的价值
                 //将更新后的数据储存到文档，to be completed
@@ -184,12 +190,6 @@ int startGame(){
                     break;
                 }
                 
-            
-                for (int i = 0; i < 5; i++){
-                    if (isSetUpCompany[i]){
-                        market_value = company_list[i].market_value();
-                    }
-                }
             }
         }
         else{
