@@ -106,7 +106,16 @@ int startGame(){
         }
 
         cout << "..." << endl; // 游戏界面,从8个商品选5个出来展示，可以用file或直接cout,to be completed
-
+        srand(time(nullptr));
+        int good_list[]={9,9,9,9,9};
+        int good_num;
+        for (i=0,i<5,i++){//循环5次，随机出5个商品
+            good_num = rand() % 8;
+            if(){
+                
+            }
+        }
+        
 
 
 
