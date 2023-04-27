@@ -109,12 +109,25 @@ int startGame(){
         srand(time(nullptr));
         int good_list[]={9,9,9,9,9};
         int good_num;
-        for (i=0,i<5,i++){//循环5次，随机出5个商品
-            good_num = rand() % 8;
-            if(){
+        for(i=0,i<5,i++){//循环5次，随机出5个商品
+            
+            
+            bool if_goods_in_list = false;
+            
+            while(if_goods_in_list){
+                good_num = rand() % 8; 
                 
+                if_goods_in_list = false
+                for(j=0,j<5,j++){//检查是不是重复good
+                if(good_num==good_list[j]){
+                    if_goods_in_list = true;
+                }
             }
-        }
+         
+        good_list[i] = good_num;
+        }//good_list是一个有5个不同随机数（0-7）的数组
+           
+
         
 
 
