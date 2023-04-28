@@ -3,6 +3,7 @@
 #include<iostream>
 #include<string>
 #include<fstream>
+#include<map>
 using namespace std;
 
 //待补充：talentsum
@@ -14,24 +15,32 @@ using namespace std;
 struct Talevel{
     string name;
     int level;
+    int conpoint;//consumepoints
 };
 
 void talent(int assets){
     int quotient,talentpoint,talentsum,familyrank;
-    Talevel talist[12];
+    int consumption[4][3]={80,120,200, 190,250,320, 320,400,500, 480,670,940};
+    
+    
+    map <Talevel,int> declear;//<name&level,price>
+    Talevel t[12];//name&level
     
     
     ifstream fin;
     fin.open("talent_memory.txt");
     for (int i=0; i<12; i++){
-        fin>>talist[i].name;
-        fin>>talist[i].level;
+        fin>>t[i].name;
+        fin>>t[i].level;
+        fin>>t[i].conpoint;
     }
     fin>>talentsum;
     
     
     for ( int j=0; j<12; j++){
-        familyrank+=talist[j].level;
+        if (t[j].level>=0){
+            familyrank+=t[j].level;
+        }
     }
     cout<<""<<endl;//current familyrank
     
@@ -52,24 +61,68 @@ void talent(int assets){
     cout<<""<<endl;//talentpoint
     talentsum+=talentpoint;
     cout<<"the total talentpoints are "<<talentsum<<endl;
+    
+    //以下空白未统一
+    cout<<"You can choose to upgrade the following: "<<endl;
+    cout<<"Name"<<“       ”<<"Cost"<<"      "<<"Function"<<endl;
+    for (int k=0; k<12; k++){
+        if (t[k].level>=0){
+            cout<<t[k].name<<"  "<<t[k].conpoint<<"  "<<
+        }
+    }
    
    //待补充：显示界面:名称(12)+等级（0~3)
-             //倒爷 --销售达人
-             //大富之家--经营理念--资本运作--基业长青
-             //赌神--老当益壮
-             //名门望族--懂车帝--欧皇--炒房团
-    //int Profiteer[80，120，180]；
-    //int Sales_professional[240, 310, 400];
-    //int great_wealth[80, 120, 200];
-    //int Management_Philosophy[160, 200, 270];
-    //int Capital_operation[320, 400, 540];
-    //int Foundation_of_longevity[480, 670, 940];
-    //int Gambling_God[190, 240, 320];
-    //int Longevity[320, 480, 720];
-    //int Aristocrats[80, 110, 150];
-    //int Car_guy[190, 250, 320];
-    //int Lucky_man[320, 400, 500];
-    //int House_speculation[300, 370, 500];
+             //倒爷 0--销售达人 1
+             //大富之家 2--经营理念 3--资本运作 4--基业长青 5
+             //赌神 6--老当益壮 7
+             //名门望族 8--懂车帝 9--欧皇 10--炒房团 11
+             
+            // 若已解锁，显示level：0；未解锁，显示level：null
+    //int Profiteer[80，120，200]；
+    //增加初始仓库Add initial warehouse 
+    //1) 0-->10; 2) 10--> 20; 3) 20-->30                        
+    //int Sales_professional[190, 250, 320];
+    //出售物品价格提升Increase in price of items for sale
+    //1）5%; 2) 10%; 3) 15%
     
-   
+    //int great_wealth[80, 120, 200];
+    //增加初始金钱Increase initial money
+    //1）0-->10000; 2) 10000-->20000; 3) 20000-->30000
+    //int Management_Philosophy[190, 250, 320];
+    //增加公司收益率Increase company profitability
+    //1) 0-->0.1%; 2)0.1%-->0.2%; 3)0.2%-->0.3%
+    //int Capital_operation[320, 400, 500];
+    //公司卖出价格增加Increase in company selling price
+    //1）1%； 2）2%； 3）3%
+    //int Foundation_of_longevity[480, 670, 940];
+    //家族天赋点结算提升Talent Point Settlement Boost
+    //1）10； 2）50； 3）100
+    
+    //int Gambling_God[80, 120, 200];
+    //买彩票中奖几率提升Improve chances of winning the lottery 
+    //1）2%； 2）5%； 3）10%
+    //int Longevity[190, 250, 320];
+    //退休年限延长longer career life
+    //1) 70-->80; 2) 80-->90; 3)90-->100
+    
+    //int Aristocrats[80, 120, 200];
+    //增加初始名声Increase in initial fame
+    //1）5--10; 2)10-->20; 3)30--40
+    //int Car_guy[190, 250, 320];
+    //购买汽车价格降低Lower price for purchasing a car
+    //1）-10000； 2）-20000； 3）-30000
+    //int Lucky_man[320, 400, 500];
+    //名声事件触发概率提升Increased probability of fame event triggering
+    //1）5%； 2）10%； 3）15%
+    //int House_speculation[480, 670, 940];
+    //购买住宅价格降低Lower prices for purchasing a home
+    //1）-5%; 2)-10%; 3)-15%
+    
+    //补充 name --> level --> price
+    
+    
+    //知道sum，找出<=的talent去update，同时附有相应的price和function
+    //sum减去相应的，增加初始功能,增加level和family rank
+    //fout txt file
+    
 }
