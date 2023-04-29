@@ -8,7 +8,7 @@
 #include "little_target.h"
 using namespace std;
 
-void business(int &cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* company_list[5], string* company_charlist[5]){
+void business(int &cash, bool* isBankrupt, bool* isSetUpCompany, company* company_list, string* company_charlist){
     char input;
     cout << "" << endl;     //游戏界面
 
@@ -29,7 +29,7 @@ void business(int &cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* 
 
         //check if player has set up a company
         for (int i = 0; i < 5; i++){
-            if ((*isSetUpCompany)[i]){
+            if (isSetUpCompany[i]){
                 hasSetCompany = true;
                 temp = i;
             }
@@ -48,10 +48,10 @@ void business(int &cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* 
             case '3':
             case '4':
             case '5':
-                if (!(*isBankrupt)[input]){
+                if (!isBankrupt[input]){
                     //已设立一家公司，且过了profit year，可进行买/卖两种操作
                     if (hasSetCompany && input == temp){
-                        if (company_list[temp]->startProfit())
+                        if (company_list[temp].startProfit())
 
                             cout << "..." << endl; // 游戏界面
 
@@ -60,18 +60,18 @@ void business(int &cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* 
                             //buy
                             if (input == 'b'){
                                 int max_share_to_buy;
-                                max_share_to_buy = cash / (*company_list)[temp].cost_per_share;
+                                max_share_to_buy = cash / company_list[temp].cost_per_share;
 
-                                cout << temp << "." << (*company_charlist)[temp] << ":" << endl;
+                                cout << temp << "." << company_charlist[temp] << ":" << endl;
                                 cout << "you could buy at most" << max_share_to_buy << "shares" << endl;
                                 cout << "enter the number of shares you want to buy: " << endl;
                                 int num;
                                 cin >> num;
 
                                 if (num >= 0 && num <= max_share_to_buy){
-                                    cash -= (num * (*company_list)[temp].cost_per_share);
-                                    (*company_list)[temp].average_cost = (((*company_list)[temp].average_cost * (*company_list)[temp].share_number) + (*company_list)[temp].cost_per_share * num) / ((*company_list)[temp].share_number + num);
-                                    (*company_list)[temp].share_number += num;   
+                                    cash -= (num * company_list[temp].cost_per_share);
+                                    company_list[temp].average_cost = ((company_list[temp].average_cost * company_list[temp].share_number) + company_list[temp].cost_per_share * num) / (company_list[temp].share_number + num);
+                                    company_list[temp].share_number += num;   
                                 }
 
                                 else if (num > max_share_to_buy){
@@ -86,21 +86,21 @@ void business(int &cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* 
                             //sell
                             else if (input == 's'){
                                 
-                            cout << "you could sell at most" << (*company_list)[temp].share_number << endl;
+                            cout << "you could sell at most" << company_list[temp].share_number << endl;
                             cout << "enter the number of shares you want to sell: " << endl;
                             int num;
                             cin >> num;
                             
                             //部分卖出
-                            if (num >= 0 && num < (*company_list)[temp].share_number){
+                            if (num >= 0 && num < company_list[temp].share_number){
                                 int profit, price;
-                                price = num * (*company_list)[temp].cost_per_share;
+                                price = num * company_list[temp].cost_per_share;
                                 cash += price;
                                 cout << "you sold these shares for " << price << " dollar" << endl;
 
-                                (*company_list)[temp].share_number -= num;
+                                company_list[temp].share_number -= num;
 
-                                profit = round(((*company_list)[temp].cost_per_share - (*company_list)[temp].average_cost) * num);
+                                profit = round((company_list[temp].cost_per_share - company_list[temp].average_cost) * num);
                                 
                                 if (profit >= 0){
                                     cout << "you earned " << profit << endl;
@@ -111,16 +111,16 @@ void business(int &cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* 
                             }
 
                             //全部卖出
-                            else if (num == (*company_list)[temp].share_number){
+                            else if (num == company_list[temp].share_number){
                                 int profit, price;
-                                price = num * (*company_list)[temp].cost_per_share;
+                                price = num * company_list[temp].cost_per_share;
                                 cash += price;
 
-                                (*company_list)[temp].share_number = 0;
-                                *isSetUpCompany[temp] = false;
+                                company_list[temp].share_number = 0;
+                                isSetUpCompany[temp] = false;
                                 hasSetCompany = false;
 
-                                profit = round(((*company_list)[temp].cost_per_share - (*company_list)[temp].average_cost) * num);
+                                profit = round((company_list[temp].cost_per_share - company_list[temp].average_cost) * num);
 
                                 if (profit >= 0){
                                     cout << "you earned " << profit << " dollar" << endl;
@@ -130,7 +130,7 @@ void business(int &cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* 
                                 }
                             }
 
-                            else if (num > (*company_list)[temp].share_number){
+                            else if (num > company_list[temp].share_number){
                                 cout << "you don't have enough shares" << endl;
                             }
 
@@ -152,18 +152,18 @@ void business(int &cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* 
                     else{
                         int temp = input;
                         cout << "Do you want to set up" << company_charlist[temp] << endl;
-                        cout << "You need to buy 1000 shares of " <<company_charlist[temp] << "to set up this company" << endl;
+                        cout << "You need to buy 1000 shares of " << company_charlist[temp] << "to set up this company" << endl;
                         cin >> input;
                         if(input == 'y'){
                             //个人变化
-                            cash -= 1000*company_list[temp]->cost_per_share;
+                            cash -= 1000 * company_list[temp].cost_per_share;
                             hasSetCompany = true;
-                            *isSetUpCompany[temp] = true;
+                            isSetUpCompany[temp] = true;
 
                             //公司变化
-                            company_list[temp]->average_cost = company_list[temp]->cost_per_share;
-                            company_list[temp]->share_number = 1000;
-                            company_list[temp]->set_up_years = 0;    
+                            company_list[temp].average_cost = company_list[temp].cost_per_share;
+                            company_list[temp].share_number = 1000;
+                            company_list[temp].set_up_years = 0;    
                         }
                         
                         // to be complete   
