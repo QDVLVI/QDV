@@ -176,7 +176,7 @@ int startGame(){
                     cout << "..." << endl; //游戏界面，写business的来设计按键
                     int cash = player.cash;
                     business(cash, isBankrupt, isSetUpCompany, company_list, company_charlist);
-                    
+                    player.cash = cash;
                     
 
                 }
