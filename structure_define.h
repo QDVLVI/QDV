@@ -1,17 +1,21 @@
+//structure_define.h
 #ifndef NEW_STRUCT
 #define NEW_STRUCT
-
-//define your struct here
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
 
 //商品属性
 struct goods{
-        int high_price;
-        int normal_price;
-        int low_price;
-        double high_price_possiblity;
-        double normal_price_possibility;
-        double low_price_possibility;
-    };
+    int high_price;
+    int normal_price;
+    int low_price;
+    double high_price_possiblity;
+    double normal_price_possibility;
+    double low_price_possibility;
+};
 
 //角色属性
 struct role{
@@ -22,9 +26,10 @@ struct role{
     int age;
     int retire_age;
     int storehouse_capacity; //仓库容量 
+    bool isSick;
 };
 
-//仓库物品
+//仓库物品 (linked list)
 struct product{
     goods name;
     int number;
@@ -43,6 +48,7 @@ class company{
             double cost_per_share;      //每股价格
             double average_cost;        //平均成本价
             int share_number;           //持股数
+            int set_up_years = 0;           //成立时间
 
             company(double a, double b, double c, double d, double e, int f, int g, double h){
                 cost_per_share = a;       
@@ -116,7 +122,14 @@ class company{
                 temp = round(cost_per_share * share_number);
                 return temp; 
             }
-};
 
+            bool startProfit(){
+                if (profit_year <= set_up_years){
+                    return true;
+                }
+                return false;
+            }
+
+    };
 
 #endif
