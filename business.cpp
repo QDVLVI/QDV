@@ -8,7 +8,7 @@
 #include "little_target.h"
 using namespace std;
 
-void business(int cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* company_list[5], string* company_charlist[5]){
+void business(int &cash, bool* isBankrupt[5], bool* isSetUpCompany[5], company* company_list[5], string* company_charlist[5]){
     char input;
     cout << "" << endl;     //游戏界面
 
