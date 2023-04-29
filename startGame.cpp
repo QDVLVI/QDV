@@ -24,9 +24,7 @@ int startGame(){
 
     if (temp == 1){
         //初始化角色
-        cout << "Please enter your character name: " << endl;
-        string name;
-        cin >> name;
+        //可能要包含一些关于天赋的内容，比如倒爷加初始金钱
         player = {100000, 100000, 100, 0, 20, 70, 100, false};
 
         //建立一个文档储存数据,to be completed
