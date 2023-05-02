@@ -2,30 +2,60 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <cstdlib>
 #include <ctime>
 #include "little_target.h"
 #include "structure_define.h"
 using namespace std;
 
+void readData(role player){
+    ifstream fin;
+    fin.open("player.txt", ios::trunc);
+    if (fin.fail()){
+        cout << "fail to archive" << endl;
+    }else{
+        fin >> player.cash;
+        fin >> player.total_assets;
+        fin >> player.health;
+        fin >> player.fame;
+        fin >> player.age;
+        fin >> player.retire_age;
+        fin >> player.storehouse_capacity;
+        fin >> player.isSick;
+        fin.close();
+    }
+}
+
 int startGame(){
-    role player;
+    role player{100000, 100000, 100, 0, 20, 70, 100, false};
 
     //选择读取存档（Load game) 或开始新游戏 (New game)
     cout << "..." << endl; //游戏界面，选择存档或新游戏, to be completed
     int temp;
     if (temp == 2){
         //读取存档，to be complete,从file中获取角色信息
-        //to be completed
+        ifstream fin;
+        string line;
+        string str;
+        istringstream line_in(line);
 
-
-
+        fin.open("player.txt");
+        getline(fin, line);
+        line_in >> player.cash;
+        line_in >> player.total_assets;
+        line_in >> player.health;
+        line_in >> player.fame;
+        line_in >> player.age;
+        line_in >> player.retire_age;
+        line_in >> player.storehouse_capacity;
+        line_in >> player.isSick;
     }
 
     if (temp == 1){
         //初始化角色
         //可能要包含一些关于天赋的内容，比如倒爷加初始金钱
-        player = {100000, 100000, 100, 0, 20, 70, 100, false};
+        readData(player);
 
         //建立一个文档储存数据,to be completed
         ifstream fin;
@@ -208,6 +238,7 @@ int startGame(){
                 //将更新后的数据储存到文档，to be completed
 
                 if (GoToNextYear){
+                    readData(player);
                     break;
                 }
                 
