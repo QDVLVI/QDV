@@ -211,7 +211,15 @@ int startGame(){
 
                 //spend money，花钱
                 else if (input == 's'){
-                    cout << "..." << endl; //游戏界面，写spend money的来设计界面
+                    cout << "..." << endl; 
+                    cout << "1--lottery" << endl;
+                    cout << "2--housing" << enld;
+                    cout << "3--cars" << endl;
+                    cout << "4--medical" << endl;
+                    cout << "5--back" << endl;
+                    int option_spend_money;
+                    cin >> option_spend_money;
+                    //游戏界面，写spend money的来设计界面
                     //function, to be completed
 
 
