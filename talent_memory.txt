@@ -12,7 +12,7 @@ lucky_man -1 0
 house_speculation -1 0
 0
 0
-increase in initial storehouse
+increase in storehouse capacity
 increase in price of sales items
 increase in initial money
 increase in company profitability
