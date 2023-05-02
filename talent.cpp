@@ -30,7 +30,9 @@ void talent(role &player,  ){
             fin>>t[i].name>>t[i].level>>t[i].conpoint;
         }
         fin>>talentsum;
+        fin.ignore();
         fin>>extra;
+        fin.ignore();
         for ( int j=0; j<12; j++){
             getline(fin,t[j].function);
         }
@@ -92,9 +94,6 @@ void talent(role &player,  ){
                         if(m==0){
                             switch (t[m].level)
                             {
-                            case 0:
-                              t[m].conpoint = 80;
-                              break;
                             case 1:
                               t[m].conpoint = 120;
                               cout<<"increase in initial storehouse capacity"<<": +10"<<endl;
@@ -117,9 +116,6 @@ void talent(role &player,  ){
                         if( m==2 ){
                             switch (t[m].level)
                             {
-                            case 0:
-                              t[m].conpoint = 80;
-                              break;
                             case 1:
                               t[m].conpoint = 120;
                               cout<<t[m].function<<": +100000"<<endl;
@@ -142,9 +138,6 @@ void talent(role &player,  ){
                         if(m==6){
                             switch (t[m].level)
                             {
-                            case 0:
-                              t[m].conpoint = 80;
-                              break;
                             case 1:
                               t[m].conpoint = 120;
                               cout<<t[m].function<<": +1%"<<endl;
@@ -167,9 +160,6 @@ void talent(role &player,  ){
                         if(m==8){
                             switch (t[m].level)
                             {
-                            case 0:
-                              t[m].conpoint = 80;
-                              break;
                             case 1:
                               t[m].conpoint = 120;
                               cout<<t[m].function<<": 0-->10"<<endl;
