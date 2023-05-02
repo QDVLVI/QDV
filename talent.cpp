@@ -3,11 +3,10 @@
 #include<iostream>
 #include<string>
 #include<fstream>
+#include "structure_define.h"
 using namespace std;
 
 //待补充：talent_memory.txt
-
-//待补充：function of talents
 
 struct Talevel{
     string name;
@@ -16,7 +15,7 @@ struct Talevel{
     string function;
 };
 
-void talent(int assets，int &initial_money, int &storehouse){
+void talent(role &player,  ){
     int quotient,talentpoint,talentsum,extra;
     Talevel t[12];
     
@@ -39,7 +38,7 @@ void talent(int assets，int &initial_money, int &storehouse){
     fin.close();
     
     
-    quotient=assets/1000000;
+    quotient= player.total_assets/1000000;
     if(quotient==0)
         talentpoint=5+extra;
     else if (quotient<5)
@@ -98,20 +97,20 @@ void talent(int assets，int &initial_money, int &storehouse){
                               break;
                             case 1:
                               t[m].conpoint = 120;
-                              cout<<"increase in initial storehouse"<<": 0-->10"<<endl;
-                              
+                              cout<<"increase in initial storehouse capacity"<<": +10"<<endl;
+                              player.storehouse_capacity+=10;
                               t[m+1].level+=1;
                               cout<<t[m+1].name<<" is unlocked."<<endl;
                               t[m+1].conpoint=190;
                               break;
                             case 2:
                               t[m].conpoint = 200;
-                              cout<<"increase in initial storehouse"<<": 10-->20"<<endl;
-                              
+                              cout<<"increase in initial storehouse capacity"<<": +10-->20"<<endl;
+                              player.storehouse_capacity+=10;
                               break;
                             case 3:
-                              cout<<"increase in initial storehouse"<<": 20-->30"<<endl;
-                              
+                              cout<<"increase in initial storehouse capacity"<<": +20-->30"<<endl;
+                              player.storehouse_capacity+=10;
                               break;
                             }
                         }
@@ -124,7 +123,7 @@ void talent(int assets，int &initial_money, int &storehouse){
                             case 1:
                               t[m].conpoint = 120;
                               cout<<t[m].function<<": +100000"<<endl;
-                              initial_money+=100000;
+                              player.cash+=100000;
                               t[m+1].level+=1;
                               cout<<t[m+1].name<<" is unlocked."<<endl;
                               t[m+1].conpoint=190;
@@ -132,11 +131,11 @@ void talent(int assets，int &initial_money, int &storehouse){
                             case 2:
                               t[m].conpoint = 200;
                               cout<<t[m].function<<": +100000-->200000"<<endl;
-                              initial_money+=100000;
+                              player.cash+=100000;
                               break;
                             case 3:
                               cout<<t[m].function<<": +200000-->3000000"<<endl;
-                              initial_money+=100000;
+                              player.cash+=100000;
                               break;
                             }
                         }
@@ -173,8 +172,8 @@ void talent(int assets，int &initial_money, int &storehouse){
                               break;
                             case 1:
                               t[m].conpoint = 120;
-                              cout<<t[m].function<<": 5-->10"<<endl;
-                              
+                              cout<<t[m].function<<": 0-->10"<<endl;
+                              player.frame+=10;
                               t[m+1].level+=1;
                               cout<<t[m+1].name<<" is unlocked."<<endl;
                               t[m+1].conpoint=190;
@@ -182,11 +181,11 @@ void talent(int assets，int &initial_money, int &storehouse){
                             case 2:
                               t[m].conpoint = 200;
                               cout<<t[m].function<<": 10-->20"<<endl;
-                              
+                              player.frame+=10;
                               break;
                             case 3:
                               cout<<t[m].function<<": 20-->30"<<endl;
-                              
+                              player.frame+=10;
                               break;
                             }
                         }
@@ -249,7 +248,7 @@ void talent(int assets，int &initial_money, int &storehouse){
                             case 1:
                               t[m].conpoint = 250;
                               cout<<t[m].function<<": 70-->80"<<endl;
-                              
+                              player.retire_age+=10;
                               t[m+1].level+=1;
                               cout<<t[m+1].name<<" is unlocked."<<endl;
                               t[m+1].conpoint=320;
@@ -257,11 +256,11 @@ void talent(int assets，int &initial_money, int &storehouse){
                             case 2:
                               t[m].conpoint = 320;
                               cout<<t[m].function<<": 80-->90"<<endl;
-                              
+                              player.retire_age+=10;
                               break;
                             case 3:
                               cout<<t[m].function<<": 90-->100"<<endl;
-                              
+                              player.retire_age+=10;
                               break;
                             }
                         }
