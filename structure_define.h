@@ -18,15 +18,49 @@ struct goods{
 };
 
 //角色属性
-struct role{
-    int cash;
-    int total_assets;
-    int health;
-    int fame;
-    int age;
-    int retire_age;
-    int storehouse_capacity; //仓库容量 
-    bool isSick;
+class role{
+    public:
+        int cash;
+        int total_assets;
+        int health;
+        int fame;
+        int age;
+        int retire_age;
+        int storehouse_capacity; //仓库容量 
+        bool isSick;
+
+        role(int Cash, int TotalAsset, int Health, int Fame, int Age, int RetireAge, int StorehouseCapacity, bool IsSick){
+            cash = Cash;
+            total_assets = TotalAsset;
+            health = Health;
+            fame = Fame;
+            age = Age;
+            retire_age = RetireAge;
+            storehouse_capacity = StorehouseCapacity;
+            isSick = IsSick;
+        }
+
+        //天赋：倒爷
+        void updateCash(int a){
+            cash += a;
+            total_assets += a;
+        }
+
+        //天赋：名门望族
+        void updateFame(int a){
+            fame += a;
+        }
+        
+        //天赋：常青树
+        void updateRetire_age(int a){
+            retire_age += a;
+        }
+
+        //天赋
+        void updateCapacity(int a){
+            storehouse_capacity += a;
+        }
+
 };
 
 //天赋属性
