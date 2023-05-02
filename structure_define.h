@@ -29,6 +29,14 @@ struct role{
     bool isSick;
 };
 
+//天赋属性
+struct Talevel{
+    string name;
+    int level;
+    int conpoint;//consumepoints
+    string function;
+};
+
 //仓库物品 (linked list)
 struct product{
     goods name;
