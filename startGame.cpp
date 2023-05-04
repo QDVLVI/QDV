@@ -52,8 +52,14 @@ void readCompanyData(company *company_list){
     }
 }
 
-void readStorehouseData(){
-    
+void readStorehouseData(){   
+    ofstream fout;
+    map<string, store>::iterator itr = storehouse.begin();
+    fout.open("storehouse.txt", ios::out);
+    for (itr; itr != storehouse.end(); itr++){
+        fout << itr->first << " " ;
+        fout << (itr->second).buyInPrice << " " << (itr->second).name << " " << (itr->second).number << endl;
+    }
 }
 
 int startGame(){
@@ -118,10 +124,17 @@ int startGame(){
         i++;
     }
         
-        //to be completed
+        //从file中获取仓库信息
+        string name;
+        store product;
+        while (getline(finStorehouse, line)){
+            istringstream line_in(line);
+            line_in >> name >> product.buyInPrice >> product.name >> product.number;
+            storehouse[name] = product;
+        }
     }
 
-    if (temp == 1){
+    else if (temp == 1){
         //初始化角色
         //建立一个文档储存数据,to be completed
         readPlayerData(player);
