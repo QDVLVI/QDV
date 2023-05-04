@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
+#include <map>
 #include "target.h"
 #include "structure_define.h"
 
@@ -51,15 +52,25 @@ void readCompanyData(company *company_list){
     }
 }
 
+void readStorehouseData(){
+    
+}
+
 int startGame(){
+    //角色
     role player{100000, 100000, 100, 0, 20, 70, 100, false}; 
 
+    //公司
     company *company_list = new company[5];
     company_list[0].name = "gaming_industry";
     company_list[1].name = "real_estate_company";  
     company_list[2].name = "electric_manufacture";
     company_list[3].name = "energy_drink_factory";
     company_list[4].name = "internet_celebrity_anchor";
+
+    //仓库
+    map<string, store> storehouse;
+    
 
     //选择读取存档（Load game) 或开始新游戏 (New game)
 
@@ -123,25 +134,68 @@ int startGame(){
     }
 
     //仓库 (使用linked list)
-    product *storehouse;
-    storehouse = new product;
+    map<string, store> storehouse;
 
     //商品，to be completed
-    goods liquor;        //白酒
-    goods imported_car;  //进口汽车
-    goods jade;          //玉石
-    goods melon_seed;    //瓜子
-    goods domian_name;   //域名
-    goods gold;          //黄金
-    goods copycat_phone; //山寨手机
-    goods bit_coin;      //比特币
-    goods goods_list[8] = {liquor, imported_car, jade, melon_seed, domian_name, gold, copycat_phone, bit_coin};
+    goods *good_list = new goods[8];
+    good_list[0].name = "liquor";        //白酒
+    good_list[1].name = "imported_car";  //进口汽车
+    good_list[2].name = "jade";          //玉石
+    good_list[3].name = "melon_seed";    //瓜子
+    good_list[4].name = "domian_name";   //域名
+    good_list[5].name = "gold";          //黄金
+    good_list[6].name = "copycat_phone"; //山寨手机
+    good_list[7].name = "bit_coin";      //比特币
+    
 
     int market_value = 0;
     
     //游戏主循环
     while (player.age <= player.retire_age){
         player.age += 1;
+
+        //商品价格
+        //initialize price
+        srand(time(nullptr));
+        //liquor price
+        good_list[0].normal_price = rand()%1001+500;
+        good_list[0].high_price = round(good_list[0].normal_price*((rand()%434)/100.0+5.67));
+        good_list[0].low_price = round(good_list[0].normal_price%((rand()%41+40)/100));
+        
+        //imported_car price
+        good_list[1].normal_price = rand()%25000+35000;
+        good_list[1].high_price = round(good_list[1].normal_price*((rand()%1227)/1000+1.357));
+        good_list[1].low_price = round(good_list[1].normal_price*((rand()%3977)/10000+0.2857));
+        
+        //jade price
+        good_list[2].normal_price = rand()%2001+2000;
+        good_list[2].high_price = round(good_list[2].normal_price*((rand()%5501)/1000+2.5));
+        good_list[2].low_price = round(good_list[2].normal_price*((rand()%101)/1000+0.4));
+        
+        //melon_seed price
+        good_list[3].normal_price = rand()%171+80;
+        good_list[3].high_price = round(good_list[3].normal_price*((rand()%12501)/2500+3.6));
+        good_list[3].low_price = round(good_list[3].normal_price*((rand()%158+21)/1000+0.22));
+        
+        //domain_name price
+        good_list[4].normal_price = rand()%13001+19000;
+        good_list[4].high_price = round(good_list[4].normal_price*((rand()%51)/100+2));
+        good_list[4].low_price = round(good_list[4].normal_price*((rand()%501)/10000+0.45));
+        
+        //gold price
+        good_list[5].normal_price = rand()%2001+4000;
+        good_list[5].high_price = round(good_list[5].normal_price*((rand()%251)/1000+3));
+        good_list[5].low_price = round(good_list[5].normal_price*((rand()%501)/10000+0.45));
+        
+        //copycat_phone price
+        good_list[6].normal_price = rand()%351+450;
+        good_list[6].high_price = round(good_list[6].normal_price*((rand()%751)/1000+5.5));
+        good_list[6].low_price = round(good_list[6].normal_price*((rand()%51)/1000+0.45));
+        
+        //bitcoin price
+        good_list[7].normal_price = rand()%4101+3900;
+        good_list[7].high_price = round(good_list[7].normal_price*((rand()%1501)/1000+5.5));
+        good_list[7].low_price = round(good_list[7].normal_price*((rand()%71)/1000+0.43));
 
         //公司投资
         for(int i = 0; i < 5; i++){
@@ -208,7 +262,7 @@ int startGame(){
                 //market, 市场
                 if (input == 'm'){
                     cout << "..." << endl; //游戏界面，写market的来设计一下按键
-                    //function, to be completed
+                    market(player.cash, player.health, player.storehouse_capacity, good_list, storehouse);
 
 
 
@@ -291,11 +345,16 @@ int startGame(){
     //游戏结束，结算界面（x岁资产超百万，y岁资产超千万，z岁资产过亿，a岁资产最多为m，退休时资产为n，etc.）
     cout << "..." << endl;
     delete[] company_list;
+    delete[] good_list;
 
     //清空存档中的内容
-    ofstream fout;
-    fout.open("player.txt", ios::trunc);
-    fout.close();
+    ofstream foutPlayer, foutCompany, foutStorehouse;
+    foutPlayer.open("player.txt", ios::trunc);
+    foutCompany.open("company.txt", ios::trunc);
+    foutStorehouse.open("storehouse.txt", ios::trunc);
+    foutPlayer.close();
+    foutCompany.close();
+    foutStorehouse.close();
 
     return 0;
 }
