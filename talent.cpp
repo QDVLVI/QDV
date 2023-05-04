@@ -1,5 +1,3 @@
-//talent.cpp
-
 #include<iostream>
 #include<string>
 #include<fstream>
@@ -52,13 +50,17 @@ void talent(role &player,  ){
         talentpoint=250+extra;
     else if(quotient>=100)
         talentpoint=500+extra;
-    cout<<"The talentpoints gotten are "<<talentpoint<<endl;//talentpoint
+    cout<<"Talentpoints get: "<<talentpoint<<endl;//talentpoint
     talentsum+=talentpoint;
-    cout<<"the total talentpoints are "<<talentsum<<endl;
+    cout<<"Total talentpoints: "<<talentsum<<endl;
     
     
     //游戏界面
     cout<<"You can upgrade unlocked talents."<<endl;
+    cout<<t[0].name<<": "<<t[0].level<<" ----- "<<t[1].name<<": "<<
+    cout<<t[2].name<<": "<<t[2].level<<" ----- "<<t[3].name<<": "<<   <<" ----- "<<t[4].name<<": "<<  <<" ----- "<<t[5].name<<
+    cout<<t[6].name<<": "<<t[6].level<<" ----- "<<t[7].name<<": "
+    cout<<t[8].name<<": "<<t[8].level<<" ----- "<<t[9].name<<": "<<    <<" ----- "<<t[10].name<<": "<< 
     //待补充：所有talents（11） & level（0~3）
     //未解锁的talents，标注locked
     //前一个升到等级1后，后一个解锁（标注等级0)
@@ -82,9 +84,9 @@ void talent(role &player,  ){
     
     //玩家选择
     string input;
-    cout<<"Please enter the name of talents you want to upgrade, otherwisw enter 'e': ";
+    cout<<"Please enter the name of talents you want to upgrade, otherwisw enter 'q': ";
     cin>>input;
-    while (input != "e"){
+    while (input != "q"){
         for(int m=0; m<12; m++){
             if(input==t[m].name){
                     if (talentsum >= t[m].conpoint){
@@ -325,7 +327,7 @@ void talent(role &player,  ){
                             break;
                             }
                         }
-                        else if( m==11 ){
+                        else if( m==10 ){
                             switch (t[m].level)
                             {
                             case 0:
@@ -354,8 +356,8 @@ void talent(role &player,  ){
                     }
             }
         }
-        cout<<"the remaining talentpoints are "<<talentsum<<endl;
-        cout<<"enter name of talent to continue upgrade, 'e' to exit. ";
+        cout<<"Remaining talentpoints: "<<talentsum<<endl;
+        cout<<"Enter name of talent to continue upgrade, 'q' to quit. ";
         cin>>input;
     }
         
