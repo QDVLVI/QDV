@@ -1,9 +1,9 @@
 profiteer 0 80 
 sales_professional -1 0  
 great_wealth 0 80 
-management_philosophy -1 0
+management -1 0
 capital_operation -1 0
-fundation_of_longevity -1 0
+talent_improvement -1 0
 gambling_God 0 80
 longevity -1 0
 aristocrats 0 80
