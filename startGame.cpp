@@ -141,42 +141,42 @@ int startGame(){
     good_list[0].name = "liquor";        //白酒
     good_list[0].normal_price_possibility = 0.5;
     good_list[0].high_price_possiblity = 0.2;
-    good_list[0].low_price_possiblity = 0.3;
+    good_list[0].low_price_possibility = 0.3;
     
     good_list[1].name = "imported_car";  //进口汽车
     good_list[1].normal_price_possibility = 0.7;
     good_list[1].high_price_possiblity = 0.1;
-    good_list[1].low_price_possiblity = 0.2;
+    good_list[1].low_price_possibility = 0.2;
     
     good_list[2].name = "jade";          //玉石
     good_list[2].normal_price_possibility = 0.5;
     good_list[2].high_price_possiblity = 0.2;
-    good_list[2].low_price_possiblity = 0.3;
+    good_list[2].low_price_possibility = 0.3;
     
     good_list[3].name = "melon_seed";    //瓜子
     good_list[3].normal_price_possibility = 0.4;
     good_list[3].high_price_possiblity = 0.3;
-    good_list[3].low_price_possiblity = 0.3;
+    good_list[3].low_price_possibility = 0.3;
     
     good_list[4].name = "domain_name";   //域名
     good_list[4].normal_price_possibility = 0.5;
     good_list[4].high_price_possiblity = 0.15;
-    good_list[4].low_price_possiblity = 0.35;
+    good_list[4].low_price_possibility = 0.35;
     
     good_list[5].name = "gold";          //黄金
     good_list[5].normal_price_possibility = 0.6;
     good_list[5].high_price_possiblity = 0.2;
-    good_list[5].low_price_possiblity = 0.2;
+    good_list[5].low_price_possibility = 0.2;
     
     good_list[6].name = "copycat_phone"; //山寨手机
     good_list[6].normal_price_possibility = 0.4;
     good_list[6].high_price_possiblity = 0.3;
-    good_list[6].low_price_possiblity = 0.3;
+    good_list[6].low_price_possibility = 0.3;
     
     good_list[7].name = "bit_coin";      //比特币
     good_list[7].normal_price_possibility = 0.5;
     good_list[7].high_price_possiblity = 0.15;
-    good_list[7].low_price_possiblity = 0.35;
+    good_list[7].low_price_possibility = 0.35;
 
     int market_value = 0;
     
