@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<fstream>
+#include<iomanip>
 #include "structure_define.h"
 using namespace std;
 
@@ -57,31 +58,24 @@ void talent(role &player,  ){
     
     //游戏界面
     cout<<"You can upgrade unlocked talents."<<endl;
-    cout<<t[0].name<<": "<<t[0].level<<" ----- "<<t[1].name<<": "<<
-    cout<<t[2].name<<": "<<t[2].level<<" ----- "<<t[3].name<<": "<<   <<" ----- "<<t[4].name<<": "<<  <<" ----- "<<t[5].name<<
-    cout<<t[6].name<<": "<<t[6].level<<" ----- "<<t[7].name<<": "
-    cout<<t[8].name<<": "<<t[8].level<<" ----- "<<t[9].name<<": "<<    <<" ----- "<<t[10].name<<": "<< 
-    //待补充：所有talents（11） & level（0~3）
-    //未解锁的talents，标注locked
-    //前一个升到等级1后，后一个解锁（标注等级0)
-    
-    //倒爷 --销售达人 
-    //大富之家 --经营理念 --资本运作 --基业长青 
-    //赌神 --老当益壮 
-    //名门望族 --懂车帝  --炒房团 
-    
-    
-    
-    //talent功能介绍，玩家可以选择是否查看
-    //未完成
-    for (int k=0; k<11; k++){
-        if (t[k].level>=0){
-            cout<<t[k].name<<"  "<<t[k].conpoint<<"  "<<t[k].function<<endl;
-        }
-    }
-    
-    
-    
+    cout<<left<<setw(19)<<"Name"<<left<<setw(9)<<"Level"<<endl;
+    cout<<left<<setw(19)<<"Name"<<left<<setw(9)<<"Level"<<endl;
+    cout<<left<<setw(19)<<t[0].name<<left<<setw(2)<<t[0].level<<" ----> "<<left<<setw(19)<<t[1].name;
+    (t[1].level>=0)? cout<<left<<setw(9)<<t[1].level<<endl : cout<<left<<setw(9)<<"unlocked"<<endl;
+    cout<<left<<setw(19)<<t[2].name<<left<<setw(2)<<t[2].level<<" ----> "<<left<<setw(19)<<t[3].name;
+    (t[3].level>=0)? cout<<left<<setw(9)<<t[3].level : cout<<left<<setw(9)<<"unlocked";
+    cout<<" ----> "<<left<<setw(19)<<t[4].name;
+    (t[4].level>=0)? cout<<left<<setw(9)<<t[4].level : cout<<left<<setw(9)<<"unlocked";
+    cout<<" ----> "<<left<<setw(19)<<t[5].name;
+    (t[5].level>=0)? cout<<left<<setw(9)<<t[5].level<<endl : cout<<left<<setw(9)<<"unlocked"<<endl;
+    cout<<left<<setw(19)<<t[6].name<<left<<setw(2)<<t[6].level<<" ----> "<<left<<setw(19)<<t[7].name;
+    (t[7].level>=0)? cout<<left<<setw(9)<<t[7].level<<endl : cout<<left<<setw(9)<<"unlocked"<<endl;
+    cout<<left<<setw(19)<<t[8].name<<left<<setw(2)<<t[8].level<<" ----> "<<left<<setw(19)<<t[9].name;
+    (t[9].level>=0)? cout<<left<<setw(9)<<t[9].level : cout<<left<<setw(9)<<"unlocked";
+    cout<<" ----> "<<left<<setw(19)<<t[10].name;
+    (t[10].level>=0)? cout<<left<<setw(9)<<t[10].level<<endl : cout<<left<<setw(9)<<"unlocked"<<endl;
+   
+  
     //玩家选择
     string input;
     cout<<"Please enter the name of talents you want to upgrade, otherwisw enter 'q': ";
