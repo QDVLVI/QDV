@@ -48,8 +48,9 @@ class role{
         bool school_district_house;//学区房
         bool sea_view_villa;//海景别墅
         bool holiday_resort;//度假山庄
-        bool apartment;
-        bool hut;
+        bool apartment;//公寓
+        bool hut;//破房子
+        }
 
         //天赋：倒爷
         void updateCash(int a){
