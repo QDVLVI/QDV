@@ -7,6 +7,7 @@ using namespace std;
 
 int main() {
     int choice;
+    ifstream file("README.md");
     do {
 	std::cout << "===========================" << std::endl;
         std::cout << "   100 Million Small Target   " << std::endl;
@@ -42,7 +43,7 @@ int main() {
      		case 4:
   			std::cout << "Help" <<  std::endl;
 			//读取readme
-  			ifstream file("README.md");
+  			
   			if (file.is_open()) {
           			string text((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
           			cout << text << endl;
