@@ -19,18 +19,20 @@ int main() {
         cin >> choice;
         switch (choice) {
 	    case 1:
-                cout << "You chose option 1." << endl;
+                cout << "You chose option 1." << endl;//
 		int result = startGame();
                 break;
             case 2:
                 cout << "You chose option 2." << endl;
+		//待完善
                 break;
             case 3:
                 cout << "You chose option 3." << endl;
-		talent();
+		talent();//这里role,player待完善
                 break;
             case 4:
                 cout << "You chose option 4." << endl;
+		//
                 break;
 	    case 5:
 		cout << "You chose option 5." << endl;
@@ -46,6 +48,7 @@ int main() {
                 break;
 	    case 6:
 		cout << "Goodbye!" << endl;
+		//详细文字信息，待完善
                 break;
             default:
                 cout << "Invalid choice. Please enter a number between 1 and 6." << endl;
