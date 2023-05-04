@@ -41,6 +41,15 @@ class role{
             storehouse_capacity = StorehouseCapacity;
             isSick = IsSick;
         }
+    
+    //财产，包括房产，车子什么的
+    struct property{
+        bool island;//小岛
+        bool school_district_house;//学区房
+        bool sea_view_villa;//海景别墅
+        bool holiday_resort;//度假山庄
+        bool apartment;
+        bool hut;
 
         //天赋：倒爷
         void updateCash(int a){
