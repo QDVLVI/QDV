@@ -1,7 +1,7 @@
 profiteer 0 80 
 sales_professional -1 0  
-great_wealth 0 80 
-management -1 0
+tycoon 0 80 
+business_concept -1 0
 capital_operation -1 0
 talent_improvement -1 0
 gambling_God 0 80
