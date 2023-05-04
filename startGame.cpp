@@ -1,4 +1,4 @@
-//a_little_target.cpp
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -52,24 +52,18 @@ void readCompanyData(company *company_list){
     }
 }
 
-void readStorehouseData(){   
-    ofstream fout;
-    map<string, store>::iterator itr = storehouse.begin();
-    fout.open("storehouse.txt", ios::out);
-    for (itr; itr != storehouse.end(); itr++){
-        fout << itr->first << " " ;
-        fout << (itr->second).buyInPrice << " " << (itr->second).name << " " << (itr->second).number << endl;
-    }
+void readStorehouseData(){
+    
 }
 
 int startGame(){
     //角色
-    role player{100000, 100000, 100, 0, 20, 70, 100, false}; 
+    role player{100000, 100000, 100, 0, 20, 70, 100, false};
 
     //公司
     company *company_list = new company[5];
     company_list[0].name = "gaming_industry";
-    company_list[1].name = "real_estate_company";  
+    company_list[1].name = "real_estate_company";
     company_list[2].name = "electric_manufacture";
     company_list[3].name = "energy_drink_factory";
     company_list[4].name = "internet_celebrity_anchor";
@@ -124,17 +118,10 @@ int startGame(){
         i++;
     }
         
-        //从file中获取仓库信息
-        string name;
-        store product;
-        while (getline(finStorehouse, line)){
-            istringstream line_in(line);
-            line_in >> name >> product.buyInPrice >> product.name >> product.number;
-            storehouse[name] = product;
-        }
+        //to be completed
     }
 
-    else if (temp == 1){
+    if (temp == 1){
         //初始化角色
         //建立一个文档储存数据,to be completed
         readPlayerData(player);
@@ -174,42 +161,58 @@ int startGame(){
         good_list[0].normal_price = rand()%1001+500;
         good_list[0].high_price = round(good_list[0].normal_price*((rand()%434)/100.0+5.67));
         good_list[0].low_price = round(good_list[0].normal_price%((rand()%41+40)/100));
-        
+        good_list[0].normal_price_possibility = 5;
+        good_list[0].high_price_possiblity = 2;
+        good_list[0].low_price_possiblity = 3;
         //imported_car price
         good_list[1].normal_price = rand()%25000+35000;
         good_list[1].high_price = round(good_list[1].normal_price*((rand()%1227)/1000+1.357));
         good_list[1].low_price = round(good_list[1].normal_price*((rand()%3977)/10000+0.2857));
-        
+        good_list[1].normal_price_possibility = 7;
+        good_list[1].high_price_possiblity = 1;
+        good_list[1].low_price_possiblity = 2;
         //jade price
         good_list[2].normal_price = rand()%2001+2000;
         good_list[2].high_price = round(good_list[2].normal_price*((rand()%5501)/1000+2.5));
         good_list[2].low_price = round(good_list[2].normal_price*((rand()%101)/1000+0.4));
-        
+        good_list[2].normal_price_possibility = 5;
+        good_list[2].high_price_possiblity = 2;
+        good_list[2].low_price_possiblity = 3;
         //melon_seed price
         good_list[3].normal_price = rand()%171+80;
         good_list[3].high_price = round(good_list[3].normal_price*((rand()%12501)/2500+3.6));
         good_list[3].low_price = round(good_list[3].normal_price*((rand()%158+21)/1000+0.22));
-        
+        good_list[3].normal_price_possibility = 4;
+        good_list[3].high_price_possiblity = 3;
+        good_list[3].low_price_possiblity = 3;
         //domain_name price
         good_list[4].normal_price = rand()%13001+19000;
         good_list[4].high_price = round(good_list[4].normal_price*((rand()%51)/100+2));
         good_list[4].low_price = round(good_list[4].normal_price*((rand()%501)/10000+0.45));
-        
+        good_list[4].normal_price_possibility = 5;
+        good_list[4].high_price_possiblity = 1.5;
+        good_list[4].low_price_possiblity = 3.5;
         //gold price
         good_list[5].normal_price = rand()%2001+4000;
         good_list[5].high_price = round(good_list[5].normal_price*((rand()%251)/1000+3));
         good_list[5].low_price = round(good_list[5].normal_price*((rand()%501)/10000+0.45));
-        
+        good_list[5].normal_price_possibility = 6;
+        good_list[5].high_price_possiblity = 2;
+        good_list[5].low_price_possiblity = 2;
         //copycat_phone price
         good_list[6].normal_price = rand()%351+450;
         good_list[6].high_price = round(good_list[6].normal_price*((rand()%751)/1000+5.5));
         good_list[6].low_price = round(good_list[6].normal_price*((rand()%51)/1000+0.45));
-        
+        good_list[6].normal_price_possibility = 4;
+        good_list[6].high_price_possiblity = 3;
+        good_list[6].low_price_possiblity = 3;
         //bitcoin price
         good_list[7].normal_price = rand()%4101+3900;
         good_list[7].high_price = round(good_list[7].normal_price*((rand()%1501)/1000+5.5));
         good_list[7].low_price = round(good_list[7].normal_price*((rand()%71)/1000+0.43));
-
+        good_list[7].normal_price_possibility = 5;
+        good_list[7].high_price_possiblity = 1.5;
+        good_list[7].low_price_possiblity = 3.5;
         //公司投资
         for(int i = 0; i < 5; i++){
             //是否破产
@@ -371,9 +374,3 @@ int startGame(){
 
     return 0;
 }
-
-/*
-int main(){
-    startGame();
-}
-*/
