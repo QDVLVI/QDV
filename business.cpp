@@ -173,6 +173,7 @@ void business(int &cash, int &health, company* company_list){
                             if(input == 'y'){
                                 //个人变化
                                 cash -= 1000 * company_list[temp].cost_per_share;
+                                health -= 10;
                                 hasSetCompany = true;
                                 company_list[temp].isSetup = true;
 
