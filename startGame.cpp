@@ -4,65 +4,122 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
-#include <ctime>
-#include "little_target.h"
+#include "target.h"
 #include "structure_define.h"
+
 using namespace std;
 
-void readData(role player){
-    ifstream fin;
-    fin.open("player.txt", ios::trunc);
-    if (fin.fail()){
-        cout << "fail to archive" << endl;
+void readPlayerData(role player){
+    ofstream fout;
+    fout.open("player.txt", ios::out);
+    if (fout.fail()){
+        cout << "fail to player data" << endl;
     }else{
-        fin >> player.cash;
-        fin >> player.total_assets;
-        fin >> player.health;
-        fin >> player.fame;
-        fin >> player.age;
-        fin >> player.retire_age;
-        fin >> player.storehouse_capacity;
-        fin >> player.isSick;
-        fin.close();
+        fout << player.cash << endl;
+        fout << player.total_assets << endl;
+        fout << player.health << endl;
+        fout << player.fame << endl;
+        fout << player.age << endl;
+        fout << player.retire_age << endl;
+        fout << player.storehouse_capacity << endl;
+        fout << player.isSick << endl;
+        fout.close();
+    }
+}
+
+void readCompanyData(company *company_list){
+    ofstream fout;
+    fout.open("company.txt", ios::out);
+    if (fout.fail()){
+        cout << "fail to save company data" << endl;
+    }else{
+        for (int i = 0; i < 5; i++){
+            fout << company_list[i].name << " ";
+            fout << company_list[i].cost_per_share << " ";
+            fout << company_list[i].average_cost << " ";
+            fout << company_list[i].ups_possibility << " ";
+            fout << company_list[i].amplitude << " ";
+            fout << company_list[i].dividend_rate << " ";
+            fout << company_list[i].profit_year << " ";
+            fout << company_list[i].share_number << " ";
+            fout << company_list[i].bankrupt_threshold << " ";
+            fout << company_list[i].set_up_years << " ";
+            fout << company_list[i].isSetup << " ";
+            fout << company_list[i].isBankrupt << endl;
+        }
+        fout.close();
     }
 }
 
 int startGame(){
-    role player{100000, 100000, 100, 0, 20, 70, 100, false};
+    role player{100000, 100000, 100, 0, 20, 70, 100, false}; 
+
+    company *company_list = new company[5];
+    company_list[0].name = "gaming_industry";
+    company_list[1].name = "real_estate_company";  
+    company_list[2].name = "electric_manufacture";
+    company_list[3].name = "energy_drink_factory";
+    company_list[4].name = "internet_celebrity_anchor";
 
     //选择读取存档（Load game) 或开始新游戏 (New game)
-    cout << "..." << endl; //游戏界面，选择存档或新游戏, to be completed
-    int temp;
-    if (temp == 2){
-        //读取存档，to be complete,从file中获取角色信息
-        ifstream fin;
-        string line;
-        string str;
-        istringstream line_in(line);
 
-        fin.open("player.txt");
-        getline(fin, line);
-        line_in >> player.cash;
-        line_in >> player.total_assets;
-        line_in >> player.health;
-        line_in >> player.fame;
-        line_in >> player.age;
-        line_in >> player.retire_age;
-        line_in >> player.storehouse_capacity;
-        line_in >> player.isSick;
+    cout << "1-start a new game\n2-continue" << endl; //游戏界面，选择存档或新游戏, to be completed
+    int temp;
+    cin >> temp;
+
+    if (temp == 2){
+        ifstream finPlayer, finCompany;
+        finPlayer.open("player.txt");
+        finCompany.open("company.txt");
+        if (finPlayer.peek() == ifstream::traits_type::eof() || finCompany.peek() == ifstream::traits_type::eof()){
+            cout << "no record found" << endl;
+            return 0;
+        }
+
+    //读取存档，从file中获取角色信息
+    finPlayer >> player.cash;
+    finPlayer >> player.total_assets;
+    finPlayer >> player.health;
+    finPlayer >> player.fame;
+    finPlayer >> player.age;
+    finPlayer >> player.retire_age;
+    finPlayer >> player.storehouse_capacity;
+    finPlayer >> player.isSick;
+
+    //从file中获取公司信息
+    string line;
+    int i = 0;
+    
+    while (getline(finCompany, line)){
+        istringstream line_in(line);
+        line_in >> company_list[i].name;
+        line_in >> company_list[i].cost_per_share;
+        line_in >> company_list[i].average_cost;
+        line_in >> company_list[i].ups_possibility;
+        line_in >> company_list[i].amplitude;
+        line_in >> company_list[i].dividend_rate;
+        line_in >> company_list[i].profit_year;
+        line_in >> company_list[i].share_number;
+        line_in >> company_list[i].bankrupt_threshold;
+        line_in >> company_list[i].set_up_years;
+        line_in >> company_list[i].isSetup;
+        line_in >> company_list[i].isBankrupt;
+        i++;
+    }
+        
+        //to be completed
     }
 
     if (temp == 1){
         //初始化角色
-        //可能要包含一些关于天赋的内容，比如倒爷加初始金钱
-        readData(player);
-
         //建立一个文档储存数据,to be completed
-        ifstream fin;
+        readPlayerData(player);
 
-
-
-
+        company_list[0].initCompany(700,  0, 0.6, 0.1,  0.02, 2, 0, 1);                //氪金游戏公司
+        company_list[1].initCompany(4000, 0, 0.8, 0.2,  0.01, 5, 0, 10);               //房地产公司
+        company_list[2].initCompany(500,  0, 0.6, 0.1,  0.02, 3, 0, 1);                //电器制造厂
+        company_list[3].initCompany(1000, 0, 0.6, 0.05, 0.03, 2, 0, 1);                //运动饮料厂
+        company_list[4].initCompany(50,   0, 0.5, 0.1,  0.01, 1, 0, 0.1);              //网红主播
     }
 
     //仓库 (使用linked list)
@@ -80,34 +137,6 @@ int startGame(){
     goods bit_coin;      //比特币
     goods goods_list[8] = {liquor, imported_car, jade, melon_seed, domian_name, gold, copycat_phone, bit_coin};
 
-    company gaming_industry(7, 0, 0.6, 0.1, 0.02, 2, 0, 1);                //氪金游戏公司
-    company real_estate_company(40, 0, 0.8, 0.2, 0.01, 5, 0, 10);          //房地产公司
-    company electric_manufacture(5, 0, 0.6, 0.1, 0.02, 3, 0, 1);           //电器制造厂
-    company energy_drink_factory(10, 0, 0.6, 0.05, 0.03, 2, 0, 1);         //运动饮料厂
-    company internet_celebrity_anchor(0.5, 0, 0.5, 0.1, 0.01, 0, 0, 0.1);  //网红主播
-
-    company *company_list = new company[5];
-    company_list[0] = gaming_industry;
-    company_list[1] = real_estate_company;  
-    company_list[2] = electric_manufacture;
-    company_list[3] = energy_drink_factory;
-    company_list[4] = internet_celebrity_anchor;
-
-    string *company_charlist = new string[5];
-    company_charlist[0] = "gaming industry";
-    company_charlist[1] = "real estate company";
-    company_charlist[2] = "electric manufacture";
-    company_charlist[3] = "energy drink factory";
-    company_charlist[4] = "internet celebrity anchor";
-
-    bool *isSetUpCompany = new bool[5];
-    bool *isBankrupt = new bool[5];
-    for (int i = 0; i < 5; i++){
-        isSetUpCompany[i] = false;
-        isBankrupt[i] = false;
-    } 
-
-    int last_year_money = 100000;
     int market_value = 0;
     
     //游戏主循环
@@ -118,65 +147,50 @@ int startGame(){
         for(int i = 0; i < 5; i++){
             //是否破产
             if (company_list[i].bankrupt()){
-                isBankrupt[i] = true;
+                company_list[i].isBankrupt = true;
+                if (company_list[i].isSetup = true){
+                    company_list[i].isSetup = false;
+                    cout << "your company" << company_list[i].name << "has bankrupt due to the recession" << endl;
+                }
                 continue;
             }
 
             //股价浮动
             company_list[i].floating();
 
-            //分红,计算市值
-            if (isSetUpCompany[i] = true){
-                player.cash += company_list[i].dividend();
-                player.total_assets += company_list[i].dividend();
-                cout << "company pays dividends of " << company_list[i].dividend() << " dollar" << endl;
+            //分红
+            if (company_list[i].isSetup == true){
+                if (company_list[i].startProfit()){
+                    player.cash += company_list[i].dividend();
+                    player.total_assets += company_list[i].market_value();
+                    cout << company_list[i].name << " pays dividends of " << company_list[i].dividend() << " dollar" << endl;
+                }
+                company_list[i].set_up_years++;
             }
         }
+
+        for (int i = 0; i < 5; i++){
+            if (company_list[i].isSetup){
+                market_value = round(company_list[i].cost_per_share * company_list[i].share_number);
+            }
+        }
+           
+        player.total_assets = player.cash + market_value;  //还要再加车的价值和房的价值
+        cout << "player's total assets: " << player.total_assets << endl;
+
+        readCompanyData(company_list);
+        readPlayerData(player);
 
         cout << "..." << endl; // 游戏界面,从8个商品选5个出来展示，可以用file或直接cout,to be completed
-        srand(time(nullptr));
-        int good_list[]={9,9,9,9,9};
-        int good_num;
-        for(i=0,i<5,i++){//循环5次，随机出5个商品
-            
-            
-            bool if_goods_in_list = false;
-            
-            while(if_goods_in_list){
-                good_num = rand() % 8; 
-                
-                if_goods_in_list = false
-                for(j=0,j<5,j++){//检查是不是重复good
-                if(good_num==good_list[j]){
-                    if_goods_in_list = true;
-                }
-            }
-         
-        good_list[i] = good_num;
-        }//good_list是一个有5个不同随机数（0-7）的数组
-           
-
-        
 
 
-
-        //随机事件
-        if (player.total_assets > last_year_money){
-            //随机奖励（年度最佳新人奖，x%触发，奖励10000-100000
-            //to be completed
-
-
-
-        }
-
-        last_year_money = player.total_assets;
 
         //买卖（market），创业（business）会损失健康值，
         if (player.health <= 50){
             //有几率住院
             srand(time(nullptr));
-            int a = rand() % 4;
-            if (a == 1){
+            int a = rand() % 4; //25%
+            if (a != 1){
                 player.isSick = true;
             }
 
@@ -187,7 +201,9 @@ int startGame(){
         bool GoToNextYear = false;
 
         if (!player.isSick){
+            cout << "m-market\nb-business\ns-spend money\nn-go to next year" << endl;
             while (cin >> input){
+                
                 
                 //market, 市场
                 if (input == 'm'){
@@ -203,23 +219,17 @@ int startGame(){
                 else if (input == 'b'){
                     cout << "..." << endl; //游戏界面，写business的来设计按键
                     int cash = player.cash;
-                    business(cash, isBankrupt, isSetUpCompany, company_list, company_charlist);
+                    int health = player.health;
+                    business(cash, health, company_list);
                     player.cash = cash;
-                    
+                    player.health = health;
+                    readCompanyData(company_list);
 
                 }
 
                 //spend money，花钱
                 else if (input == 's'){
-                    cout << "..." << endl; 
-                    cout << "1--lottery" << endl;
-                    cout << "2--housing" << enld;
-                    cout << "3--cars" << endl;
-                    cout << "4--medical" << endl;
-                    cout << "5--back" << endl;
-                    int option_spend_money;
-                    cin >> option_spend_money;
-                    //游戏界面，写spend money的来设计界面
+                    cout << "..." << endl; //游戏界面，写spend money的来设计界面
                     //function, to be completed
 
 
@@ -232,12 +242,13 @@ int startGame(){
                     GoToNextYear = true;
                 }
 
-                else{
-
+                else if (input == 'q'){
+                    readPlayerData(player);
+                    return 0;
                 }
-                
+
                 for (int i = 0; i < 5; i++){
-                    if (isSetUpCompany[i]){
+                    if (company_list[i].isSetup){
                         market_value = company_list[i].market_value();
                     }
                 }
@@ -246,15 +257,17 @@ int startGame(){
                 //将更新后的数据储存到文档，to be completed
 
                 if (GoToNextYear){
-                    readData(player);
+                    readPlayerData(player);
                     break;
                 }
-                
+                cout << "m-market\nb-business\ns-spend money\nn-go to next year" << endl;
             }
         }
         else{
+            player.isSick = false;
+            player.health = 100;
             cout << "you are sick this year and could not do anything this year" << endl;
-            cout << "..." << endl;     //游戏界面，按n进入下一年，按q提前退休
+            cout << "n-next year" << endl;     //游戏界面，按n进入下一年，按q提前退休
 
 
 
@@ -263,6 +276,7 @@ int startGame(){
             while(true){
                 cin >> input;
                 if (input == "n"){
+                    readPlayerData(player);
                     break;
                 }else{
                     cout << "you are sick this year and could not do anything this year" << endl;
@@ -276,9 +290,18 @@ int startGame(){
     
     //游戏结束，结算界面（x岁资产超百万，y岁资产超千万，z岁资产过亿，a岁资产最多为m，退休时资产为n，etc.）
     cout << "..." << endl;
-    delete[] company_charlist;
     delete[] company_list;
-    delete[] isSetUpCompany;
-    delete[] isBankrupt;
+
+    //清空存档中的内容
+    ofstream fout;
+    fout.open("player.txt", ios::trunc);
+    fout.close();
+
     return 0;
 }
+
+/*
+int main(){
+    startGame();
+}
+*/
