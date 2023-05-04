@@ -8,7 +8,6 @@ gambling_God 0 80
 longevity -1 0
 aristocrats 0 80
 car_guy -1 0
-lucky_man -1 0
 house_speculation -1 0
 0
 0
@@ -22,5 +21,4 @@ higher probability of winning lottery
 longer career life
 have a better initial reputation
 lower car price
-increased probability of frame event
 lower house price
