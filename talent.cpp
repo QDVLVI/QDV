@@ -6,7 +6,6 @@
 #include "structure_define.h"
 using namespace std;
 
-//待补充：talent_memory.txt
 
 struct Talevel{
     string name;
@@ -17,7 +16,7 @@ struct Talevel{
 
 void talent(role &player,  ){
     int quotient,talentpoint,talentsum,extra;
-    Talevel t[12];
+    Talevel t[11];
     
     
     ifstream fin;
@@ -26,14 +25,14 @@ void talent(role &player,  ){
         cout<<"open failed."<<endl;
     }
     else{
-        for (int i=0; i<12; i++){
+        for (int i=0; i<11; i++){
             fin>>t[i].name>>t[i].level>>t[i].conpoint;
         }
         fin>>talentsum;
         fin.ignore();
         fin>>extra;
         fin.ignore();
-        for ( int j=0; j<12; j++){
+        for ( int j=0; j<11; j++){
             getline(fin,t[j].function);
         }
     }
@@ -60,20 +59,20 @@ void talent(role &player,  ){
     
     //游戏界面
     cout<<"You can upgrade unlocked talents."<<endl;
-    //待补充：所有talents（12） & level（0~3）
+    //待补充：所有talents（11） & level（0~3）
     //未解锁的talents，标注locked
     //前一个升到等级1后，后一个解锁（标注等级0)
     
     //倒爷 --销售达人 
     //大富之家 --经营理念 --资本运作 --基业长青 
     //赌神 --老当益壮 
-    //名门望族 --懂车帝 --欧皇 --炒房团 
+    //名门望族 --懂车帝  --炒房团 
     
     
     
     //talent功能介绍，玩家可以选择是否查看
     //未完成
-    for (int k=0; k<12; k++){
+    for (int k=0; k<11; k++){
         if (t[k].level>=0){
             cout<<t[k].name<<"  "<<t[k].conpoint<<"  "<<t[k].function<<endl;
         }
@@ -303,30 +302,6 @@ void talent(role &player,  ){
                               break;
                             }
                         }
-                        else if(m==10){
-                            switch (t[m].level)
-                            {
-                            case 0:
-                              t[m].conpoint = 320;
-                              break;
-                            case 1:
-                              t[m].conpoint = 400;
-                              cout<<t[m].function<<": +5%"<<endl;
-                              
-                              t[m+1].level+=1;
-                              cout<<t[m+1].name<<" is unlocked."<<endl;
-                              t[m+1].conpoint= 480;
-                              break;
-                            case 2:
-                              t[m].conpoint = 500;
-                              cout<<t[m].function<<": +5%-->10%"<<endl;
-                              break;
-                            case 3:
-                              cout<<t[m].function<<": +10%-->15%"<<endl;
-                              
-                              break;
-                            }
-                        }
                         else if( m==5 ){
                             switch (t[m].level)
                             {
@@ -354,16 +329,16 @@ void talent(role &player,  ){
                             switch (t[m].level)
                             {
                             case 0:
-                              t[m].conpoint = 480;
+                              t[m].conpoint = 320;
                               break;
                             case 1:
-                              t[m].conpoint = 670;
+                              t[m].conpoint = 400;
                               cout<<t[m].function<<": -5%"<<endl;
                               
                               t[m+1].level+=1;
                               break;
                             case 2:
-                              t[m].conpoint = 940;
+                              t[m].conpoint = 500;
                               cout<<t[m].function<<": -10%"<<endl;
                               
                               break;
@@ -391,7 +366,7 @@ void talent(role &player,  ){
         cout<<"open failed."<<endl;
     }
     else{
-        for ( int n=0; n<12; n++){
+        for ( int n=0; n<11; n++){
             fout<<t[n].name<<" "<<t[n].level<<" "<<t[n].conpoint<<endl;
         }
         fout<<talentsum<<endl;
@@ -406,7 +381,6 @@ void talent(role &player,  ){
         fout<<"longer career life"<<endl;
         fout<<"have a better initial reputation"<<endl;
         fout<<"lower car price"<<endl;
-        fout<<"increased probability of frame event"<<endl;
         fout<<"lower house price"<<endl;
     }
     fout.close();
