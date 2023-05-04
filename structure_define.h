@@ -20,15 +20,49 @@ struct goods{
 };
 
 //角色属性
-struct role{
-    int cash;
-    int total_assets;
-    int health;
-    int fame;
-    int age;
-    int retire_age;
-    int storehouse_capacity; //仓库容量 
-    bool isSick;
+class role{
+    public:
+        int cash;
+        int total_assets;
+        int health;
+        int fame;
+        int age;
+        int retire_age;
+        int storehouse_capacity; //仓库容量 
+        bool isSick;
+
+        role(int Cash, int TotalAsset, int Health, int Fame, int Age, int RetireAge, int StorehouseCapacity, bool IsSick){
+            cash = Cash;
+            total_assets = TotalAsset;
+            health = Health;
+            fame = Fame;
+            age = Age;
+            retire_age = RetireAge;
+            storehouse_capacity = StorehouseCapacity;
+            isSick = IsSick;
+        }
+
+        //天赋：倒爷
+        void updateCash(int a){
+            cash += a;
+            total_assets += a;
+        }
+
+        //天赋：名门望族
+        void updateFame(int a){
+            fame += a;
+        }
+        
+        //天赋：常青树
+        void updateRetire_age(int a){
+            retire_age += a;
+        }
+
+        //天赋
+        void updateCapacity(int a){
+            storehouse_capacity += a;
+        }
+
 };
 
 //天赋属性
@@ -48,19 +82,21 @@ struct product{
 
 //公司属性
 class company{
-        double ups_possibility;     //上浮概率 (x%)
-        double amplitude;           //最高上浮/下跌幅度 (y%)
-        double dividend_rate;       //分红比例 (z%)
-        int profit_year;            //建立后多少年开始盈利
-        double bankrupt_threshold;  //破产阈值
-
-        public:
+    public:
+            double ups_possibility;     //上浮概率 (x%)
+            double amplitude;           //最高上浮/下跌幅度 (y%)
+            double dividend_rate;       //分红比例 (z%)
+            int profit_year;            //建立后多少年开始盈利
+            double bankrupt_threshold;  //破产阈值
+            string name;
             double cost_per_share;      //每股价格
             double average_cost;        //平均成本价
             int share_number;           //持股数
-            int set_up_years = 0;           //成立时间
+            int set_up_years = 0;       //成立时间
+            bool isSetup = false;
+            bool isBankrupt = false;
 
-            company(double a, double b, double c, double d, double e, int f, int g, double h){
+            void initCompany(double a, double b, double c, double d, double e, int f, int g, double h){
                 cost_per_share = a;       
                 average_cost = b;             
                 ups_possibility = c;        
@@ -73,7 +109,7 @@ class company{
 
             company(){
 
-            }
+            }   
         
 
             int dividend(){
@@ -93,9 +129,11 @@ class company{
                     }
                 }
 
-                srand(time(nullptr));
+                int random_seed = time(nullptr) + rand();
+                srand(random_seed);
 
                 int random_number1 = rand() % 100;
+            
 
                 bool isIncrease = false;
                 if (increase[random_number1]){
@@ -111,9 +149,9 @@ class company{
 
                 //update cost_per_share
                 if (isIncrease){
-                    cost_per_share = cost_per_share * (1+(random_number2/100));
+                    cost_per_share = round(cost_per_share * (1+((random_number2)/100.0)));
                 }else{
-                    cost_per_share = cost_per_share * (1-(random_number2/100));
+                    cost_per_share = round(cost_per_share * (1-((random_number2)/100.0)));
                 }
 
             }
