@@ -59,7 +59,6 @@ void talent(role &player,  ){
     //游戏界面
     cout<<"You can upgrade unlocked talents."<<endl;
     cout<<left<<setw(19)<<"Name"<<left<<setw(9)<<"Level"<<endl;
-    cout<<left<<setw(19)<<"Name"<<left<<setw(9)<<"Level"<<endl;
     cout<<left<<setw(19)<<t[0].name<<left<<setw(2)<<t[0].level<<" ----> "<<left<<setw(19)<<t[1].name;
     (t[1].level>=0)? cout<<left<<setw(9)<<t[1].level<<endl : cout<<left<<setw(9)<<"unlocked"<<endl;
     cout<<left<<setw(19)<<t[2].name<<left<<setw(2)<<t[2].level<<" ----> "<<left<<setw(19)<<t[3].name;
