@@ -9,7 +9,7 @@
 #include "structure_define.h"
 using namespace std;
 
-bool check(int cash,int price, int number, int capacity){
+bool check(int cash, int price, int number, int capacity){
     bool judge=true;
     if (cash < (price*number) || number <= capacity){
         judge=false;
@@ -17,49 +17,15 @@ bool check(int cash,int price, int number, int capacity){
     return judge;
 }
 
-//随机产品
-bool select_goods(goods* good_list){
-    //initialize good_list[].appear
-    for (int i = 0; i < 8; i++){
-        good_list[i].appear = false;
-    }
-
-    //randomly pick 5 good to appear
-    int select_num = 0;
-    while(select_num < 5){
-        int random_seed = time(nullptr) + rand();
-        srand(random_seed);
-        int random_number = rand()%8;
-        if (good_list[random_number].appear == false){
-            good_list[random_number].appear = true;
-            select_num++;
-        }
-    }
-
-    return true;
-}
-
 void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, map<string, store> &storehouse){
-    //select good
-    bool success = select_goods(good_list);
-    goods *market = new goods[5];
-    if (success){
-        int j = 0;
-        for (int i = 0; i < 8; i++){
-            market[j] = good_list[i];
-            j++;
-        }
 
         //游戏界面
-            cout<<"|"<<setw(15)<<"Goods"<<setw(12)<<"|"<<setw(18)<<"Storehouse"<<setw(9)<<"|"<<endl;
-            cout<<"|"<<"1: "<<left<<setw(23)<<market[0].name<<"|"<<"1: "<<left<<setw(23)<<"vks"<<"|"<<endl;
-            cout<<"|"<<"2: "<<left<<setw(23)<<market[1].name<<"|"<<"2: "<<left<<setw(23)<<"vks"<<"|"<<endl;
-            cout<<"|"<<"3: "<<left<<setw(23)<<market[2].name<<"|"<<"3: "<<left<<setw(23)<<"vks"<<"|"<<endl;
-            cout<<"|"<<"4: "<<left<<setw(23)<<market[3].name<<"|"<<"4: "<<left<<setw(23)<<"vks"<<"|"<<endl;
-            cout<<"|"<<"5: "<<left<<setw(23)<<market[4].name<<"|"<<"5: "<<left<<setw(23)<<"vks"<<"|"<<endl;
-    }else{
-        cout << "fail to select goods" << endl;
-    }
+        cout<<"|"<<setw(15)<<"Goods"<<setw(12)<<"|"<<setw(18)<<"Storehouse"<<setw(9)<<"|"<<endl;
+        cout<<"|"<<"1: "<<left<<setw(23)<<good_list[0].name<<"|"<<"1: "<<left<<setw(23)<<"vks"<<"|"<<endl;
+        cout<<"|"<<"2: "<<left<<setw(23)<<good_list[1].name<<"|"<<"2: "<<left<<setw(23)<<"vks"<<"|"<<endl;
+        cout<<"|"<<"3: "<<left<<setw(23)<<good_list[2].name<<"|"<<"3: "<<left<<setw(23)<<"vks"<<"|"<<endl;
+        cout<<"|"<<"4: "<<left<<setw(23)<<good_list[3].name<<"|"<<"4: "<<left<<setw(23)<<"vks"<<"|"<<endl;
+        cout<<"|"<<"5: "<<left<<setw(23)<<good_list[4].name<<"|"<<"5: "<<left<<setw(23)<<"vks"<<"|"<<endl;
 
     //market loop
     while (true){
@@ -78,28 +44,28 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
             cout<<"Which good do you want: " << endl;
             cin >> No;
 
-            maxNum = min((market[No].actual_price / cash), storehouse_capacity);
+            maxNum = min((good_list[No].actual_price / cash), storehouse_capacity);
             cout<<"How many do you want (you could buy at most " << maxNum <<" ): " << endl;
             cin>>num;
 
-            if (check(cash, market[No].actual_price, num, storehouse_capacity)){
+            if (check(cash, good_list[No].actual_price, num, storehouse_capacity)){
                 //将该物品加入仓库
                 storehouse_capacity -= num;
-                cash -= num * market[No].actual_price;
+                cash -= num * good_list[No].actual_price;
                 health -= 1;
 
                 //之前没买过这个物品
-                if (storehouse.count(market[No].name) == 0){
-                    store temp = {market[No].name, market[No].actual_price, num};
-                    storehouse[market[No].name] = temp; 
+                if (storehouse.count(good_list[No].name) == 0){
+                    store temp = {good_list[No].name, good_list[No].actual_price, num};
+                    storehouse[good_list[No].name] = temp; 
                 }
                 
                 //之前买过这个商品
                 else{
                     int updated_price;
-                    updated_price = (storehouse[market[No].name].buyInPrice * storehouse[market[No].name].number + market[No].actual_price * num) / (num + storehouse[market[No].name].number);
-                    storehouse[market[No].name].buyInPrice = updated_price;
-                    storehouse[market[No].name].number += num;
+                    updated_price = (storehouse[good_list[No].name].buyInPrice * storehouse[good_list[No].name].number + good_list[No].actual_price * num) / (num + storehouse[good_list[No].name].number);
+                    storehouse[good_list[No].name].buyInPrice = updated_price;
+                    storehouse[good_list[No].name].number += num;
                 }
             }else{
                 cout << "you don't have enough cash or your storehouse don't have enough space." << endl;
@@ -133,7 +99,7 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
                 int temp;
 
                 for (int i = 0; i < 5; i++){
-                    if (product == market[i].name){
+                    if (product == good_list[i].name){
                         inMarket = true;
                         temp = i;
                         break;
@@ -146,9 +112,9 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
                     //1. 没卖完
                     if (num >= 0 && num < storehouse[product].number){
                         int profit;
-                        profit = (market[temp].actual_price - storehouse[product].buyInPrice) * num;
+                        profit = (good_list[temp].actual_price - storehouse[product].buyInPrice) * num;
                         storehouse[product].number -= num;
-                        cash += market[temp].actual_price * num;
+                        cash += good_list[temp].actual_price * num;
                         health -= 1;
                         
                         if (profit >= 0){
@@ -160,9 +126,9 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
                     //2. 卖完了
                     else if (num == storehouse[product].number){
                         int profit;
-                        profit = (market[temp].actual_price - storehouse[product].buyInPrice) * num;
+                        profit = (good_list[temp].actual_price - storehouse[product].buyInPrice) * num;
                         storehouse.erase(product);
-                        cash += market[temp].actual_price * num;
+                        cash += good_list[temp].actual_price * num;
                         health -= 1;
 
                         if (profit >= 0){
