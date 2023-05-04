@@ -139,14 +139,44 @@ int startGame(){
     //商品，to be completed
     goods *good_list = new goods[8];
     good_list[0].name = "liquor";        //白酒
-    good_list[1].name = "imported_car";  //进口汽车
-    good_list[2].name = "jade";          //玉石
-    good_list[3].name = "melon_seed";    //瓜子
-    good_list[4].name = "domain_name";   //域名
-    good_list[5].name = "gold";          //黄金
-    good_list[6].name = "copycat_phone"; //山寨手机
-    good_list[7].name = "bit_coin";      //比特币
+    good_list[0].normal_price_possibility = 0.5;
+    good_list[0].high_price_possiblity = 0.2;
+    good_list[0].low_price_possiblity = 0.3;
     
+    good_list[1].name = "imported_car";  //进口汽车
+    good_list[1].normal_price_possibility = 0.7;
+    good_list[1].high_price_possiblity = 0.1;
+    good_list[1].low_price_possiblity = 0.2;
+    
+    good_list[2].name = "jade";          //玉石
+    good_list[2].normal_price_possibility = 0.5;
+    good_list[2].high_price_possiblity = 0.2;
+    good_list[2].low_price_possiblity = 0.3;
+    
+    good_list[3].name = "melon_seed";    //瓜子
+    good_list[3].normal_price_possibility = 0.4;
+    good_list[3].high_price_possiblity = 0.3;
+    good_list[3].low_price_possiblity = 0.3;
+    
+    good_list[4].name = "domain_name";   //域名
+    good_list[4].normal_price_possibility = 0.5;
+    good_list[4].high_price_possiblity = 0.15;
+    good_list[4].low_price_possiblity = 0.35;
+    
+    good_list[5].name = "gold";          //黄金
+    good_list[5].normal_price_possibility = 0.6;
+    good_list[5].high_price_possiblity = 0.2;
+    good_list[5].low_price_possiblity = 0.2;
+    
+    good_list[6].name = "copycat_phone"; //山寨手机
+    good_list[6].normal_price_possibility = 0.4;
+    good_list[6].high_price_possiblity = 0.3;
+    good_list[6].low_price_possiblity = 0.3;
+    
+    good_list[7].name = "bit_coin";      //比特币
+    good_list[7].normal_price_possibility = 0.5;
+    good_list[7].high_price_possiblity = 0.15;
+    good_list[7].low_price_possiblity = 0.35;
 
     int market_value = 0;
     
@@ -161,51 +191,37 @@ int startGame(){
         good_list[0].normal_price = rand()%1001+500;
         good_list[0].high_price = round(good_list[0].normal_price*((rand()%434)/100.0+5.67));
         good_list[0].low_price = round(good_list[0].normal_price*((rand()%41+40)/100));
-        good_list[0].normal_price_possibility = 5.0;
-        good_list[0].high_price_possiblity = 2.0;
-        good_list[0].low_price_possiblity = 3.0;
+
         //imported_car price
         good_list[1].normal_price = rand()%25000+35000;
         good_list[1].high_price = round(good_list[1].normal_price*((rand()%1227)/1000+1.357));
         good_list[1].low_price = round(good_list[1].normal_price*((rand()%3977)/10000+0.2857));
-        good_list[1].normal_price_possibility = 7.0;
-        good_list[1].high_price_possiblity = 1.0;
-        good_list[1].low_price_possiblity = 2.0;
+
         //jade price
         good_list[2].normal_price = rand()%2001+2000;
         good_list[2].high_price = round(good_list[2].normal_price*((rand()%5501)/1000+2.5));
         good_list[2].low_price = round(good_list[2].normal_price*((rand()%101)/1000+0.4));
-        good_list[2].normal_price_possibility = 5.0;
-        good_list[2].high_price_possiblity = 2.0;
-        good_list[2].low_price_possiblity = 3.0;
+
         //melon_seed price
         good_list[3].normal_price = rand()%171+80;
         good_list[3].high_price = round(good_list[3].normal_price*((rand()%12501)/2500+3.6));
         good_list[3].low_price = round(good_list[3].normal_price*((rand()%158+21)/1000+0.22));
-        good_list[3].normal_price_possibility = 4.0;
-        good_list[3].high_price_possiblity = 3.0;
-        good_list[3].low_price_possiblity = 3.0;
+        
         //domain_name price
         good_list[4].normal_price = rand()%13001+19000;
         good_list[4].high_price = round(good_list[4].normal_price*((rand()%51)/100+2));
         good_list[4].low_price = round(good_list[4].normal_price*((rand()%501)/10000+0.45));
-        good_list[4].normal_price_possibility = 5.0;
-        good_list[4].high_price_possiblity = 1.5;
-        good_list[4].low_price_possiblity = 3.5;
+
         //gold price
         good_list[5].normal_price = rand()%2001+4000;
         good_list[5].high_price = round(good_list[5].normal_price*((rand()%251)/1000+3));
         good_list[5].low_price = round(good_list[5].normal_price*((rand()%501)/10000+0.45));
-        good_list[5].normal_price_possibility = 6.0;
-        good_list[5].high_price_possiblity = 2.0;
-        good_list[5].low_price_possiblity = 2.0;
+
         //copycat_phone price
         good_list[6].normal_price = rand()%351+450;
         good_list[6].high_price = round(good_list[6].normal_price*((rand()%751)/1000+5.5));
         good_list[6].low_price = round(good_list[6].normal_price*((rand()%51)/1000+0.45));
-        good_list[6].normal_price_possibility = 4.0;
-        good_list[6].high_price_possiblity = 3.0;
-        good_list[6].low_price_possiblity = 3.0;
+       
         //bitcoin price
         good_list[7].normal_price = rand()%4101+3900;
         good_list[7].high_price = round(good_list[7].normal_price*((rand()%1501)/1000+5.5));
