@@ -142,7 +142,7 @@ int startGame(){
     good_list[1].name = "imported_car";  //进口汽车
     good_list[2].name = "jade";          //玉石
     good_list[3].name = "melon_seed";    //瓜子
-    good_list[4].name = "domian_name";   //域名
+    good_list[4].name = "domain_name";   //域名
     good_list[5].name = "gold";          //黄金
     good_list[6].name = "copycat_phone"; //山寨手机
     good_list[7].name = "bit_coin";      //比特币
