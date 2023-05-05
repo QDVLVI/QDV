@@ -169,7 +169,7 @@ void business(int &cash, int &health, company* company_list){
                         cout << "You need to buy 1000 shares of " << company_list[temp].name << " to set up this company" << endl;
                         cout << "which will cost you " << fixed << company_list[temp].cost_per_share * 1000 << " dollar" << endl;
                         if (cash >= 1000*company_list[temp].cost_per_share){
-                            cout << "y-yes\nother-no" << endl;
+                            cout << "y-yes\nother-no\nq-quit" << endl;
                             cin >> input;
                             if(input == 'y'){
                                 //个人变化
