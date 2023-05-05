@@ -2,7 +2,7 @@
 #ifndef LITTLE_TARGET
 #define LITTLE_TARGET
 #include "structure_define.h"
-
+#include <map>
 //在这里declare其他函数
 bool check(int cash,int price, int number, int capacity);
 bool select_goods(goods* good_list);
