@@ -52,7 +52,6 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
             cin >> No;
 
             maxNum = round(cash / good_list[No-1].actual_price );
-            cout << maxNum << endl;
             if (storehouse_capacity < maxNum){
                 maxNum = storehouse_capacity;
             }
