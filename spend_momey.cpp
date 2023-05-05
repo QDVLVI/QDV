@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
+#include "target.h"
 
 using namespace std;
 
-int spend_money(int &lottery_num){
+void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int &health){
 
     cout << "..." << endl; //游戏界面，写spend money的来设计界面
     cout << "1--lotteries" << endl;
@@ -38,7 +39,7 @@ int spend_money(int &lottery_num){
                 cout << "Enter Y to confirm, enter N to go back.";
                 cin >> lottery_confirm;
             }
-            if (player.cash < (5 + lottery_num) * (3 * lottery_num) * 4500) {
+            if (cash < (5 + lottery_num) * (3 * lottery_num) * 4500) {
                 cout << "Your cash is not enough.";
                 break;
             }
@@ -47,9 +48,9 @@ int spend_money(int &lottery_num){
                     break;
                 }
                 if (lottery_confirm == "Y") {
-                    player.cash -= (5 + lottery_num) * (3 * lottery_num) * 4500;
+                    cash -= (5 + lottery_num) * (3 * lottery_num) * 4500;
                     if (rand() % 2 == 1) {//win
-                        player.cash += (5 + lottery_num) * (2 + lottery_num) * 9000
+                        cash += (5 + lottery_num) * (2 + lottery_num) * 9000;
                         cout << "you won! The prize is " << (5 + lottery_num) * (2 + lottery_num) * 9000 << endl;
 
                     }
@@ -74,19 +75,18 @@ int spend_money(int &lottery_num){
                 cin >> house_confirm;
             }
             if (house_confirm == "Y") {
-                if (player.house == true) {
+                if (hasHouse == true) {
                     cout << "You have already bought a house." << endl;
                 }
-                else if (player.cash < 1000000) {
-                    cout << "Your cash is not enough."
+                else if (cash < 1000000) {
+                    cout << "Your cash is not enough." << endl;
                 }
                 else {
-                    player.cash -= 1000000;
-                    player.house = true;
+                    cash -= 1000000;
+                    hasHouse = true;
                     //买房的其他加成
-                    cout << "You have bought the house successfully."
+                    cout << "You have bought the house successfully." << endl;
                 }
-
             }
         }
 
@@ -103,27 +103,24 @@ int spend_money(int &lottery_num){
                 cin >> car_confirm;
             }
             if (car_confirm == "Y") {
-                if (player.house == true) {
+                if (hasHouse == true) {
                     cout << "You have already bought a car." << endl;
                 }
-                else if (player.cash < 200000) {
-                    cout << "Your cash is not enough."
+                else if (cash < 200000) {
+                    cout << "Your cash is not enough." << endl;
                 }
                 else {
-                    player.cash -= 200000;
-                    player.car = true;
+                    cash -= 200000;
+                    hasCar = true;
                     //买车的其他加成
-                    cout << "You have bought the car successfully."
+                    cout << "You have bought the car successfully." << endl;
                 }
-
             }
-
         }
 
-
         if (option == 4) {
-            cout << "Your current health is " << player.health << endl;
-            cout << "Cost of healing is " << 50 * (100 - player.health) * (100 - player.health) << endl;
+            cout << "Your current health is " << health << endl;
+            cout << "Cost of healing is " << 50 * (100 - health) * (100 - health) << endl;
             cout << "Enter Y to confirm, enter N to go back";
             string healing_confirm;
             cin >> healing_confirm;
@@ -133,17 +130,9 @@ int spend_money(int &lottery_num){
                 cin >> healing_confirm;
             }
             if (healing_confirm == "Y") {
-                player.cash -= 50 * (100 - player.health) * (100 - player.health);
-                player.health = 100
+                cash -= 50 * (100 - health) * (100 - health);
+                health = 100;
             }
         }
-
-
-
-
-
     }
-
-
-
 }
