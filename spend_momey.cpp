@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int &health){
+void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int &health, int &retire_age){
 
     cout << "..." << endl; //游戏界面，写spend money的来设计界面
     cout << "1--lotteries" << endl;
@@ -49,14 +49,14 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
                 }
                 if (lottery_confirm == "Y") {
                     cash -= (5 + lottery_num) * (3 * lottery_num) * 4500;
-                    if (rand() % 2 == 1) {//win
+                    if (rand() % 5 == 1) {//win
                         cash += (5 + lottery_num) * (2 + lottery_num) * 9000;
-                        cout << "you win! The prize is " << (5 + lottery_num) * (2 + lottery_num) * 9000 << endl;
+                        cout << "You win! The prize is " << (5 + lottery_num) * (2 + lottery_num) * 9000 << endl;
 
                     }
                     else {
-                        cout << "bad luck!" << endl;
-                    }
+                        cout << "Bad luck!" << endl;
+                    }Y
                 }
             }
         }
@@ -84,7 +84,7 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
                 else {
                     cash -= 1000000;
                     hasHouse = true;
-                    //买房的其他加成
+                    retire_age += 5;
                     cout << "You have bought the house successfully." << endl;
                 }
             }
@@ -112,7 +112,7 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
                 else {
                     cash -= 200000;
                     hasCar = true;
-                    //买车的其他加成
+                    retire_age +=2;
                     cout << "You have bought the car successfully." << endl;
                 }
             }
