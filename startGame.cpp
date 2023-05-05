@@ -150,41 +150,58 @@ int startGame(){
         good_list[0].normal_price = rand()%1001+500;
         good_list[0].high_price = round(good_list[0].normal_price*((rand()%434)/100.0+5.67));
         good_list[0].low_price = round(good_list[0].normal_price*((rand()%41+40)/100));
-        
+        good_list[0].high_price_info = "Liquor is in short supply and prices are soaring.";
+        good_list[0].low_price_info = "Experts warn of a bubble in the Liquor investment market, causing a decline in the price of Liquor.";
+
         //imported_car price
         good_list[1].normal_price = rand()%25000+35000;
         good_list[1].high_price = round(good_list[1].normal_price*((rand()%1227)/1000+1.357));
         good_list[1].low_price = round(good_list[1].normal_price*((rand()%3977)/10000+0.2857));
+        good_list[1].high_price_info = "Imported cars have become a symbol of wealthy status, prices increasing.";
+        good_list[1].low_price_info = "The port is open, allowing imported cars from overseas to be sold at a lower price.";
         
         //jade price
         good_list[2].normal_price = rand()%2001+2000;
         good_list[2].high_price = round(good_list[2].normal_price*((rand()%5501)/1000+2.5));
         good_list[2].low_price = round(good_list[2].normal_price*((rand()%101)/1000+0.4));
+        good_list[2].high_price_info = "With the improvement of living conditions, more and more people are starting to collect jade and other precious stones.";
+        good_list[2].low_price_info = "The antique market is experiencing a downturn, jade market is bleak.";
         
         //melon_seed price
         good_list[3].normal_price = rand()%171+80;
         good_list[3].high_price = round(good_list[3].normal_price*((rand()%12501)/2500+3.6));
         good_list[3].low_price = round(good_list[3].normal_price*((rand()%158+21)/1000+0.22));
+        good_list[3].high_price_info = "The household contract responsibility system is implemented, leading to the emergence of private melon seed workshops and a thriving business";
+        good_list[3].low_price_info = "The melon seeds market is highly competitive, leading to a decrease in prices.";
         
         //domain_name price
         good_list[4].normal_price = rand()%13001+19000;
         good_list[4].high_price = round(good_list[4].normal_price*((rand()%51)/100+2));
         good_list[4].low_price = round(good_list[4].normal_price*((rand()%501)/10000+0.45));
+        good_list[4].high_price_info = "With the arrival of the internet era, domain names have become a scarce resource.";
+        good_list[4].low_price_info = "A large number of ordinary domain names have no takers.";
         
         //gold price
         good_list[5].normal_price = rand()%2001+4000;
         good_list[5].high_price = round(good_list[5].normal_price*((rand()%251)/1000+3));
         good_list[5].low_price = round(good_list[5].normal_price*((rand()%501)/10000+0.45));
+        good_list[5].high_price_info = "A large number of people rush to buy gold, causing a rise in the price of gold.";
+        good_list[5].low_price_info = "Multiple financial institutions take a bearish stance on gold, causing a decline in the price of gold.";
         
         //copycat_phone price
         good_list[6].normal_price = rand()%351+450;
         good_list[6].high_price = round(good_list[6].normal_price*((rand()%751)/1000+5.5));
         good_list[6].low_price = round(good_list[6].normal_price*((rand()%51)/1000+0.45));
+        good_list[6].high_price_info = "Copycat phones have powerful performance, can stay on standby for two years, and come with a built-in lighter, leading to a surge in sales";
+        good_list[6].low_price_info = "With the rise of online shopping, the market for counterfeit electronic products has been in decline.";
         
         //bitcoin price
         good_list[7].normal_price = rand()%4101+3900;
         good_list[7].high_price = round(good_list[7].normal_price*((rand()%1501)/1000+5.5));
         good_list[7].low_price = round(good_list[7].normal_price*((rand()%71)/1000+0.43));
+        good_list[7].high_price_info = "The era of digital encrypted currency has arrived, causing a crazy surge in the price of Bitcoin.";
+        good_list[7].low_price_info = "Bitcoin faces regulatory scrutiny from multiple countries, causing a sharp decline in its price.";
+
 
         //公司投资
         for(int i = 0; i < 5; i++){
