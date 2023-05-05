@@ -7,22 +7,20 @@ using namespace std;
 void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int &health, int &retire_age){
 
     cout << "..." << endl; //游戏界面，写spend money的来设计界面
-    cout << "1. Lotteries" << endl;
-    cout << "2. Houses" << endl;
-    cout << "3. Cars" << endl;
-    cout << "4. Medical treatment" << endl;
-    cout << "5. Exit" << endl;
+    cout << "1--lotteries" << endl;
+    cout << "2--houses" << endl;
+    cout << "3--cars" << endl;
+    cout << "4--medical treatment" << endl;
+    cout << "5--back" << endl;
     int option;
-    cout << "Enter your choice (1-5): ";
     cin >> option;
     while (option != 1 && option != 2 && option != 3 && option != 4 && option != 5) {
         cout << "Option does not exist. Please enter again.";
-        cout << "1. Lotteries" << endl;
-        cout << "2. Houses" << endl;
-        cout << "3. Cars" << endl;
-        cout << "4. Medical treatment" << endl;
-        cout << "5. Exit" << endl;
-        cout << "Enter your choice (1-5): ";
+        cout << "1--lotteries" << endl;
+        cout << "2--houses" << endl;
+        cout << "3--cars" << endl;
+        cout << "4--medical treatment" << endl;
+        cout << "5--back" << endl;
         cin >> option;
     }
     while (option != 5) {
@@ -138,3 +136,4 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
         }
     }
 }
+
