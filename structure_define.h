@@ -13,6 +13,7 @@ struct goods{
     int high_price;
     int normal_price;
     int low_price;
+    int actual_price;
     double high_price_possiblity;
     double normal_price_possibility;
     double low_price_possibility;
