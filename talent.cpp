@@ -57,6 +57,9 @@ void talent(role &player,  ){
     cout<<"Total talentpoints: "<<talentsum<<endl;
     
     //global variable
+    double rate1=1;
+    double rate2=1;
+    double rate3=1;
     int houprice=0;
     int caprice=0;
     int ranges=0;
@@ -190,7 +193,7 @@ void talent(role &player,  ){
                 case 1:
                   t[m].conpoint = 250;
                   cout<<t[m].function<<": +5%"<<endl;
-
+                  rate3=1.05;
                   t[m+1].level+=1;
                   cout<<t[m+1].name<<" is unlocked."<<endl;
                   t[m+1].conpoint=320;
@@ -198,11 +201,11 @@ void talent(role &player,  ){
                 case 2:
                   t[m].conpoint = 320;
                   cout<<t[m].function<<": +5%-->10%"<<endl;
-
+                  rate3=1.1;
                   break;
                 case 3:
                   cout<<t[m].function<<": +10%-->15%"<<endl;
-
+                  rate3=1.2;
                   break;
                 }
             }
@@ -283,7 +286,6 @@ void talent(role &player,  ){
                 }
             }
             else if(m==4){
-                double rate2;
                 switch (t[m].level)
                 {
                 case 0:
