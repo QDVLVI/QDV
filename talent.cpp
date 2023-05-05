@@ -56,6 +56,11 @@ void talent(role &player,  ){
     talentsum+=talentpoint;
     cout<<"Total talentpoints: "<<talentsum<<endl;
     
+    //global variable
+    int houprice=0;
+    int caprice=0;
+    int ranges=0;
+    
     //玩家选择
     int input;
     cout<<"1.Upgrade talents"<<endl;
@@ -133,7 +138,6 @@ void talent(role &player,  ){
                 }
             }
             if(m==6){
-                int ranges=0;
                 switch (t[m].level)
                 {
                 case 1:
@@ -254,7 +258,6 @@ void talent(role &player,  ){
                 }
             }
             else if(m==9){
-                int caprice;
                 switch (t[m].level)
                 {
                 case 0:
@@ -329,7 +332,6 @@ void talent(role &player,  ){
                 }
             }
             else if( m==10 ){
-                int houprice;
                 switch (t[m].level)
                 {
                 case 0:
