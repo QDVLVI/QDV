@@ -14,7 +14,7 @@ struct Talevel{
 };
 
 void talent(  ){
-    int quotient,talentpoint,talentsum,extra;
+    int quotient,talentpoint,talentsum;
     Talevel t[3];
     
     
@@ -28,8 +28,6 @@ void talent(  ){
             fin>>t[i].name>>t[i].level>>t[i].conpoint;
         }
         fin>>talentsum;
-        fin.ignore();
-        fin>>extra;
         fin.ignore();
         for ( int j=0; j<3; j++){
             getline(fin,t[j].function);
@@ -65,13 +63,11 @@ void talent(  ){
     
     while (input != 2){
         int n,m;
-        
         cout<<"Enter No. of talent: ";
         cin>>n;
         m=n-1;
         if (talentsum >= t[m].conpoint){
             talentsum-=t[m].conpoint;
-            t[m].level+=1;
             if(m==0){
                 switch (t[m].level)
                 {
@@ -79,9 +75,6 @@ void talent(  ){
                   t[m].conpoint = 120;
                   cout<<"increase in initial storehouse capacity"<<": +10"<<endl;
                   player.storehouse_capacity+=10;
-                  t[m+1].level+=1;
-                  cout<<t[m+1].name<<" is unlocked."<<endl;
-                  t[m+1].conpoint=190;
                   break;
                 case 2:
                   t[m].conpoint = 200;
@@ -94,16 +87,13 @@ void talent(  ){
                   break;
                 }
             }
-            if( m==2 ){
+            if( m==1 ){
                 switch (t[m].level)
                 {
                 case 1:
                   t[m].conpoint = 120;
                   cout<<t[m].function<<": +100000"<<endl;
                   player.cash+=100000;
-                  t[m+1].level+=1;
-                  cout<<t[m+1].name<<" is unlocked."<<endl;
-                  t[m+1].conpoint=190;
                   break;
                 case 2:
                   t[m].conpoint = 200;
@@ -116,22 +106,16 @@ void talent(  ){
                   break;
                 }
             }
-            else if(m==7){
+            else if(m==2){
                 switch (t[m].level)
                 {
-                case 0:
-                  t[m].conpoint = 190;
-                  break;
                 case 1:
-                  t[m].conpoint = 250;
+                  t[m].conpoint = 120;
                   cout<<t[m].function<<": 70-->80"<<endl;
                   player.retire_age+=10;
-                  t[m+1].level+=1;
-                  cout<<t[m+1].name<<" is unlocked."<<endl;
-                  t[m+1].conpoint=320;
                   break;
                 case 2:
-                  t[m].conpoint = 320;
+                  t[m].conpoint = 200;
                   cout<<t[m].function<<": 80-->90"<<endl;
                   player.retire_age+=10;
                   break;
@@ -165,9 +149,7 @@ void talent(  ){
         fout<<talentsum<<endl;
         fout<<extra<<endl;
         fout<<"increase in initial storehouse"<<endl;
-       
         fout<<"increase in initial money"<<endl;
-       
         fout<<"longer career life"<<endl;
         
     }
