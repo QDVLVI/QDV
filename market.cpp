@@ -10,9 +10,15 @@
 using namespace std;
 
 bool check(int cash, int price, int number, int capacity){
-    bool judge=true;
-    if (cash < (price*number) || number <= capacity){
-        judge=false;
+    bool judge=false;
+    if (cash <= (price*number)){
+        cout << "cash: " << cash << " total cost: " << price * number << endl;
+        cout << "you don't have enough cash." << endl;
+    }else if (number > capacity){
+        cout << "number: " << number << " storehouse capacity: " << capacity << endl;
+        cout << "purchased goods exceed your storehouse capacity." << endl; 
+    }else{
+        judge = true;
     }
     return judge;
 }
@@ -44,31 +50,35 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
             cout<<"Which good do you want: " << endl;
             cin >> No;
 
-            maxNum = min((good_list[No].actual_price / cash), storehouse_capacity);
+            maxNum = round(cash / good_list[No-1].actual_price );
+            cout << maxNum << endl;
+            if (storehouse_capacity < maxNum){
+                maxNum = storehouse_capacity;
+            }
             cout<<"How many do you want (you could buy at most " << maxNum <<" ): " << endl;
             cin>>num;
 
-            if (check(cash, good_list[No].actual_price, num, storehouse_capacity)){
+            if (check(cash, good_list[No-1].actual_price, num, storehouse_capacity)){
                 //将该物品加入仓库
                 storehouse_capacity -= num;
-                cash -= num * good_list[No].actual_price;
+                cash -= num * good_list[No-1].actual_price;
                 health -= 1;
 
                 //之前没买过这个物品
-                if (storehouse.count(good_list[No].name) == 0){
-                    store temp = {good_list[No].name, good_list[No].actual_price, num};
-                    storehouse[good_list[No].name] = temp; 
+                if (storehouse.count(good_list[No-1].name) == 0){
+                    store temp = {good_list[No-1].name, good_list[No-1].actual_price, num};
+                    storehouse[good_list[No-1].name] = temp; 
                 }
                 
                 //之前买过这个商品
                 else{
                     int updated_price;
-                    updated_price = (storehouse[good_list[No].name].buyInPrice * storehouse[good_list[No].name].number + good_list[No].actual_price * num) / (num + storehouse[good_list[No].name].number);
-                    storehouse[good_list[No].name].buyInPrice = updated_price;
-                    storehouse[good_list[No].name].number += num;
+                    updated_price = (storehouse[good_list[No-1].name].buyInPrice * storehouse[good_list[No-1].name].number + good_list[No-1].actual_price * num) / (num + storehouse[good_list[No-1].name].number);
+                    storehouse[good_list[No-1].name].buyInPrice = updated_price;
+                    storehouse[good_list[No-1].name].number += num;
                 }
             }else{
-                cout << "you don't have enough cash or your storehouse don't have enough space." << endl;
+            
             }
 
         }else if (decision == '2'){
