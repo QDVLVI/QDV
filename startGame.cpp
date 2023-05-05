@@ -90,6 +90,9 @@ int startGame(){
         finPlayer >> player.retire_age;
         finPlayer >> player.storehouse_capacity;
         finPlayer >> player.isSick;
+        finPlayer >> player.hasHouse;
+        finPlayer >> player.hasCar;
+        finPlayer >> player.lottery_num
 
         //从file中获取公司信息
         string line;
