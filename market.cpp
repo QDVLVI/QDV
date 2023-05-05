@@ -40,7 +40,7 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
         bool quit = false;
 
         cout<<"1:Purchase"<<endl;
-        cout<<"2:Sale"<<endl;
+        cout<<"2:Sell"<<endl;
         cout<<"3:Quit"<<endl;
         cout<<"Your decision: ";
 
