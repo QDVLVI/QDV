@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <map>
 #include <algorithm>
+#include "target.h"
 #include "structure_define.h"
 using namespace std;
 
