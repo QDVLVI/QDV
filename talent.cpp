@@ -3,7 +3,6 @@
 #include<fstream>
 #include<iomanip>
 #include "structure_define.h"
-#include "talent.h"
 using namespace std;
 
 
@@ -14,9 +13,9 @@ struct Talevel{
     string function;
 };
 
-void talent(role &player,  ){
+void talent(  ){
     int quotient,talentpoint,talentsum,extra;
-    Talevel t[11];
+    Talevel t[3];
     
     
     ifstream fin;
@@ -25,14 +24,14 @@ void talent(role &player,  ){
         cout<<"open failed."<<endl;
     }
     else{
-        for (int i=0; i<11; i++){
+        for (int i=0; i<3; i++){
             fin>>t[i].name>>t[i].level>>t[i].conpoint;
         }
         fin>>talentsum;
         fin.ignore();
         fin>>extra;
         fin.ignore();
-        for ( int j=0; j<11; j++){
+        for ( int j=0; j<3; j++){
             getline(fin,t[j].function);
         }
     }
@@ -56,13 +55,6 @@ void talent(role &player,  ){
     talentsum+=talentpoint;
     cout<<"Total talentpoints: "<<talentsum<<endl;
     
-    //global variable
-    double rate1=1;
-    double rate2=1;
-    double rate3=1;
-    int houprice=0;
-    int caprice=0;
-    int ranges=0;
     
     //玩家选择
     int input;
@@ -73,23 +65,7 @@ void talent(role &player,  ){
     
     while (input != 2){
         int n,m;
-        cout<<"You can upgrade unlocked talents."<<endl;
-        cout<<"No."<<left<<setw(18)<<"Name"<<left<<setw(6)<<"Level"<<endl;
-        cout<<"1 :"<<left<<setw(18)<<t[0].name<<left<<setw(2)<<t[0].level<<" ----> "<<"2 :"<<left<<setw(18)<<t[1].name;
-        (t[1].level>=0)? cout<<left<<setw(6)<<t[1].level<<endl : cout<<left<<setw(6)<<"locked"<<endl;
-        cout<<"3 :"<<left<<setw(18)<<t[2].name<<left<<setw(2)<<t[2].level<<" ----> "<<"4 :"<<left<<setw(18)<<t[3].name;
-        (t[3].level>=0)? cout<<left<<setw(6)<<t[3].level : cout<<left<<setw(6)<<"locked";
-        cout<<" ----> "<<"5 :"<<left<<setw(18)<<t[4].name;
-        (t[4].level>=0)? cout<<left<<setw(6)<<t[4].level : cout<<left<<setw(6)<<"locked";
-        cout<<" ----> "<<"6 :"<<left<<setw(18)<<t[5].name;
-        (t[5].level>=0)? cout<<left<<setw(6)<<t[5].level<<endl : cout<<left<<setw(6)<<"locked"<<endl;
-        cout<<"7 :"<<left<<setw(18)<<t[6].name<<left<<setw(2)<<t[6].level<<" ----> "<<"8 :"<<left<<setw(18)<<t[7].name;
-        (t[7].level>=0)? cout<<left<<setw(6)<<t[7].level<<endl : cout<<left<<setw(6)<<"locked"<<endl;
-        cout<<"9 :"<<left<<setw(18)<<t[8].name<<left<<setw(2)<<t[8].level<<" ----> "<<"10:"<<left<<setw(18)<<t[9].name;
-        (t[9].level>=0)? cout<<left<<setw(6)<<t[9].level : cout<<left<<setw(6)<<"locked";
-        cout<<" ----> "<<"11:"<<left<<setw(18)<<t[10].name;
-        (t[10].level>=0)? cout<<left<<setw(6)<<t[10].level<<endl : cout<<left<<setw(6)<<"locked"<<endl;
-       
+        
         cout<<"Enter No. of talent: ";
         cin>>n;
         m=n-1;
@@ -140,101 +116,6 @@ void talent(role &player,  ){
                   break;
                 }
             }
-            if(m==6){
-                switch (t[m].level)
-                {
-                case 1:
-                  t[m].conpoint = 120;
-                  cout<<t[m].function<<": +1%"<<endl;
-                  ranges=1;
-                  t[m+1].level+=1;
-                  cout<<t[m+1].name<<" is unlocked."<<endl;
-                  t[m+1].conpoint=190;
-                  break;
-                case 2:
-                  t[m].conpoint = 200;
-                  cout<<t[m].function<<": +1%-->2%"<<endl;
-                  ranges=2;
-                  break;
-                case 3:
-                  cout<<t[m].function<<": +2%-->3%"<<endl;
-                  ranges=3;
-                  break;
-                }
-            }
-            if(m==8){
-                switch (t[m].level)
-                {
-                case 1:
-                  t[m].conpoint = 120;
-                  cout<<t[m].function<<": 0-->10"<<endl;
-                  player.frame+=10;
-                  t[m+1].level+=1;
-                  cout<<t[m+1].name<<" is unlocked."<<endl;
-                  t[m+1].conpoint=190;
-                  break;
-                case 2:
-                  t[m].conpoint = 200;
-                  cout<<t[m].function<<": 10-->20"<<endl;
-                  player.frame+=10;
-                  break;
-                case 3:
-                  cout<<t[m].function<<": 20-->30"<<endl;
-                  player.frame+=10;
-                  break;
-                }
-            }
-            else if(m==1){
-                switch (t[m].level)
-                {
-                case 0:
-                  t[m].conpoint = 190;
-                  break;
-                case 1:
-                  t[m].conpoint = 250;
-                  cout<<t[m].function<<": +5%"<<endl;
-                  rate3=1.05;
-                  t[m+1].level+=1;
-                  cout<<t[m+1].name<<" is unlocked."<<endl;
-                  t[m+1].conpoint=320;
-                  break;
-                case 2:
-                  t[m].conpoint = 320;
-                  cout<<t[m].function<<": +5%-->10%"<<endl;
-                  rate3=1.1;
-                  break;
-                case 3:
-                  cout<<t[m].function<<": +10%-->15%"<<endl;
-                  rate3=1.2;
-                  break;
-                }
-            }
-            else if(m==3){
-                double rate1;
-                switch (t[m].level)
-                {
-                case 0:
-                  t[m].conpoint = 190;
-                  break;
-                case 1:
-                  t[m].conpoint = 250;
-                  cout<<t[m].function<<": +1%"<<endl;
-                  rate1=1.01;
-                  t[m+1].level+=1;
-                  cout<<t[m+1].name<<" is unlocked."<<endl;
-                  t[m+1].conpoint=320;
-                  break;
-                case 2:
-                  t[m].conpoint = 320;
-                  cout<<t[m].function<<": +1%-->2%"<<endl;
-                  rate1=1.02;
-                  break;
-                case 3:
-                  cout<<t[m].function<<": +2%-->3%"<<endl;
-                  rate1=1.03;
-                  break;
-                }
-            }
             else if(m==7){
                 switch (t[m].level)
                 {
@@ -260,102 +141,7 @@ void talent(role &player,  ){
                   break;
                 }
             }
-            else if(m==9){
-                switch (t[m].level)
-                {
-                case 0:
-                  t[m].conpoint = 190;
-                  break;
-                case 1:
-                  t[m].conpoint = 250;
-                  cout<<t[m].function<<": -1000"<<endl;
-                  caprice=1000;
-                  t[m+1].level+=1;
-                  cout<<t[m+1].name<<" is unlocked."<<endl;
-                  t[m+1].conpoint=320;
-                  break;
-                case 2:
-                  t[m].conpoint = 320;
-                  cout<<t[m].function<<": -2000"<<endl;
-                  caprice=2000;
-                  break;
-                case 3:
-                  cout<<t[m].function<<": -3000"<<endl;
-                  caprice=3000;
-                  break;
-                }
-            }
-            else if(m==4){
-                switch (t[m].level)
-                {
-                case 0:
-                  t[m].conpoint = 320;
-                  break;
-                case 1:
-                  t[m].conpoint = 400;
-                  cout<<t[m].function<<": +1%"<<endl;
-                  rate2=1.01;
-                  t[m+1].level+=1;
-                  cout<<t[m+1].name<<" is unlocked."<<endl;
-                  t[m+1].conpoint= 480;
-                  break;
-                case 2:
-                  t[m].conpoint = 500;
-                  cout<<t[m].function<<": +1%-->2%"<<endl;
-                  rate2=1.02;
-                  break;
-                case 3:
-                  cout<<t[m].function<<": +2%-->3%"<<endl;
-                  rate2=1.03;
-                  break;
-                }
-            }
-            else if( m==5 ){
-                switch (t[m].level)
-                {
-                case 0:
-                  t[m].conpoint = 480;
-                  break;
-                case 1:
-                  t[m].conpoint = 670;
-                  cout<<t[m].function<<": +10"<<endl;
-                  extra=10;
-                  t[m+1].level+=1;
-                  break;
-                case 2:
-                  t[m].conpoint = 940;
-                  cout<<t[m].function<<": +10-->50"<<endl;
-                  extra=50;
-                  break;
-                case 3:
-                cout<<t[m].function<<": +50-->100"<<endl;
-                extra=100;
-                break;
-                }
-            }
-            else if( m==10 ){
-                switch (t[m].level)
-                {
-                case 0:
-                  t[m].conpoint = 320;
-                  break;
-                case 1:
-                  t[m].conpoint = 400;
-                  cout<<t[m].function<<": -10,0000"<<endl;
-                  houprice=100000;
-                  t[m+1].level+=1;
-                  break;
-                case 2:
-                  t[m].conpoint = 500;
-                  cout<<t[m].function<<": -20,0000"<<endl;
-                  houprice=200000;
-                  break;
-                case 3:
-                  cout<<t[m].function<<": -30,0000"<<endl;
-                  houprice=300000;
-                  break;
-                }
-            }
+           
         else{
             cout<<"you don't have enough talentpoints."<<endl;
         }
@@ -373,22 +159,17 @@ void talent(role &player,  ){
         cout<<"open failed."<<endl;
     }
     else{
-        for ( int n=0; n<11; n++){
+        for ( int n=0; n<3; n++){
             fout<<t[n].name<<" "<<t[n].level<<" "<<t[n].conpoint<<endl;
         }
         fout<<talentsum<<endl;
         fout<<extra<<endl;
         fout<<"increase in initial storehouse"<<endl;
-        fout<<"increase in price of sales items"<<endl;
+       
         fout<<"increase in initial money"<<endl;
-        fout<<"increase in company profitability"<<endl;
-        fout<<"increase in company selling price"<<endl;
-        fout<<"increase in talent points per game"<<endl;
-        fout<<"higher probability of winning lottery"<<endl;
+       
         fout<<"longer career life"<<endl;
-        fout<<"have a better initial reputation"<<endl;
-        fout<<"lower car price"<<endl;
-        fout<<"lower house price"<<endl;
+        
     }
     fout.close();
 }
