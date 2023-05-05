@@ -27,12 +27,12 @@ bool check(int cash, int price, int number, int capacity){
 void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, map<string, store> &storehouse){
 
         //游戏界面
-        cout<<"|"<<setw(15)<<"Goods"<<setw(12)<<"|"<<setw(18)<<"Storehouse"<<setw(9)<<"|"<<endl;
-        cout<<"|"<<"1: "<<left<<setw(23)<<good_list[0].name<<"|"<<"1: "<<left<<setw(23)<<"vks"<<"|"<<endl;
-        cout<<"|"<<"2: "<<left<<setw(23)<<good_list[1].name<<"|"<<"2: "<<left<<setw(23)<<"vks"<<"|"<<endl;
-        cout<<"|"<<"3: "<<left<<setw(23)<<good_list[2].name<<"|"<<"3: "<<left<<setw(23)<<"vks"<<"|"<<endl;
-        cout<<"|"<<"4: "<<left<<setw(23)<<good_list[3].name<<"|"<<"4: "<<left<<setw(23)<<"vks"<<"|"<<endl;
-        cout<<"|"<<"5: "<<left<<setw(23)<<good_list[4].name<<"|"<<"5: "<<left<<setw(23)<<"vks"<<"|"<<endl;
+        cout<<"|"<<setw(15)<<"Goods"<<setw(12)<<"|"<<setw(18)<<"price(dollar)"<<setw(9)<<"|"<<endl;
+        cout<<"|"<<"1: "<<left<<setw(23)<<good_list[0].name<<"|"<<"1: "<<left<<setw(23)<<good_list[0].actual_price<<"|"<<endl;
+        cout<<"|"<<"2: "<<left<<setw(23)<<good_list[1].name<<"|"<<"2: "<<left<<setw(23)<<good_list[1].actual_price<<"|"<<endl;
+        cout<<"|"<<"3: "<<left<<setw(23)<<good_list[2].name<<"|"<<"3: "<<left<<setw(23)<<good_list[2].actual_price<<"|"<<endl;
+        cout<<"|"<<"4: "<<left<<setw(23)<<good_list[3].name<<"|"<<"4: "<<left<<setw(23)<<good_list[3].actual_price<<"|"<<endl;
+        cout<<"|"<<"5: "<<left<<setw(23)<<good_list[4].name<<"|"<<"5: "<<left<<setw(23)<<good_list[4].actual_price<<"|"<<endl;
 
     //market loop
     while (true){
@@ -41,7 +41,8 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
 
         cout<<"1:Purchase"<<endl;
         cout<<"2:Sale"<<endl;
-        cout<<"3:Quit"<<endl;
+        cout<<"3:Market information"<<endl;
+        cout<<"4:Quit"<<endl;
         cout<<"Your decision: ";
 
         cin >> decision;
@@ -78,90 +79,118 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
                     storehouse[good_list[No-1].name].number += num;
                 }
             }else{
-            
+                cout << "you don't have enough cash or your storehouse don't have enough space." << endl;
             }
 
         }else if (decision == '2'){
             map<string, store>::iterator itr = storehouse.begin();
-            int i = 1;
-            //打印仓库
-            for (itr; itr != storehouse.end(); itr++){
-                cout << i << ": " << itr->first << " " << (itr->second).number << endl;
-                i++;
-            }
 
-            //selling
-            int No, num;
-            cout << "select the good you want to sell: " << endl;
-            cin >> No;
-
-            if (No > i || No < 1){
-                cout << "invalid input" << endl;
-            }
-
-            else{
-                itr = storehouse.begin();
-                advance(itr, No-1);
-                string product = itr->first;
-
-                //检查该物品是否在market中
-                bool inMarket = false;
-                int temp;
-
-                for (int i = 0; i < 5; i++){
-                    if (product == good_list[i].name){
-                        inMarket = true;
-                        temp = i;
-                        break;
-                    }
+            if (itr == storehouse.end()){
+                cout << "you have not buy anything!" << endl;
+            }else{
+                int i = 1;
+                //打印仓库
+                for (itr; itr != storehouse.end(); itr++){
+                    cout << i << ": " << itr->first << " " << (itr->second).number << endl;
+                    i++;
                 }
 
-                if (inMarket){
-                    cout << "How many products do you want to sell?" << endl;
-                    cin >> num;
-                    //1. 没卖完
-                    if (num >= 0 && num < storehouse[product].number){
-                        int profit;
-                        profit = (good_list[temp].actual_price - storehouse[product].buyInPrice) * num;
-                        storehouse[product].number -= num;
-                        cash += good_list[temp].actual_price * num;
-                        health -= 1;
-                        
-                        if (profit >= 0){
-                            cout << "you earn " << profit << " dollars in this trade." << endl;
-                        }else{
-                            cout << "you lost " << (-profit) << " dollars in this trade." << endl;
-                        }
-                    }
-                    //2. 卖完了
-                    else if (num == storehouse[product].number){
-                        int profit;
-                        profit = (good_list[temp].actual_price - storehouse[product].buyInPrice) * num;
-                        storehouse.erase(product);
-                        cash += good_list[temp].actual_price * num;
-                        health -= 1;
+                //selling
+                int No, num;
+                cout << "select the good you want to sell: " << endl;
+                cin >> No;
 
-                        if (profit >= 0){
-                            cout << "you earn " << profit << " dollars in this trade." << endl;
-                        }else{
-                            cout << "you lost " << (-profit) << " dollars in this trade." << endl;
+                if (No > i || No < 1){
+                    cout << "invalid input" << endl;
+                }
+
+                else{
+                    itr = storehouse.begin();
+                    advance(itr, No-1);
+                    string product = itr->first;
+
+                    //检查该物品是否在market中
+                    bool inMarket = false;
+                    int temp;
+
+                    for (int i = 0; i < 5; i++){
+                        if (product == good_list[i].name){
+                            inMarket = true;
+                            temp = i;
+                            break;
                         }
                     }
-                    else{
-                        cout << "invalid input" << endl;
+
+                    if (inMarket){
+                        cout << "How many products do you want to sell?" << endl;
+                        cin >> num;
+                        //1. 没卖完
+                        if (num >= 0 && num < storehouse[product].number){
+                            int profit;
+                            profit = (good_list[temp].actual_price - storehouse[product].buyInPrice) * num;
+                            storehouse[product].number -= num;
+                            cash += good_list[temp].actual_price * num;
+                            health -= 1;
+                            
+                            if (profit >= 0){
+                                cout << "you earn " << profit << " dollars in this trade." << endl;
+                            }else{
+                                cout << "you lost " << (-profit) << " dollars in this trade." << endl;
+                            }
+                        }
+                        //2. 卖完了
+                        else if (num == storehouse[product].number){
+                            int profit;
+                            profit = (good_list[temp].actual_price - storehouse[product].buyInPrice) * num;
+                            storehouse.erase(product);
+                            cash += good_list[temp].actual_price * num;
+                            health -= 1;
+
+                            if (profit >= 0){
+                                cout << "you earn " << profit << " dollars in this trade." << endl;
+                            }else{
+                                cout << "you lost " << (-profit) << " dollars in this trade." << endl;
+                            }
+                        }
+                        else{
+                            cout << "invalid input" << endl;
+                        }
+                    }else{
+                        cout << "No demand for this product now! You can only sell products in market." << endl;
                     }
-                }else{
-                    cout << "No demand for this product now! You can only sell products in market." << endl;
                 }
             }
-        }else if (decision == 3){
+        }else if (decision == '3'){
+            bool steady = true;
+            for (int i = 0; i < 5; i++){
+                if (good_list[i].actual_price == good_list[i].low_price){
+                    cout << good_list[i].low_price_info << endl;
+                    steady = false;
+                }else if (good_list[i].actual_price == good_list[i].high_price){
+                    cout << good_list[i].high_price_info << endl;
+                    steady = false;
+                }
+            }
+            if (steady){
+                cout << "The market is stable this year." << endl;
+            }
+
+        }else if (decision == '4'){
             quit = true;
         }
         else{}
 
-        if (quit){
+        if (quit == true){
             break;
         }
+        
+        //游戏界面
+        cout<<"|"<<setw(15)<<"Goods"<<setw(12)<<"|"<<setw(18)<<"price(dollar)"<<setw(9)<<"|"<<endl;
+        cout<<"|"<<"1: "<<left<<setw(23)<<good_list[0].name<<"|"<<"1: "<<left<<setw(23)<<good_list[0].actual_price<<"|"<<endl;
+        cout<<"|"<<"2: "<<left<<setw(23)<<good_list[1].name<<"|"<<"2: "<<left<<setw(23)<<good_list[1].actual_price<<"|"<<endl;
+        cout<<"|"<<"3: "<<left<<setw(23)<<good_list[2].name<<"|"<<"3: "<<left<<setw(23)<<good_list[2].actual_price<<"|"<<endl;
+        cout<<"|"<<"4: "<<left<<setw(23)<<good_list[3].name<<"|"<<"4: "<<left<<setw(23)<<good_list[3].actual_price<<"|"<<endl;
+        cout<<"|"<<"5: "<<left<<setw(23)<<good_list[4].name<<"|"<<"5: "<<left<<setw(23)<<good_list[4].actual_price<<"|"<<endl;
     }
 
 }
