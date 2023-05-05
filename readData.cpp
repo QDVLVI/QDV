@@ -19,6 +19,9 @@ void readPlayerData(role player){
         fout << player.retire_age << endl;
         fout << player.storehouse_capacity << endl;
         fout << player.isSick << endl;
+        fout << player.hasHouse << endl;
+        fout << player.hasCar << endl;
+        fout << player.lottery_num << endl;
         fout.close();
     }
 }
