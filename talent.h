@@ -11,6 +11,6 @@ extern double rate3;
 //spend money
 extern int ranges;
 extern int caprice;
-extern double rate4;
+extern int houprice;;
 
 #endif
