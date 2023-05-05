@@ -13,5 +13,6 @@ void business(int &cash, int &health, company* company_list);
 void readPlayerData(role player);
 void readCompanyData(company* company_list);
 void readStorehouseData(map<string, store> storehouse);
+void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int &health, int &retire_age)
 
 #endif
