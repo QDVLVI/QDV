@@ -137,6 +137,7 @@ int startGame(){
    
 
     int market_value = 0;
+    int previous_year_assets = 100000;
     
     //游戏主循环
     while (player.age <= player.retire_age){
@@ -366,7 +367,7 @@ int startGame(){
             delete[] market_list;
             player.isSick = false;
             player.health = 100;
-            previous_asset
+            previous_year_assets = player.total_assets;
             cout << "you are sick this year and could not do anything this year" << endl;
             cout << "n-next year" << endl;     //游戏界面，按n进入下一年，按q提前退休
 
