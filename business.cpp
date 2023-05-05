@@ -47,7 +47,8 @@ void business(int &cash, int &health, company* company_list){
         }
 
         bool quit = false;
-        cout<<"1-5 or q(quit)"<<endl;
+        
+        cout<<"Enter [1-5] to choose a company or Enter [q] to quit: ";
         cin >> input;
 
         cout << fixed << setprecision(0);
