@@ -36,19 +36,19 @@ void talent(  ){
     fin.close();
     
     
-    quotient= player.total_assets/1000000;
+    quotient= player.total_assets/100000;
     if(quotient==0)
-        talentpoint=5+extra;
+        talentpoint=5;
     else if (quotient<5)
-        talentpoint=10+extra;
+        talentpoint=10;
     else if(quotient<10)
-        talentpoint=50+extra;
+        talentpoint=50;
     else if(quotient<50)
-        talentpoint=100+extra;
+        talentpoint=100;
     else if(quotient<100)
-        talentpoint=250+extra;
+        talentpoint=250;
     else if(quotient>=100)
-        talentpoint=500+extra;
+        talentpoint=500;
     cout<<"Talentpoints get: "<<talentpoint<<endl;//talentpoint
     talentsum+=talentpoint;
     cout<<"Total talentpoints: "<<talentsum<<endl;
@@ -63,11 +63,14 @@ void talent(  ){
     
     while (input != 2){
         int n,m;
+        
+        
         cout<<"Enter No. of talent: ";
         cin>>n;
         m=n-1;
         if (talentsum >= t[m].conpoint){
             talentsum-=t[m].conpoint;
+            //倒爷
             if(m==0){
                 switch (t[m].level)
                 {
@@ -87,6 +90,7 @@ void talent(  ){
                   break;
                 }
             }
+            //大富之家
             if( m==1 ){
                 switch (t[m].level)
                 {
@@ -101,11 +105,12 @@ void talent(  ){
                   player.cash+=100000;
                   break;
                 case 3:
-                  cout<<t[m].function<<": +200000-->3000000"<<endl;
+                  cout<<t[m].function<<": +200000-->300000"<<endl;
                   player.cash+=100000;
                   break;
                 }
             }
+            //老当益壮
             else if(m==2){
                 switch (t[m].level)
                 {
@@ -147,7 +152,6 @@ void talent(  ){
             fout<<t[n].name<<" "<<t[n].level<<" "<<t[n].conpoint<<endl;
         }
         fout<<talentsum<<endl;
-        fout<<extra<<endl;
         fout<<"increase in initial storehouse"<<endl;
         fout<<"increase in initial money"<<endl;
         fout<<"longer career life"<<endl;
