@@ -8,17 +8,17 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
 
     cout << "..." << endl; //游戏界面，写spend money的来设计界面
     cout << "1--lotteries" << endl;
-    cout << "2--houses" << endl;
-    cout << "3--cars" << endl;
+    cout << "2--houses(extend your life)" << endl;
+    cout << "3--cars(extend your life)" << endl;
     cout << "4--medical treatment" << endl;
     cout << "5--back" << endl;
     int option;
     cin >> option;
     while (option != 1 && option != 2 && option != 3 && option != 4 && option != 5) {
-        cout << "Option does not exist. Please enter again.";
+        cout << "Option does not exist. Please enter again."<<endl;
         cout << "1--lotteries" << endl;
-        cout << "2--houses" << endl;
-        cout << "3--cars" << endl;
+        cout << "2--houses(extend your life)" << endl;
+        cout << "3--cars(extend your life)" << endl;
         cout << "4--medical treatment" << endl;
         cout << "5--back" << endl;
         cin >> option;
@@ -31,12 +31,12 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
         if (option == 1) {
             cout << "Buying lotteries " << endl;
             cout << "Lottery costs " << (5 + lottery_num) * (3 * (lottery_num + 1)) * 4500;
-            cout << "The prize is " << (5+lottery_num)*(2+lottery_num)*9000 << ". Enter Y to confirm, enter N to go back.";
+            cout << "The prize is " << (5+lottery_num)*(2+lottery_num)*9000 << ". Enter Y to confirm, enter N to go back."<<endl;
             string lottery_confirm;
             cin >> lottery_confirm;
             while (lottery_confirm != "Y" && lottery_confirm != "N") {
                 cout << "Option does not exist. Please enter again.";
-                cout << "Enter Y to confirm, enter N to go back.";
+                cout << "Enter Y to confirm, enter N to go back."<<endl;
                 cin >> lottery_confirm;
             }
             if (cash < (5 + lottery_num) * (3 * lottery_num) * 4500) {
@@ -71,7 +71,7 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
             cin >> house_confirm;
             while (house_confirm != "Y" && house_confirm != "N") {
                 cout << "Option does not exist. Please enter again.";
-                cout << "Enter Y to confirm, enter N to go back.";
+                cout << "Enter Y to confirm, enter N to go back."<<endl;
                 cin >> house_confirm;
             }
             if (house_confirm == "Y") {
@@ -88,6 +88,13 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
                     cout << "You have bought the house successfully." << endl;
                 }
             }
+            else{ if (house_confirm == "N"){//exit house
+                break;}
+            }
+                
+            
+                
+            
         }
 
 
@@ -116,6 +123,11 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
                     cout << "You have bought the car successfully." << endl;
                 }
             }
+            else {
+                if (car_confirm == "N"){//exit car
+                    break;
+                }
+            }
         }
 
         if (option == 4) {
@@ -132,6 +144,11 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
             if (healing_confirm == "Y") {
                 cash -= 50 * (100 - health) * (100 - health);
                 health = 100;
+            }
+            else {
+                if (healing_confirm == "N"){//exit treatment
+                    break;
+                }
             }
         }
     }
