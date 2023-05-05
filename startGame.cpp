@@ -262,6 +262,9 @@ int startGame(){
 
         player.total_assets = player.cash + market_value + good_value;  //还要再加车的价值和房的价值
         cout << "player's total assets: " << player.total_assets << endl;
+        cout << "player's cash: " << player.cash << endl;
+        cout << "player's health: " << player.health << endl;
+        cout << "age/retire_age: " << player.age << "/" << player.retire_age;
         readCompanyData(company_list);
         readPlayerData(player);
 
