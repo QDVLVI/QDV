@@ -34,6 +34,8 @@ class role{
         int storehouse_capacity; //仓库容量 
         bool isSick;
         int lottery_num = 0;//买彩票的次数
+        bool hasCar = false;
+        bool hasHouse = false;
 
         role(int Cash, int TotalAsset, int Health, int Fame, int Age, int RetireAge, int StorehouseCapacity, bool IsSick){
             cash = Cash;
