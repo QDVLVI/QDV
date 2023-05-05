@@ -1,14 +1,14 @@
 profiteer 0 80 
-sales_professional -1 0  
+sales_king -1 0  
 tycoon 0 80 
 business_concept -1 0
 capital_operation -1 0
-talent_improvement -1 0
+talent_growth -1 0
 gambling_God 0 80
 longevity -1 0
 aristocrats 0 80
 car_guy -1 0
-house_speculation -1 0
+house_buyer -1 0
 0
 0
 increase in storehouse capacity
