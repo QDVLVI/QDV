@@ -141,7 +141,13 @@ int startGame(){
 
     int market_value = 0;
     int previous_year_assets = 100000;
-    
+
+
+
+
+
+
+
     //游戏主循环
     while (player.age <= player.retire_age){
         player.age += 1;
@@ -204,6 +210,14 @@ int startGame(){
         good_list[7].low_price = round(good_list[7].normal_price*((rand()%71)/1000+0.43));
         good_list[7].high_price_info = "The era of digital encrypted currency has arrived, causing a crazy surge in the price of Bitcoin.";
         good_list[7].low_price_info = "Bitcoin faces regulatory scrutiny from multiple countries, causing a sharp decline in its price.";
+
+
+
+
+
+
+
+
 
 
         //公司投资
@@ -272,12 +286,14 @@ int startGame(){
 
         goods *market_list = new goods[5];
         int j = 0;
+        bool stable = true;
+
         for (int i = 0; i < 8; i++){
             good_list[i].actual_price = good_list[i].normal_price;
             if (good_list[i].appear){
                 //set price
                 int random_number = rand() % 100;
-                bool stable = true;
+                
                 if (random_number < (good_list[i].low_price_possibility * 100)){
                     good_list[i].actual_price = good_list[i].low_price;
                     cout << good_list[i].low_price_info << endl;
@@ -433,9 +449,9 @@ int startGame(){
     foutPlayer.close();
     foutCompany.close();
     foutStorehouse.close();
-
-    return 0;
-}}
+    
+    return 0;  
+}
 
 int main(){
     startGame();
