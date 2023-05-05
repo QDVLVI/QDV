@@ -6,14 +6,9 @@
 using namespace std;
 
 
-struct Talevel{
-    string name;
-    int level;
-    int conpoint;//consumepoints
-    string function;
-};
 
-void talent(  ){
+
+void talent(role player){
     int quotient,talentpoint,talentsum;
     Talevel t[3];
     
@@ -130,7 +125,7 @@ void talent(  ){
                   break;
                 }
             }
-           
+        }   
         else{
             cout<<"you don't have enough talentpoints."<<endl;
         }
