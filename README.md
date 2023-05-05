@@ -9,9 +9,12 @@
     Zhu Jiaying
 
 2. Description
+    This is also a life-simulation game. Starting from the age of 20, all choices are up to you, whether to become rich or poor.
 
+3. Rules
 
-rules
-features
-non-standard C/C++ libraries
-compilation and execution instructions
+4. Features
+
+5. Non-standard C/C++ libraries
+
+6. Compilation and execution instructions
