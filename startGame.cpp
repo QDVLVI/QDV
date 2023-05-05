@@ -350,6 +350,7 @@ int startGame(){
                 //spend money，花钱
                 else if (input == 's'){
                     cout << "..." << endl; //游戏界面，写spend money的来设计界面
+                    spend_money(player.lottery_num, player.cash, player.hasHouse, player.hasCar, player.health, player.retire_age)
                     //function, to be completed
 
 
