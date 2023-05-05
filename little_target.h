@@ -10,4 +10,8 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
 
 void business(int &cash, int &health, company* company_list);
 
+void readPlayerData(role player);
+void readCompanyData(company* company_list);
+void readStorehouseData(map<string, store> storehouse);
+
 #endif
