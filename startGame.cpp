@@ -7,7 +7,7 @@
 #include <map>
 #include "target.h"
 #include "structure_define.h"
-
+#include <iomanip>
 using namespace std;
 
 int startGame(){
@@ -261,10 +261,8 @@ int startGame(){
         }
 
         player.total_assets = player.cash + market_value + good_value;  //还要再加车的价值和房的价值
-        cout << "player's total assets: " << player.total_assets << endl;
-        cout << "player's cash: " << player.cash << endl;
-        cout << "player's health: " << player.health << endl;
-        cout << "age/retire_age: " << player.age << "/" << player.retire_age;
+        
+    
         readCompanyData(company_list);
         readPlayerData(player);
 
@@ -351,9 +349,18 @@ int startGame(){
         //手动操作
         char input;
         bool GoToNextYear = false;
-
+        cout << "player's total assets: " << player.total_assets << endl;
+        cout << "player's cash: " << player.cash << endl;
+        cout << "player's health: " << player.health << endl;
+        cout << "age/retire_age: " << player.age << "/" << player.retire_age<<endl;
+        
         if (!player.isSick){
-            cout << "m-market\nb-business\ns-spend money\nn-go to next year" << endl;
+            cout<<"--------------------------------------------------------------------------------"<<endl;
+            cout << "m-market"<< endl;
+            cout << "b-business"<< endl;
+            cout << "s-spend money"<< endl;
+            cout << "n-go to next year"<< endl;
+            cout<<"--------------------------------------------------------------------------------"<<endl;
             while (cin >> input){
                 
                 
