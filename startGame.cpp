@@ -275,10 +275,6 @@ int startGame(){
         for (int i = 0; i < 8; i++){
             good_list[i].actual_price = good_list[i].normal_price;
             if (good_list[i].appear){
-                //update market list
-                market_list[j] = good_list[i];
-                j++;
-
                 //set price
                 int random_number = rand() % 100;
                 bool stable = true;
@@ -295,15 +291,20 @@ int startGame(){
                     cout << good_list[i].high_price_info << endl;
                     stable = false;
                 }
-                
-                if (stable){
-                    cout << "the market is stable this year" << endl;
+            //update market list
+            market_list[j] = good_list[i];
+            j++;
             }
         }
+                
+        if (stable){
+            cout << "the market is stable this year" << endl;
+        }
+        
 
 
         //买卖（market），创业（business）会损失健康值，
-               if (player.health <= 50){
+        if (player.health <= 50){
             //有几率住院
             srand(time(nullptr));
             int a = rand() % 4; //25%
