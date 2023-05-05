@@ -83,12 +83,13 @@ struct Talevel{
     string function;
 };
 
-//仓库物品 (linked list)
-struct product{
-    string name;//修改
+//仓库物品
+struct store{
+    string name;
+    int buyInPrice;
     int number;
-    product *next;
 };
+
 
 //公司属性
 class company{
