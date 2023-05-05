@@ -8,6 +8,7 @@
 #include <algorithm>
 #include "target.h"
 #include "structure_define.h"
+#include "talent.h"
 using namespace std;
 
 bool check(int cash, int price, int number, int capacity){
@@ -127,7 +128,7 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
                         //1. 没卖完
                         if (num >= 0 && num < storehouse[product].number){
                             int profit;
-                            profit = (good_list[temp].actual_price - storehouse[product].buyInPrice) * num;
+                            profit = (good_list[temp].actual_price*rate3 - storehouse[product].buyInPrice) * num;
                             storehouse[product].number -= num;
                             cash += good_list[temp].actual_price * num;
                             health -= 1;
@@ -141,7 +142,7 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
                         //2. 卖完了
                         else if (num == storehouse[product].number){
                             int profit;
-                            profit = (good_list[temp].actual_price - storehouse[product].buyInPrice) * num;
+                            profit = (good_list[temp].actual_price*rate3 - storehouse[product].buyInPrice) * num;
                             storehouse.erase(product);
                             cash += good_list[temp].actual_price * num;
                             health -= 1;
