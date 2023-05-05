@@ -64,7 +64,7 @@ void talent(  ){
     while (input != 2){
         int n,m;
         
-        
+        //游戏界面
         cout<<"Enter No. of talent: ";
         cin>>n;
         m=n-1;
