@@ -7,7 +7,7 @@
 #include <iomanip>
 #include "structure_define.h"
 #include "target.h"
-#include "talent.h"
+
 using namespace std;
 
 void business(int &cash, int &health, company* company_list){
@@ -107,13 +107,13 @@ void business(int &cash, int &health, company* company_list){
                                 //部分卖出
                                 if (num >= 0 && num < company_list[temp].share_number){
                                     int profit, price;
-                                    price = num * company_list[temp].cost_per_share*rate2;
+                                    price = num * company_list[temp].cost_per_share;
                                     cash += price;
                                     cout << "you sold these shares for " << fixed << price << " dollar" << endl;
 
                                     company_list[temp].share_number -= num;
 
-                                    profit = round((company_list[temp].cost_per_share - company_list[temp].average_cost) * num*rate1);
+                                    profit = round((company_list[temp].cost_per_share - company_list[temp].average_cost) * num);
                                     
                                     if (profit >= 0){
                                         cout << "you earned " << fixed << profit << endl;
@@ -126,7 +126,7 @@ void business(int &cash, int &health, company* company_list){
                                 //全部卖出
                                 else if (num == company_list[temp].share_number){
                                     int profit, price;
-                                    price = num * company_list[temp].cost_per_share*rate2;
+                                    price = num * company_list[temp].cost_per_share;
                                     cash += price;
 
                                     company_list[temp].share_number = 0;
@@ -134,7 +134,7 @@ void business(int &cash, int &health, company* company_list){
                                     company_list[temp].isSetup = false;
                                     hasSetCompany = false;
 
-                                    profit = round((company_list[temp].cost_per_share - company_list[temp].average_cost) * num*rate1);
+                                    profit = round((company_list[temp].cost_per_share - company_list[temp].average_cost) * num);
 
                                     if (profit >= 0){
                                         cout << "you earned " << fixed << profit << " dollar " << "in your business" << endl;
