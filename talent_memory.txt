@@ -2,7 +2,6 @@ profiteer 0 80
 tycoon 0 80 
 longevity 0 80
 0
-0
 increase in storehouse capacity
 increase in initial money
 longer career life
