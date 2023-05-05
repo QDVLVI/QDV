@@ -1,4 +1,4 @@
-
+//a_little_target.cpp
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -52,88 +52,29 @@ void readCompanyData(company *company_list){
     }
 }
 
-void readStorehouseData(){
-    
+void readStorehouseData(map<string, store> storehouse){
+    ofstream fout;
+    map<string, store>::iterator itr = storehouse.begin();
+    fout.open("storehouse.txt", ios::out);
+    for (itr; itr != storehouse.end(); itr++){
+        fout << itr->first << " " ;
+        fout << (itr->second).buyInPrice << " " << (itr->second).name << " " << (itr->second).number << endl;
+    }
 }
 
 int startGame(){
     //角色
-    role player{100000, 100000, 100, 0, 20, 70, 100, false};
+    role player{100000, 100000, 100, 0, 20, 70, 100, false}; 
 
     //公司
     company *company_list = new company[5];
     company_list[0].name = "gaming_industry";
-    company_list[1].name = "real_estate_company";
+    company_list[1].name = "real_estate_company";  
     company_list[2].name = "electric_manufacture";
     company_list[3].name = "energy_drink_factory";
     company_list[4].name = "internet_celebrity_anchor";
 
     //仓库
-    map<string, store> storehouse;
-    
-
-    //选择读取存档（Load game) 或开始新游戏 (New game)
-
-    cout << "1-start a new game\n2-continue" << endl; //游戏界面，选择存档或新游戏, to be completed
-    int temp;
-    cin >> temp;
-
-    if (temp == 2){
-        ifstream finPlayer, finCompany;
-        finPlayer.open("player.txt");
-        finCompany.open("company.txt");
-        if (finPlayer.peek() == ifstream::traits_type::eof() || finCompany.peek() == ifstream::traits_type::eof()){
-            cout << "no record found" << endl;
-            return 0;
-        }
-
-    //读取存档，从file中获取角色信息
-    finPlayer >> player.cash;
-    finPlayer >> player.total_assets;
-    finPlayer >> player.health;
-    finPlayer >> player.fame;
-    finPlayer >> player.age;
-    finPlayer >> player.retire_age;
-    finPlayer >> player.storehouse_capacity;
-    finPlayer >> player.isSick;
-
-    //从file中获取公司信息
-    string line;
-    int i = 0;
-    
-    while (getline(finCompany, line)){
-        istringstream line_in(line);
-        line_in >> company_list[i].name;
-        line_in >> company_list[i].cost_per_share;
-        line_in >> company_list[i].average_cost;
-        line_in >> company_list[i].ups_possibility;
-        line_in >> company_list[i].amplitude;
-        line_in >> company_list[i].dividend_rate;
-        line_in >> company_list[i].profit_year;
-        line_in >> company_list[i].share_number;
-        line_in >> company_list[i].bankrupt_threshold;
-        line_in >> company_list[i].set_up_years;
-        line_in >> company_list[i].isSetup;
-        line_in >> company_list[i].isBankrupt;
-        i++;
-    }
-        
-        //to be completed
-    }
-
-    if (temp == 1){
-        //初始化角色
-        //建立一个文档储存数据,to be completed
-        readPlayerData(player);
-
-        company_list[0].initCompany(700,  0, 0.6, 0.1,  0.02, 2, 0, 1);                //氪金游戏公司
-        company_list[1].initCompany(4000, 0, 0.8, 0.2,  0.01, 5, 0, 10);               //房地产公司
-        company_list[2].initCompany(500,  0, 0.6, 0.1,  0.02, 3, 0, 1);                //电器制造厂
-        company_list[3].initCompany(1000, 0, 0.6, 0.05, 0.03, 2, 0, 1);                //运动饮料厂
-        company_list[4].initCompany(50,   0, 0.5, 0.1,  0.01, 1, 0, 0.1);              //网红主播
-    }
-
-    //仓库 (使用linked list)
     map<string, store> storehouse;
 
     //商品，to be completed
@@ -176,7 +117,76 @@ int startGame(){
     good_list[7].name = "bit_coin";      //比特币
     good_list[7].normal_price_possibility = 0.5;
     good_list[7].high_price_possiblity = 0.15;
-    good_list[7].low_price_possibility = 0.35;
+    good_list[7].low_price_possibility = 0.35;  
+
+    //选择读取存档（Load game) 或开始新游戏 (New game)
+    cout << "1-start a new game\n2-continue" << endl; //游戏界面，选择存档或新游戏, to be completed
+    int temp;
+    cin >> temp;
+
+    if (temp == 2){
+        ifstream finPlayer, finCompany, finStorehouse;
+        finPlayer.open("player.txt");
+        finCompany.open("company.txt");
+        if (finPlayer.peek() == ifstream::traits_type::eof() || finCompany.peek() == ifstream::traits_type::eof()){
+            cout << "no record found" << endl;
+            return 0;
+        }
+
+        //读取存档，从file中获取角色信息
+        finPlayer >> player.cash;
+        finPlayer >> player.total_assets;
+        finPlayer >> player.health;
+        finPlayer >> player.fame;
+        finPlayer >> player.age;
+        finPlayer >> player.retire_age;
+        finPlayer >> player.storehouse_capacity;
+        finPlayer >> player.isSick;
+
+        //从file中获取公司信息
+        string line;
+        int i = 0;
+        
+        while (getline(finCompany, line)){
+            istringstream line_in(line);
+            line_in >> company_list[i].name;
+            line_in >> company_list[i].cost_per_share;
+            line_in >> company_list[i].average_cost;
+            line_in >> company_list[i].ups_possibility;
+            line_in >> company_list[i].amplitude;
+            line_in >> company_list[i].dividend_rate;
+            line_in >> company_list[i].profit_year;
+            line_in >> company_list[i].share_number;
+            line_in >> company_list[i].bankrupt_threshold;
+            line_in >> company_list[i].set_up_years;
+            line_in >> company_list[i].isSetup;
+            line_in >> company_list[i].isBankrupt;
+            i++;
+        }
+        
+        //从file中获取仓库信息
+        string name;
+        store product;
+        while (getline(finStorehouse, line)){
+            istringstream line_in(line);
+            line_in >> name >> product.buyInPrice >> product.name >> product.number;
+            storehouse[name] = product;
+        }
+    }
+
+    else if (temp == 1){
+        //初始化角色
+        //建立一个文档储存数据,to be completed
+        readPlayerData(player);
+
+        company_list[0].initCompany(700,  0, 0.6, 0.1,  0.02, 2, 0, 1);                //氪金游戏公司
+        company_list[1].initCompany(4000, 0, 0.8, 0.2,  0.01, 5, 0, 10);               //房地产公司
+        company_list[2].initCompany(500,  0, 0.6, 0.1,  0.02, 3, 0, 1);                //电器制造厂
+        company_list[3].initCompany(1000, 0, 0.6, 0.05, 0.03, 2, 0, 1);                //运动饮料厂
+        company_list[4].initCompany(50,   0, 0.5, 0.1,  0.01, 1, 0, 0.1);              //网红主播
+    }
+
+   
 
     int market_value = 0;
     
@@ -191,17 +201,17 @@ int startGame(){
         good_list[0].normal_price = rand()%1001+500;
         good_list[0].high_price = round(good_list[0].normal_price*((rand()%434)/100.0+5.67));
         good_list[0].low_price = round(good_list[0].normal_price*((rand()%41+40)/100));
-
+        
         //imported_car price
         good_list[1].normal_price = rand()%25000+35000;
         good_list[1].high_price = round(good_list[1].normal_price*((rand()%1227)/1000+1.357));
         good_list[1].low_price = round(good_list[1].normal_price*((rand()%3977)/10000+0.2857));
-
+        
         //jade price
         good_list[2].normal_price = rand()%2001+2000;
         good_list[2].high_price = round(good_list[2].normal_price*((rand()%5501)/1000+2.5));
         good_list[2].low_price = round(good_list[2].normal_price*((rand()%101)/1000+0.4));
-
+        
         //melon_seed price
         good_list[3].normal_price = rand()%171+80;
         good_list[3].high_price = round(good_list[3].normal_price*((rand()%12501)/2500+3.6));
@@ -211,26 +221,26 @@ int startGame(){
         good_list[4].normal_price = rand()%13001+19000;
         good_list[4].high_price = round(good_list[4].normal_price*((rand()%51)/100+2));
         good_list[4].low_price = round(good_list[4].normal_price*((rand()%501)/10000+0.45));
-
+        
         //gold price
         good_list[5].normal_price = rand()%2001+4000;
         good_list[5].high_price = round(good_list[5].normal_price*((rand()%251)/1000+3));
         good_list[5].low_price = round(good_list[5].normal_price*((rand()%501)/10000+0.45));
-
+        
         //copycat_phone price
         good_list[6].normal_price = rand()%351+450;
         good_list[6].high_price = round(good_list[6].normal_price*((rand()%751)/1000+5.5));
         good_list[6].low_price = round(good_list[6].normal_price*((rand()%51)/1000+0.45));
-       
+        
         //bitcoin price
         good_list[7].normal_price = rand()%4101+3900;
         good_list[7].high_price = round(good_list[7].normal_price*((rand()%1501)/1000+5.5));
         good_list[7].low_price = round(good_list[7].normal_price*((rand()%71)/1000+0.43));
-        good_list[7].normal_price_possibility = 5.0;
-        good_list[7].high_price_possiblity = 1.5;
-        good_list[7].low_price_possiblity = 3.5;
+
         //公司投资
         for(int i = 0; i < 5; i++){
+
+            
             //是否破产
             if (company_list[i].bankrupt()){
                 company_list[i].isBankrupt = true;
@@ -268,7 +278,46 @@ int startGame(){
         readPlayerData(player);
 
         cout << "..." << endl; // 游戏界面,从8个商品选5个出来展示，可以用file或直接cout,to be completed
+        //随机产品      
+        //initialize good_list[].appear
+        for (int i = 0; i < 8; i++){
+            good_list[i].appear = false;
+        }
 
+        //randomly pick 5 good to appear
+        int select_num = 0;
+        while(select_num < 5){
+            int random_seed = time(nullptr) + rand();
+            srand(random_seed);
+            int random_number = rand()%8;
+            if (good_list[random_number].appear == false){
+                good_list[random_number].appear = true;
+                select_num++;
+            }
+        }
+
+        goods *market_list = new goods[5];
+        int j = 0;
+        for (int i = 0; i < 8; i++){
+            good_list[i].actual_price = good_list[i].normal_price;
+            if (good_list[i].appear){
+                //update market list
+                market_list[j] = good_list[i];
+                j++;
+
+                //set price
+                int random_number = rand() % 100;
+                if (random_number < (good_list[i].low_price_possibility * 100)){
+                    good_list[i].actual_price = good_list[i].low_price;
+                }
+                else if (random_number >= good_list[i].low_price_possibility * 100 && random_number < good_list[i].low_price_possibility + good_list[i].normal_price_possibility ){
+                    good_list[i].actual_price = good_list[i].normal_price;
+                }
+                else{
+                    good_list[i].actual_price = good_list[i].high_price;
+                }
+            }
+        }
 
 
         //买卖（market），创业（business）会损失健康值，
@@ -294,23 +343,15 @@ int startGame(){
                 //market, 市场
                 if (input == 'm'){
                     cout << "..." << endl; //游戏界面，写market的来设计一下按键
-                    market(player.cash, player.health, player.storehouse_capacity, good_list, storehouse);
-
-
-
-
+                    market(player.cash, player.health, player.storehouse_capacity, market_list, storehouse);
+                    readStorehouseData(storehouse);
                 }
                 
                 //business, 创业
                 else if (input == 'b'){
                     cout << "..." << endl; //游戏界面，写business的来设计按键
-                    int cash = player.cash;
-                    int health = player.health;
-                    business(cash, health, company_list);
-                    player.cash = cash;
-                    player.health = health;
+                    business(player.cash, player.health, company_list);
                     readCompanyData(company_list);
-
                 }
 
                 //spend money，花钱
@@ -344,12 +385,15 @@ int startGame(){
 
                 if (GoToNextYear){
                     readPlayerData(player);
+                    readStorehouseData(storehouse);
+                    delete[] market_list;
                     break;
                 }
                 cout << "m-market\nb-business\ns-spend money\nn-go to next year" << endl;
             }
         }
         else{
+            delete[] market_list;
             player.isSick = false;
             player.health = 100;
             cout << "you are sick this year and could not do anything this year" << endl;
@@ -389,4 +433,8 @@ int startGame(){
     foutStorehouse.close();
 
     return 0;
+}
+
+int main(){
+    startGame();
 }
