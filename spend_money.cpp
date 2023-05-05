@@ -56,7 +56,7 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
                     }
                     else {
                         cout << "Bad luck!" << endl;
-                    }Y
+                    }
                 }
             }
         }
