@@ -182,14 +182,4 @@ class company{
 
 };
 
-//财产，包括房产，车子什么的
-struct property{
-    bool island;//小岛
-    bool school_district_house;//学区房
-    bool sea_view_villa;//海景别墅
-    bool holiday_resort;//度假山庄
-    bool apartment;//公寓
-    bool hut;//破房子
-};
-
 #endif
