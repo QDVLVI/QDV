@@ -254,6 +254,7 @@ void talent(role &player,  ){
                 }
             }
             else if(m==9){
+                int caprice;
                 switch (t[m].level)
                 {
                 case 0:
@@ -261,20 +262,20 @@ void talent(role &player,  ){
                   break;
                 case 1:
                   t[m].conpoint = 250;
-                  cout<<t[m].function<<": -10000"<<endl;
-
+                  cout<<t[m].function<<": -1000"<<endl;
+                  caprice=1000;
                   t[m+1].level+=1;
                   cout<<t[m+1].name<<" is unlocked."<<endl;
                   t[m+1].conpoint=320;
                   break;
                 case 2:
                   t[m].conpoint = 320;
-                  cout<<t[m].function<<": -20000"<<endl;
-
+                  cout<<t[m].function<<": -2000"<<endl;
+                  caprice=2000;
                   break;
                 case 3:
-                  cout<<t[m].function<<": -30000"<<endl;
-
+                  cout<<t[m].function<<": -3000"<<endl;
+                  caprice=3000;
                   break;
                 }
             }
@@ -328,6 +329,7 @@ void talent(role &player,  ){
                 }
             }
             else if( m==10 ){
+                int houprice;
                 switch (t[m].level)
                 {
                 case 0:
@@ -335,18 +337,18 @@ void talent(role &player,  ){
                   break;
                 case 1:
                   t[m].conpoint = 400;
-                  cout<<t[m].function<<": -5%"<<endl;
-
+                  cout<<t[m].function<<": -10,0000"<<endl;
+                  houprice=100000;
                   t[m+1].level+=1;
                   break;
                 case 2:
                   t[m].conpoint = 500;
-                  cout<<t[m].function<<": -10%"<<endl;
-
+                  cout<<t[m].function<<": -20,0000"<<endl;
+                  houprice=200000;
                   break;
                 case 3:
-                  cout<<t[m].function<<": -15%"<<endl;
-
+                  cout<<t[m].function<<": -30,0000"<<endl;
+                  houprice=300000;
                   break;
                 }
             }
