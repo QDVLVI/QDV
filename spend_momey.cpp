@@ -27,7 +27,7 @@ int spend_money(){
                 if (lottery_confirm == "Y") {
                     player.cash -= lottery_amount;
                     if (rand() % 6 == 1) {//win
-                        //money +lottery_amount*5
+                        player.cash += lottery_amount*5
                         cout << "you win! the prize is" << lottery_amount * 5 << endl;
                     }
                     else {
@@ -40,7 +40,7 @@ int spend_money(){
             cout << "Purchasing houses\n1--island\n2--school district house\n3--sea view villa\n4--holiday resort\n5--apartment\n6--hut";
             int house_option;
             cin >> house_option;
-            //cout information;
+            
 
             if (house_option == 1) {
 
