@@ -152,7 +152,7 @@ void business(int &cash, int &health, company* company_list){
                                 }
                         }
                         else{
-                            cout << "your company is still developing, you can not operate on it yet" << endl;
+                            cout << "your company is still need "<< company_list[temp].profit_year - company_list[temp].set_up_years <<" year for developing, you can not operate on it yet" << endl;
                         }
                     }
 
