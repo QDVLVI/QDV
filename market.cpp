@@ -41,8 +41,7 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
 
         cout<<"1:Purchase"<<endl;
         cout<<"2:Sale"<<endl;
-        cout<<"3:Market information"<<endl;
-        cout<<"4:Quit"<<endl;
+        cout<<"3:Quit"<<endl;
         cout<<"Your decision: ";
 
         cin >> decision;
@@ -161,21 +160,6 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
                 }
             }
         }else if (decision == '3'){
-            bool steady = true;
-            for (int i = 0; i < 5; i++){
-                if (good_list[i].actual_price == good_list[i].low_price){
-                    cout << good_list[i].low_price_info << endl;
-                    steady = false;
-                }else if (good_list[i].actual_price == good_list[i].high_price){
-                    cout << good_list[i].high_price_info << endl;
-                    steady = false;
-                }
-            }
-            if (steady){
-                cout << "The market is stable this year." << endl;
-            }
-
-        }else if (decision == '4'){
             quit = true;
         }
         else{}
