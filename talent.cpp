@@ -56,16 +56,16 @@ void talent(role &player,  ){
     cout<<"Total talentpoints: "<<talentsum<<endl;
     
     //玩家选择
-    int n;
-    cout<<"Upgrade talents: enter 'No.'"<<endl;
-    cout<<"Quit: enter '0'"<<endl;
+    int input;
+    cout<<"1.Upgrade talents"<<endl;
+    cout<<"2.Quit"<<endl;
     cout<<"Your choice? ";
-    cin>>n;
-    while (n != 0){
-        int m=n-1;
-        
+    cin>>input;
+    
+    while (input != 2){
+        int n,m;
         cout<<"You can upgrade unlocked talents."<<endl;
-        cout<<"#:"<<left<<setw(18)<<"Name"<<left<<setw(9)<<"Level"<<endl;
+        cout<<"No."<<left<<setw(18)<<"Name"<<left<<setw(9)<<"Level"<<endl;
         cout<<"1 :"<<left<<setw(18)<<t[0].name<<left<<setw(2)<<t[0].level<<" ----> "<<"2 :"<<left<<setw(18)<<t[1].name;
         (t[1].level>=0)? cout<<left<<setw(9)<<t[1].level<<endl : cout<<left<<setw(7)<<"locked"<<endl;
         cout<<"3 :"<<left<<setw(18)<<t[2].name<<left<<setw(2)<<t[2].level<<" ----> "<<"4 :"<<left<<setw(18)<<t[3].name;
@@ -80,7 +80,10 @@ void talent(role &player,  ){
         (t[9].level>=0)? cout<<left<<setw(9)<<t[9].level : cout<<left<<setw(7)<<"locked";
         cout<<" ----> "<<"11:"<<left<<setw(18)<<t[10].name;
         (t[10].level>=0)? cout<<left<<setw(9)<<t[10].level<<endl : cout<<left<<setw(7)<<"locked"<<endl;
-        
+       
+        cout<<"Enter No. of talent: ";
+        cin>>n;
+        m=n-1;
         if (talentsum >= t[m].conpoint){
             talentsum-=t[m].conpoint;
             t[m].level+=1;
@@ -346,10 +349,10 @@ void talent(role &player,  ){
             cout<<"you don't have enough talentpoints."<<endl;
         }
         cout<<"Remaining talentpoints: "<<talentsum<<endl;
-        cout<<"Continue upgrade: enter 'No.'"<<endl;
-        cout<<"Quit: enter '0'"<<endl;
+        cout<<"1.Continue upgrading"<<endl;
+        cout<<"2.Quit"<<endl;
         cout<<"Your choice? ";
-        cin>>n;
+        cin>>input;
     }
         
         
