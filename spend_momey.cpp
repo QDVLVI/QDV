@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "target.h"
-#include "talent.h"
 
 using namespace std;
 
@@ -83,7 +82,7 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
                     cout << "Your cash is not enough." << endl;
                 }
                 else {
-                    cash -= 1000000-houprice;
+                    cash -= 1000000;
                     hasHouse = true;
                     //买房的其他加成
                     cout << "You have bought the house successfully." << endl;
@@ -111,7 +110,7 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
                     cout << "Your cash is not enough." << endl;
                 }
                 else {
-                    cash -= 200000-caprice;
+                    cash -= 200000;
                     hasCar = true;
                     //买车的其他加成
                     cout << "You have bought the car successfully." << endl;
