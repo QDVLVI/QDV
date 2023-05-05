@@ -281,15 +281,15 @@ int startGame(){
                 bool stable = true;
                 if (random_number < (good_list[i].low_price_possibility * 100)){
                     good_list[i].actual_price = good_list[i].low_price;
+                    cout << good_list[i].low_price_info << endl;
                     stable = false;
                 }
                 else if (random_number >= good_list[i].low_price_possibility * 100 && random_number < good_list[i].low_price_possibility + good_list[i].normal_price_possibility ){
                     good_list[i].actual_price = good_list[i].normal_price;
-                    cout << good_list[i].low_price_info;
                 }
                 else{
                     good_list[i].actual_price = good_list[i].high_price;
-                    cout << good_list[i].high_price_info;
+                    cout << good_list[i].high_price_info << endl;
                     stable = false;
                 }
                 
