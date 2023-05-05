@@ -18,6 +18,8 @@ struct goods{
     double normal_price_possibility;
     double low_price_possibility;
     bool appear;
+    string high_price_info;
+    string low_price_info;
 };
 
 //角色属性
