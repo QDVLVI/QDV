@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "startGame.h"
+#include "target.h"
 
 using namespace std;
 
