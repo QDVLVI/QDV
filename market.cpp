@@ -48,9 +48,15 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
         if (decision == '1'){
             //buying
             int No, num, maxNum;
-            cout<<"Which good do you want: " << endl;
+            cout<<"Which good do you want: (0-quit)" << endl;
             cin >> No;
-
+            if (No==0){
+                continue;
+            }
+            if (No>5){
+                cout<<"Invalid input."<<endl;
+                continue;
+            }
             maxNum = round(cash / good_list[No-1].actual_price );
             if (storehouse_capacity < maxNum){
                 maxNum = storehouse_capacity;
@@ -96,11 +102,13 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
 
                 //selling
                 int No, num;
-                cout << "select the good you want to sell: " << endl;
+                cout << "select the good you want to sell: (0-quit)" << endl;
                 cin >> No;
-
+                if (No==0){
+                    continue;
+                }
                 if (No > i || No < 1){
-                    cout << "invalid input" << endl;
+                    cout << "Invalid input" << endl;
                 }
 
                 else{
@@ -152,7 +160,7 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
                             }
                         }
                         else{
-                            cout << "invalid input" << endl;
+                            cout << "Invalid input" << endl;
                         }
                     }else{
                         cout << "No demand for this product now! You can only sell products in market." << endl;
@@ -175,6 +183,9 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
         cout<<"|"<<"3: "<<left<<setw(23)<<good_list[2].name<<"|"<<"3: "<<left<<setw(23)<<good_list[2].actual_price<<"|"<<endl;
         cout<<"|"<<"4: "<<left<<setw(23)<<good_list[3].name<<"|"<<"4: "<<left<<setw(23)<<good_list[3].actual_price<<"|"<<endl;
         cout<<"|"<<"5: "<<left<<setw(23)<<good_list[4].name<<"|"<<"5: "<<left<<setw(23)<<good_list[4].actual_price<<"|"<<endl;
+
+        
+
     }
 
 }
