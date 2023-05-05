@@ -344,12 +344,18 @@ int startGame(){
                     }
                 }
                         
-                player.total_assets = player.cash + market_value;  //还要再加车的价值和房的价值
-                //将更新后的数据储存到文档，to be completed
+                int good_value = 0;
+                map<string, store>::iterator itr = storehouse.begin();
+                for(itr; itr != storehouse.end(); itr++){
+                    good_value += (itr->second.buyInPrice * itr->second.number);
+                }
+
+                player.total_assets = player.cash + market_value + good_value;  //还要再加车的价值和房的价值
 
                 if (GoToNextYear){
                     readPlayerData(player);
                     readStorehouseData(storehouse);
+                    previous_year_assets = player.total_assets;
                     delete[] market_list;
                     break;
                 }
@@ -360,6 +366,7 @@ int startGame(){
             delete[] market_list;
             player.isSick = false;
             player.health = 100;
+            previous_asset
             cout << "you are sick this year and could not do anything this year" << endl;
             cout << "n-next year" << endl;     //游戏界面，按n进入下一年，按q提前退休
 
