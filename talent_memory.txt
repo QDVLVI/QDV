@@ -1,24 +1,8 @@
 profiteer 0 80 
-sales_king -1 0  
 tycoon 0 80 
-business_concept -1 0
-capital_operation -1 0
-talent_growth -1 0
-gambling_God 0 80
-longevity -1 0
-aristocrats 0 80
-car_guy -1 0
-house_buyer -1 0
+longevity 0 80
 0
 0
 increase in storehouse capacity
-increase in price of sales items
 increase in initial money
-increase in company profitability
-increase in company selling price
-increase in talent points per game
-higher probability of winning lottery
 longer career life
-have a better initial reputation
-lower car price
-lower house price
