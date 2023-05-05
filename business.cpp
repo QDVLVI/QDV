@@ -14,7 +14,7 @@ void business(int &cash, int &health, company* company_list){
     char input;
     cout << "welcome to the market" << endl;
     cout << left ;
-    cout << "  " << setw(27) <<  "name" << setw(10) << "股价" << setw(10) << "成本" << "持股数" << endl;
+    cout << "  " << setw(22) <<  "name" << setw(12) << "Share price" << setw(6) << "Cost" << "Shareholding" << endl;
     cout << "1 " << setw(27) << setprecision(0) << fixed << company_list[0].name << setw(8) << company_list[0].cost_per_share << " " << setw(7) << company_list[0].average_cost << " " << company_list[0].share_number << endl;
     cout << "2 " << setw(27) << setprecision(0) << fixed << company_list[1].name << setw(8) << company_list[1].cost_per_share << " " << setw(7) << company_list[1].average_cost << " " << company_list[1].share_number << endl;
     cout << "3 " << setw(27) << setprecision(0) << fixed << company_list[2].name << setw(8) << company_list[2].cost_per_share << " " << setw(7) << company_list[2].average_cost << " " << company_list[2].share_number << endl;
@@ -214,7 +214,7 @@ void business(int &cash, int &health, company* company_list){
     //游戏界面
     cout << endl;    
     cout << left;
-    cout << "  " << setw(27) <<  "name" << setw(10) << "股价" << setw(10) << "成本" << "持股数" << endl;
+    cout << "  " << setw(27) <<  "name" << setw(10) << "share price" << setw(10) << "cost" << "Shareholding" << endl;
     cout << "1 " << setw(27) << company_list[0].name << setw(7) << company_list[0].cost_per_share << " " << setw(7) << company_list[0].average_cost << " " << company_list[0].share_number << endl;
     cout << "2 " << setw(27) << company_list[1].name << setw(7) << company_list[1].cost_per_share << " " << setw(7) << company_list[1].average_cost << " " << company_list[1].share_number << endl;
     cout << "3 " << setw(27) << company_list[2].name << setw(7) << company_list[2].cost_per_share << " " << setw(7) << company_list[2].average_cost << " " << company_list[2].share_number << endl;
