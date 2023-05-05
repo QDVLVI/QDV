@@ -31,8 +31,9 @@ class role{
         int retire_age;
         int storehouse_capacity; //仓库容量 
         bool isSick;
+        int lottery_num;//买彩票的次数
 
-        role(int Cash, int TotalAsset, int Health, int Fame, int Age, int RetireAge, int StorehouseCapacity, bool IsSick){
+        role(int Cash, int TotalAsset, int Health, int Fame, int Age, int RetireAge, int StorehouseCapacity, bool IsSick, int Lottery_number){
             cash = Cash;
             total_assets = TotalAsset;
             health = Health;
@@ -41,6 +42,7 @@ class role{
             retire_age = RetireAge;
             storehouse_capacity = StorehouseCapacity;
             isSick = IsSick;
+            lottery_num = Lottery_number;
         }
 
         //天赋：倒爷
