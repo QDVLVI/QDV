@@ -31,9 +31,9 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
 
         if (option == 1) {
             cout << "Buying lotteries " << endl;
-            cout << "Lottery costs " << (5 + lottery_num) * (3 * lottery_num) * 4500;
+            cout << "Lottery costs " << (5 + lottery_num) * (3 * (lottery_num + 1)) * 4500;
             cout << "The prize is " << (5+lottery_num)*(2+lottery_num)*9000 << ". Enter Y to confirm, enter N to go back.";
-            string   lottery_confirm;
+            string lottery_confirm;
             cin >> lottery_confirm;
             while (lottery_confirm != "Y" && lottery_confirm != "N") {
                 cout << "Option does not exist. Please enter again.";
@@ -52,11 +52,11 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
                     cash -= (5 + lottery_num) * (3 * lottery_num) * 4500;
                     if (rand() % 2 == 1) {//win
                         cash += (5 + lottery_num) * (2 + lottery_num) * 9000;
-                        cout << "you won! The prize is " << (5 + lottery_num) * (2 + lottery_num) * 9000 << endl;
+                        cout << "you win! The prize is " << (5 + lottery_num) * (2 + lottery_num) * 9000 << endl;
 
                     }
                     else {
-                        cout << "you did not win.";
+                        cout << "bad luck!" << endl;
                     }
                 }
             }
@@ -100,7 +100,7 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
             cin >> car_confirm;
             while (car_confirm != "Y" && car_confirm != "N") {
                 cout << "Option does not exist. Please enter again.";
-                cout << "Enter Y to confirm, enter N to go back.";
+                cout << "Enter Y to confirm, enter N to go back." << endl;
                 cin >> car_confirm;
             }
             if (car_confirm == "Y") {
@@ -122,12 +122,12 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
         if (option == 4) {
             cout << "Your current health is " << health << endl;
             cout << "Cost of healing is " << 50 * (100 - health) * (100 - health) << endl;
-            cout << "Enter Y to confirm, enter N to go back";
+            cout << "Enter Y to confirm, enter N to go back" << endl;
             string healing_confirm;
             cin >> healing_confirm;
             while (healing_confirm != "Y" && healing_confirm != "N") {
-                cout << "Option does not exist. Please enter again.";
-                cout << "Enter Y to confirm, enter N to go back.";
+                cout << "Option does not exist. Please enter again." << endl;
+                cout << "Enter Y to confirm, enter N to go back." << endl;
                 cin >> healing_confirm;
             }
             if (healing_confirm == "Y") {
