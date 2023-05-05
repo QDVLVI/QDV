@@ -274,14 +274,25 @@ int startGame(){
 
 
         //买卖（market），创业（business）会损失健康值，
-        if (player.health <= 50){
+               if (player.health <= 50){
             //有几率住院
             srand(time(nullptr));
             int a = rand() % 4; //25%
             if (a != 1){
                 player.isSick = true;
             }
-
+            if (player.health <=20){
+                player.isSick = true;
+            }
+        }
+        
+        //资产增幅过高导致健康减少
+        double asset_growth;
+        asset_growth = player.total_assets / previous_year_assets;
+        if (asset_growth > 3.0){
+            player.health -= 30;
+            cout << "Assets growing too fast, too much surprise lead to health - 30!" << endl;
+            cout << "Health below 50, there is a chance of being hospitalized for 1 year, remember to spend money for cure." << endl;
         }
         
         //手动操作
