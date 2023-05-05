@@ -133,12 +133,13 @@ void talent(role &player,  ){
                 }
             }
             if(m==6){
+                int ranges=0;
                 switch (t[m].level)
                 {
                 case 1:
                   t[m].conpoint = 120;
                   cout<<t[m].function<<": +1%"<<endl;
-
+                  ranges=1;
                   t[m+1].level+=1;
                   cout<<t[m+1].name<<" is unlocked."<<endl;
                   t[m+1].conpoint=190;
@@ -146,11 +147,11 @@ void talent(role &player,  ){
                 case 2:
                   t[m].conpoint = 200;
                   cout<<t[m].function<<": +1%-->2%"<<endl;
-
+                  ranges=2;
                   break;
                 case 3:
                   cout<<t[m].function<<": +2%-->3%"<<endl;
-
+                  ranges=3;
                   break;
                 }
             }
@@ -202,6 +203,7 @@ void talent(role &player,  ){
                 }
             }
             else if(m==3){
+                double rate1;
                 switch (t[m].level)
                 {
                 case 0:
@@ -210,7 +212,7 @@ void talent(role &player,  ){
                 case 1:
                   t[m].conpoint = 250;
                   cout<<t[m].function<<": +1%"<<endl;
-
+                  rate1=1.01;
                   t[m+1].level+=1;
                   cout<<t[m+1].name<<" is unlocked."<<endl;
                   t[m+1].conpoint=320;
@@ -218,11 +220,11 @@ void talent(role &player,  ){
                 case 2:
                   t[m].conpoint = 320;
                   cout<<t[m].function<<": +1%-->2%"<<endl;
-
+                  rate1=1.02;
                   break;
                 case 3:
                   cout<<t[m].function<<": +2%-->3%"<<endl;
-
+                  rate1=1.03;
                   break;
                 }
             }
@@ -277,6 +279,7 @@ void talent(role &player,  ){
                 }
             }
             else if(m==4){
+                double rate2;
                 switch (t[m].level)
                 {
                 case 0:
