@@ -92,7 +92,7 @@ int startGame(){
         finPlayer >> player.isSick;
         finPlayer >> player.hasHouse;
         finPlayer >> player.hasCar;
-        finPlayer >> player.lottery_num
+        finPlayer >> player.lottery_num;
 
         //从file中获取公司信息
         string line;
@@ -433,7 +433,7 @@ int startGame(){
     foutStorehouse.close();
 
     return 0;
-}
+}}
 
 int main(){
     startGame();
