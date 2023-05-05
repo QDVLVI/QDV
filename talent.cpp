@@ -3,6 +3,7 @@
 #include<fstream>
 #include<iomanip>
 #include "structure_define.h"
+#include "talent.h"
 using namespace std;
 
 
@@ -65,21 +66,21 @@ void talent(role &player,  ){
     while (input != 2){
         int n,m;
         cout<<"You can upgrade unlocked talents."<<endl;
-        cout<<"No."<<left<<setw(18)<<"Name"<<left<<setw(9)<<"Level"<<endl;
+        cout<<"No."<<left<<setw(18)<<"Name"<<left<<setw(6)<<"Level"<<endl;
         cout<<"1 :"<<left<<setw(18)<<t[0].name<<left<<setw(2)<<t[0].level<<" ----> "<<"2 :"<<left<<setw(18)<<t[1].name;
-        (t[1].level>=0)? cout<<left<<setw(9)<<t[1].level<<endl : cout<<left<<setw(7)<<"locked"<<endl;
+        (t[1].level>=0)? cout<<left<<setw(6)<<t[1].level<<endl : cout<<left<<setw(6)<<"locked"<<endl;
         cout<<"3 :"<<left<<setw(18)<<t[2].name<<left<<setw(2)<<t[2].level<<" ----> "<<"4 :"<<left<<setw(18)<<t[3].name;
-        (t[3].level>=0)? cout<<left<<setw(9)<<t[3].level : cout<<left<<setw(7)<<"locked";
+        (t[3].level>=0)? cout<<left<<setw(6)<<t[3].level : cout<<left<<setw(6)<<"locked";
         cout<<" ----> "<<"5 :"<<left<<setw(18)<<t[4].name;
-        (t[4].level>=0)? cout<<left<<setw(9)<<t[4].level : cout<<left<<setw(7)<<"locked";
+        (t[4].level>=0)? cout<<left<<setw(6)<<t[4].level : cout<<left<<setw(6)<<"locked";
         cout<<" ----> "<<"6 :"<<left<<setw(18)<<t[5].name;
-        (t[5].level>=0)? cout<<left<<setw(9)<<t[5].level<<endl : cout<<left<<setw(7)<<"locked"<<endl;
+        (t[5].level>=0)? cout<<left<<setw(6)<<t[5].level<<endl : cout<<left<<setw(6)<<"locked"<<endl;
         cout<<"7 :"<<left<<setw(18)<<t[6].name<<left<<setw(2)<<t[6].level<<" ----> "<<"8 :"<<left<<setw(18)<<t[7].name;
-        (t[7].level>=0)? cout<<left<<setw(9)<<t[7].level<<endl : cout<<left<<setw(7)<<"locked"<<endl;
+        (t[7].level>=0)? cout<<left<<setw(6)<<t[7].level<<endl : cout<<left<<setw(6)<<"locked"<<endl;
         cout<<"9 :"<<left<<setw(18)<<t[8].name<<left<<setw(2)<<t[8].level<<" ----> "<<"10:"<<left<<setw(18)<<t[9].name;
-        (t[9].level>=0)? cout<<left<<setw(9)<<t[9].level : cout<<left<<setw(7)<<"locked";
+        (t[9].level>=0)? cout<<left<<setw(6)<<t[9].level : cout<<left<<setw(6)<<"locked";
         cout<<" ----> "<<"11:"<<left<<setw(18)<<t[10].name;
-        (t[10].level>=0)? cout<<left<<setw(9)<<t[10].level<<endl : cout<<left<<setw(7)<<"locked"<<endl;
+        (t[10].level>=0)? cout<<left<<setw(6)<<t[10].level<<endl : cout<<left<<setw(6)<<"locked"<<endl;
        
         cout<<"Enter No. of talent: ";
         cin>>n;
@@ -208,7 +209,7 @@ void talent(role &player,  ){
                   break;
                 case 1:
                   t[m].conpoint = 250;
-                  cout<<t[m].function<<": +0.1%"<<endl;
+                  cout<<t[m].function<<": +1%"<<endl;
 
                   t[m+1].level+=1;
                   cout<<t[m+1].name<<" is unlocked."<<endl;
@@ -216,11 +217,11 @@ void talent(role &player,  ){
                   break;
                 case 2:
                   t[m].conpoint = 320;
-                  cout<<t[m].function<<": +0.1%-->0.2%"<<endl;
+                  cout<<t[m].function<<": +1%-->2%"<<endl;
 
                   break;
                 case 3:
-                  cout<<t[m].function<<": +0.2%-->0.3%"<<endl;
+                  cout<<t[m].function<<": +2%-->3%"<<endl;
 
                   break;
                 }
@@ -284,7 +285,7 @@ void talent(role &player,  ){
                 case 1:
                   t[m].conpoint = 400;
                   cout<<t[m].function<<": +1%"<<endl;
-
+                  rate2=1.01;
                   t[m+1].level+=1;
                   cout<<t[m+1].name<<" is unlocked."<<endl;
                   t[m+1].conpoint= 480;
@@ -292,10 +293,11 @@ void talent(role &player,  ){
                 case 2:
                   t[m].conpoint = 500;
                   cout<<t[m].function<<": +1%-->2%"<<endl;
+                  rate2=1.02;
                   break;
                 case 3:
                   cout<<t[m].function<<": +2%-->3%"<<endl;
-
+                  rate2=1.03;
                   break;
                 }
             }
