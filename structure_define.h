@@ -84,6 +84,7 @@ struct store{
     string name;
     int buyInPrice;
     int number;
+    int actual_prize;
 };
 
 
