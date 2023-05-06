@@ -41,4 +41,6 @@
 5. Non-standard C/C++ libraries
 
 6. Compilation and execution instructions
-   Run //待补充(e.g. make target) to compile the game. Do //待补充(e.g ./target) to start the game.
+   Run ```make target``` to compile the game.
+   Do ```./target``` to start the game.
+   Run ```make clean``` to clean all the generated filles.
