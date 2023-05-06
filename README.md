@@ -25,28 +25,19 @@
 
 4. Features
    I. FIVE requirements:
-   (1) Generation of random game sets or events:
+    (1) Generation of random game sets or events:
         - Randomly generate prices for buying/selling items.
         - Randomly generated 5 items appearing each year.
-   
-   (2) Data structures for storing game status:
-        - Linked lists are used to store elements that are dynamically added or removed from the game status. For example, the goods inforation in storehouse.cpp. Each element in the linked list points to the next element in the list, allowing for easy insertion and deletion of elements.
+    (2) Data structures for storing game status:
+        - Linked lists are used to store elements that are dynamically added or removed from the game status. For example, the goods inforation in storehouse.cpp. 
         - An array is also a simple data structure that are used to store game status. For example, in...
-   
-   
-   (3) Dynamic memory management:
+    (3) Dynamic memory management:
         - Goods and company information stored in linked list( pointers & dynamic variable allocation:```new```,```delete```)
         - Map(container) used in market.cpp
-   
-   
-   
-   (4) File input/output (e.g., for loading/saving game status):
+    (4) File input/output (e.g., for loading/saving game status):
         - ifstream used for getting information of player,company,storehouse
-        - information of playere,company,storehouse is saved in separate files using ofstream defined in function 
-   
-   
-   
-   (5) Program codes in multiple files:
+        - information of playere,company,storehouse is saved in separate files using ofstream defined in function.
+    (5) Program codes in multiple files:
         - Different functions are in multiple files, i.e. business,market,spend_money.
         - Structs and classes are declared and stored in separate files.
 
@@ -57,12 +48,8 @@
   III. Coding style:
         - Define each part in different functions to make it easier to apply and read.
         - Name functions and variables according to the parts they are associated with to optimize readibility.
-        
-  
-5. Non-standard C/C++ libraries
-
-
-6. Compilation and execution instructions
+       
+5. Compilation and execution instructions
    Run ```make target``` to compile the game.
    Do ```./target``` to start the game.
    Run ```make clean``` to clean all the generated filles.
