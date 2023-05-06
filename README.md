@@ -1,5 +1,6 @@
 100 Million Small Target
-    "100 Million Small Target" is a business and life simulation game. Starting from the age of 20, all choices are up to you, whether to become rich or poor.
+    "100 Million Small Target" is a business and life simulation game. 
+    Starting from the age of 20, all choices are up to you, whether to become rich or poor.
   
 1. Author Information:
     Guan Haoning -- GuanHaoNing
