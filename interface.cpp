@@ -110,7 +110,7 @@ int main() {
 		
 		else{
 			std::cout << "Invalid choice. Please enter a number between 1 and 5." << std::endl;
-        }
+        }cin >> choice;
     } while (choice != 5);
     return 0;
 }
