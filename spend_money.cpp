@@ -152,7 +152,6 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
         cout << "3--cars(extend your life)" << endl;
         cout << "4--medical treatment" << endl;
         cout << "5--back" << endl;
-        int option;
         cin >> option;
         while (option != 1 && option != 2 && option != 3 && option != 4 && option != 5) {
             cout << "Option does not exist. Please enter again."<<endl;
