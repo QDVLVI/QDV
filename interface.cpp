@@ -23,12 +23,6 @@ int main() {
         switch (choice) {
      		case 1:
                 	std::cout << "Start Game" <<  std::endl;
-			
-			std::cout << "(a) New Game" <<  std::endl;
-        		std::cout << "(b) Continue Game" <<  std::endl;
-			std::cout << "Enter your choice (a/b): ";
-			char gameType;
-			cin >> gameType;
   			int result = startGame();//开始游戏
                 	break;
             	
