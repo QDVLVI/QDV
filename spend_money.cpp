@@ -34,7 +34,7 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
             cout << "The prize is " << prize << ". Enter Y to confirm, enter N to go back."<<endl;
             string lottery_confirm;
             cin >> lottery_confirm;
-            while (lottery_confirm != "Y" && lottery_confirm != "N") {
+            while (lottery_confirm != "Y" || lottery_confirm != "N") {
                 cout << "Option does not exist. Please enter again." << endl;
                 cout << "Enter Y to confirm, enter N to go back."<<endl;
                 cin >> lottery_confirm;
@@ -70,7 +70,7 @@ void spend_money(int &lottery_num, int &cash, bool &hasHouse, bool &hasCar, int 
             cout << "Enter Y to confirm, enter N to go back." << endl;
             string house_confirm;
             cin >> house_confirm;
-            while (house_confirm != "Y" && house_confirm != "N") {
+            while (house_confirm != "Y" || house_confirm != "N") {
                 cout << "Option does not exist. Please enter again." << endl;
                 cout << "Enter Y to confirm, enter N to go back."<<endl;
                 cin >> house_confirm;
