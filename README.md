@@ -29,8 +29,8 @@
         - Randomly generate prices for buying/selling items.
         - Randomly generated 5 items appearing each year.
     (2) Data structures for storing game status:
-        - Linked lists are used to store elements that are dynamically added or removed from the game status. For example, the goods inforation in storehouse.cpp. 
-        - An array is also a simple data structure that are used to store game status. For example, in...
+        - Linked lists are used to store elements that are dynamically added or removed from our game status. For example, the goods inforation in storehouse.cpp. 
+        - An array is also a simple data structure that are used to store our game status.
     (3) Dynamic memory management:
         - Goods and company information stored in linked list( pointers & dynamic variable allocation:```new```,```delete```)
         - Map(container) used in market.cpp
