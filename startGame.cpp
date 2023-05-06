@@ -253,16 +253,7 @@ int startGame(){
                 market_value = round(company_list[i].cost_per_share * company_list[i].share_number);
             }
         }
-           
-        int good_value = 0;
-        map<string, store>::iterator itr = storehouse.begin();
-        for(itr; itr != storehouse.end(); itr++){
-            good_value += (itr->second.buyInPrice * itr->second.number);
-        }
-
-        player.total_assets = player.cash + market_value + good_value;  //还要再加车的价值和房的价值
-        
-    
+         
         readCompanyData(company_list);
         readPlayerData(player);
 
@@ -316,13 +307,23 @@ int startGame(){
             market_list[j] = good_list[i];
             j++;
             }
+            
+            if (storehouse.count(good_list[i].name) == 1){
+                storehouse[good_list[i].name].actual_price = good_list[i].actual_price;
+            }
         }
                 
         if (stable){
             cout << "the market is stable this year" << endl;
         }
         
+        int good_value = 0;
+                map<string, store>::iterator itr = storehouse.begin();
+                for(itr; itr != storehouse.end(); itr++){
+                    good_value += (itr->second.buyInPrice * itr->second.number);
+                }
 
+                player.total_assets = player.cash + market_value + good_value;  //还要再加车的价值和房的价值
 
         //买卖（market），创业（business）会损失健康值，
         if (player.health <= 50){
