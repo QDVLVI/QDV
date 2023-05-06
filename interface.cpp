@@ -18,17 +18,54 @@ int main() {
  	std::cout << "4. Exit" <<  std::endl;
         std::cout << "Enter your choice (1-4): ";
         cin >> choice;
-		int result;
+	int result;
         switch (choice) {
      		case 1:
                 	std::cout << "Start Game" <<  std::endl;
-  			startGame();//开始游戏
+  			result = startGame();//开始游戏
+			if (result != -1){
+					//加入排行榜
+					
+					record.push_back(result);
+
+					int rank, data;
+					string line;
+					istringstream line_in(line);
+
+					while (getline(fin,line)){
+						line_in >> rank >> data;
+						record.push_back(data);
+					}
+
+					sort(record.begin(), record.end(), greater<int>());
+
+					vector<int>::iterator itr = record.begin();
+					int rank = 1;
+					for (itr; itr != record.end(); itr++){
+						if (rank > 10){
+							break;
+						}
+						fout << rank << ": " << *itr << endl;
+						rank ++;
+					}
+				}
                 break;
             	
-            	case 2:
-            		std::cout << "List" <<  std::endl;
-			//显示排行榜
-                	break;
+            case 2:
+            	std::cout << "Leaderboard" <<  std::endl;
+				std::cout << setw(10) << "rank" << "record" << endl;
+				
+				while(getline(fin, lines)){
+					list.push_back(lines);
+				}
+
+				vector<string>::iterator stringItr = list.begin();
+				for (stringItr; stringItr != list.end(); stringItr++){
+					cout << *stringItr << endl;
+				}
+				//显示排行榜
+
+                break;
         	case 3:
 			std::cout << "Help" <<  std::endl;
 			//读取readme
