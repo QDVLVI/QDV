@@ -56,7 +56,7 @@
   
   III. Coding style:
         - Define each part in different functions to make it easier to apply and read.
-        - Name functions according to the parts they are associated with to optimize readibility.
+        - Name functions and variables according to the parts they are associated with to optimize readibility.
         
   
 5. Non-standard C/C++ libraries
