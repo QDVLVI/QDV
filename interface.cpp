@@ -22,7 +22,7 @@ int main() {
         switch (choice) {
      		case 1:
                 	std::cout << "Start Game" <<  std::endl;
-  			result = startGame();//开始游戏
+  			startGame();//开始游戏
                 break;
             	
             	case 2:
