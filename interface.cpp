@@ -13,31 +13,25 @@ int main() {
         std::cout << "   100 Million Small Target   " << std::endl;
         std::cout << "===========================" << std::endl;
         std::cout << "1. Start Game" <<  std::endl;
-        
-        std::cout << "2. Talent" <<  std::endl;
-        std::cout << "3. List" <<  std::endl;
- 	std::cout << "4. Help" <<  std::endl;
- 	std::cout << "5. Exit" <<  std::endl;
-        std::cout << "Enter your choice (1-5): ";
+        std::cout << "2. List" <<  std::endl;
+ 	std::cout << "3. Help" <<  std::endl;
+ 	std::cout << "4. Exit" <<  std::endl;
+        std::cout << "Enter your choice (1-4): ";
         cin >> choice;
+		int result;
         switch (choice) {
      		case 1:
                 	std::cout << "Start Game" <<  std::endl;
-  			int result = startGame();//开始游戏
-                	break;
+  			result = startGame();//开始游戏
+                break;
             	
             	case 2:
-                	std::cout << "Talent" <<  std::endl;
-  			talent();//
-                	break;
-            	case 3:
-                	std::cout << "List" <<  std::endl;
+            		std::cout << "List" <<  std::endl;
 			//显示排行榜
                 	break;
-     		case 4:
-  			std::cout << "Help" <<  std::endl;
+        	case 3:
+			std::cout << "Help" <<  std::endl;
 			//读取readme
-  			
   			if (file.is_open()) {
           			string text((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
           			cout << text << endl;
@@ -46,14 +40,16 @@ int main() {
       			else {
           			cout << "Unable to open file." << endl;
       			}
-                	break;
-     		case 5:
-  			std::cout << "Goodbye!" << std::endl;
-			//结束语待完善
-                	break;
-            	default:
-                	std::cout << "Invalid choice. Please enter a number between 1 and 5." << std::endl;
-                	break;
+               		break;
+            	
+     		case 4:
+				std::cout << "Goodbye!" << std::endl;
+				//结束语待完善
+                break;
+  			
+            default:
+            	std::cout << "Invalid choice. Please enter a number between 1 and 5." << std::endl;
+            	break;
         }
     } while (choice != 5);
     return 0;
