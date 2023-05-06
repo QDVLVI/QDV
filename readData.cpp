@@ -56,6 +56,6 @@ void readStorehouseData(map<string, store> storehouse){
     fout.open("storehouse.txt", ios::out);
     for (itr; itr != storehouse.end(); itr++){
         fout << itr->first << " " ;
-        fout << (itr->second).buyInPrice << " " << (itr->second).number <<  (*itr->second).actual_price << endl;
+        fout << (itr->second).buyInPrice << " " << (itr->second).number <<  (itr->second).actual_price << endl;
     }
 }

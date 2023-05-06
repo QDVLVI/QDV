@@ -76,7 +76,7 @@ int startGame(){
         ifstream finPlayer, finCompany, finStorehouse;
         finPlayer.open("player.txt");
         finCompany.open("company.txt");
-        finStorehouse("storehouse.txt");
+        finStorehouse.open("storehouse.txt");
         if (finPlayer.peek() == ifstream::traits_type::eof() || finCompany.peek() == ifstream::traits_type::eof()){
             cout << "no record found" << endl;
             return 0;
