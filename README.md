@@ -2,15 +2,15 @@
     "100 Million Small Target" is a business and life simulation game. Starting from the age of 20, all choices are up to you, whether to become rich or poor.
   
 1. Author Information:
-    Guan Haoning
-    Huang Zixuan
-    Qiao Lechong
-    Ding Jiayi
-    Zhu Jiaying
+    Guan Haoning -- GuanHaoNing
+    Huang Zixuan -- HHuangZZixuan
+    Qiao Lechong -- QDVLVI
+    Ding Jiayi   -- daisyyding
+    Zhu Jiaying  -- jytiff
 
 2. Description
     At the age of 20, you enter society and try to achieve the small target of earning one billion before retirement.
-    Sell bitcoins, domain names, liquor, counterfeit mobile phones...
+    Buy and sell bitcoins, domain names, liquor, counterfeit mobile phones...
     Found a gaming company, a real estate company, an electrical manufacturing factory...
     Spend money on luxury homes, cars...
     This is a lifetime of ups and downs in the business world, and also a reflection of the times.
