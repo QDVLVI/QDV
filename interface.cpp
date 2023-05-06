@@ -17,9 +17,9 @@ int main() {
 	string lines;
 
     do {
-		std::cout << "===========================" << std::endl;
+		std::cout << "===============================" << std::endl;
         std::cout << "   100 Million Small Target💰   " << std::endl;
-        std::cout << "===========================" << std::endl;
+        std::cout << "===============================" << std::endl;
         std::cout << "1. Start Game" <<  std::endl;
         std::cout << "2. Leaderboard" <<  std::endl;
  		std::cout << "3. Help" <<  std::endl;
