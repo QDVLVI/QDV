@@ -31,10 +31,13 @@
    Data structures for storing game status:
    
    
+   
    Dynamic memory management:
    
    
+   
    File input/output (e.g., for loading/saving game status):
+   
    
    
    Program codes in multiple files:
@@ -42,6 +45,7 @@
    -Structs and classes are declared and stored in separate files.
 
 5. Non-standard C/C++ libraries
+
 
 6. Compilation and execution instructions
    Run ```make target``` to compile the game.
