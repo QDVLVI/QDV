@@ -12,10 +12,8 @@ using namespace std;
 int main() {
     int choice;
     ifstream file("README.md");
-	ifstream fin ("leaderboard.txt");
-	ofstream fout("leaderboard.txt");
-	vector<int> record;
-	vector<string> list;
+	ifstream fin ;
+	ofstream fout;
 	string lines;
 
     do {
@@ -36,22 +34,27 @@ int main() {
 			result = startGame();//开始游戏
 			if (result != -1){
 				//加入排行榜
+				vector<int> record;
 				
 				record.push_back(result);
 
-				int rank, data;
+				int data;
+				string code
 				string line;
 				istringstream line_in(line);
+				fin.open("leaderboard.txt");
 
 				while (getline(fin,line)){
-					line_in >> rank >> data;
+					line_in >> code >> data;
 					record.push_back(data);
 				}
+				fin.close();
 
 				sort(record.begin(), record.end(), greater<int>());
 
 				vector<int>::iterator itr = record.begin();
 				int rank = 1;
+				fout.open("leaderboard.txt");
 				for (itr; itr != record.end(); itr++){
 					if (rank > 10){
 						break;
@@ -59,13 +62,16 @@ int main() {
 					fout << rank << ": " << *itr << endl;
 					rank ++;
 				}
+				fout.close();
 			}
 		}
 			
 		else if (choice == 2){
+			vector<string> list;
 			std::cout << "Leaderboard" <<  std::endl;
 			std::cout << setw(10) << "rank" << "record" << endl;
 			
+			fin.open("leaderboard.txt");
 			while(getline(fin, lines)){
 				list.push_back(lines);
 			}
@@ -75,6 +81,7 @@ int main() {
 				cout << *stringItr << endl;
 			}
 			//显示排行榜
+			fin.close();
 		}
 		
 		else if (choice == 3){
@@ -104,3 +111,4 @@ int main() {
     } while (choice != 5);
     return 0;
 }
+
