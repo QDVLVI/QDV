@@ -42,7 +42,7 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
         cout<<"1:Purchase"<<endl;
         cout<<"2:Sell"<<endl;
         cout<<"3:Quit"<<endl;
-        cout<<"Your decision: ";
+        cout<<"Your decision (1-3): ";
 
         cin >> decision;
         if (decision == '1'){
