@@ -87,10 +87,13 @@ int main() {
 		else if (choice == 3){
 			std::cout << "Help" <<  std::endl; 
 			//读取readme
+			file.open("README.md");
 		
 			if (file.is_open()) {
-				string text((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
-				cout << text << endl;
+				string line;
+				while(getline(file, line)){
+					cout << line << endl;
+				}
 				file.close();
 			}
 			else {
