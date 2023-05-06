@@ -50,6 +50,8 @@
    -Structs and classes are declared and stored in separate files.
 
   Functionality and special features:
+  Players can not only earn money, but also set up companies and spend money, for example, to buy a house, a car or a lottery ticket.
+  At the same time, it is possible to extend the retirement age when making consumption.
   
   
 5. Non-standard C/C++ libraries
