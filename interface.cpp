@@ -40,13 +40,14 @@ int main() {
 					
 					record.push_back(result);
 
-					int rank, data;
+					int data;
+					string code;
 					fin.open("leaderboard.txt");
 					string line;
 					istringstream line_in(line);
 
 					while (getline(fin,line)){
-						line_in >> rank >> data;
+						line_in >> code >> data;
 						record.push_back(data);
 					}
 					
