@@ -9,9 +9,9 @@ int main() {
     int choice;
     ifstream file("README.md");
     do {
-	std::cout << "===========================" << std::endl;
-        std::cout << "   100 Million Small Target   " << std::endl;
-        std::cout << "===========================" << std::endl;
+	std::cout << "===============================" << std::endl;
+        std::cout << "   100 Million Small Target💰   " << std::endl;
+        std::cout << "===============================" << std::endl;
         std::cout << "1. Start Game" <<  std::endl;
         std::cout << "2. List" <<  std::endl;
  	std::cout << "3. Help" <<  std::endl;
@@ -44,7 +44,8 @@ int main() {
             	
      		case 4:
 				std::cout << "Goodbye!" << std::endl;
-				//结束语待完善
+                std::cout <<"Thank you for playing our game and wish you the best of luck in completing every goal in real life as well!😄"<<endl;
+                exit(0);
                 break;
   			
             default:
