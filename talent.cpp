@@ -59,6 +59,11 @@ void talent(role player){
     while (input != 2){
         int n,m;
         
+        cout<<"No. "<<left<<setw(10)<<"Name"<<"Level"<<endl;
+        cout<<"1:  "<<left<<setw(10)<<t[0].name<<t[0].level<<endl;
+        cout<<"2:  "<<left<<setw(10)<<t[1].name<<t[1].level<<endl;
+        cout<<"3:  "<<left<<setw(10)<<t[2].name<<t[2].level<<endl;
+        
         //游戏界面
         cout<<"Enter No. of talent: ";
         cin>>n;
