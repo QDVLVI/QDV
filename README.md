@@ -54,6 +54,10 @@
         Players can not only earn money, but also set up companies and spend money, for example, to buy a house, a car or a lottery ticket.
         At the same time, it is possible to extend the retirement age when making consumption.
   
+  III. Coding style:
+        - Define each part in different functions to make it easier to apply and read.
+        - Name functions according to the parts they are associated with to optimize readibility.
+        
   
 5. Non-standard C/C++ libraries
 
