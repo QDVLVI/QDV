@@ -33,10 +33,14 @@
    
    
    Dynamic memory management:
+   -Goods and company information stored in linked list( pointers & dynamic variable allocation:```new```,```delete```)
+   -Map(container) used in market.cpp
    
    
    
    File input/output (e.g., for loading/saving game status):
+   -ifstream used for getting information of player,company,storehouse
+   -information of playere,company,storehouse is saved in separate files using ofstream defined in function 
    
    
    
