@@ -23,7 +23,7 @@
     Entrepreneurship: Found a company, enjoy the appreciation of assets, and receive dividend income. A large investment is required to start a business, which can be increased or decreased later.
     Spend money: Buy cars and houses, consume in different places, change attributes.
 
-4. Features (code)
+4. Features
    Generation of random game sets or events:
    -Randomly generate prices for buying/selling items.
    -Randomly generated 5 items appearing each year.
