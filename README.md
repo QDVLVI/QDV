@@ -25,7 +25,8 @@
 
 4. Features (code)
    Generation of random game sets or events:
-   
+   -Randomly generate prices for buying/selling items.
+   -Randomly generated 5 items appearing each year.
    
    Data structures for storing game status:
    
@@ -37,6 +38,8 @@
    
    
    Program codes in multiple files:
+   -Different functions are in multiple files, i.e. business,market,spend_money,talent.
+   -Structs and classes are declared and stored in separate files.
 
 5. Non-standard C/C++ libraries
 
