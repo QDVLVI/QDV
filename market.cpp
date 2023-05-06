@@ -72,7 +72,7 @@ void market(int &cash, int &health, int &storehouse_capacity, goods* good_list, 
 
                 //之前没买过这个物品
                 if (storehouse.count(good_list[No-1].name) == 0){
-                    store temp = {good_list[No-1].name, good_list[No-1].actual_price, num};
+                    store temp = {good_list[No-1].name, good_list[No-1].actual_price, num, good_list[No-1].actual_price};
                     storehouse[good_list[No-1].name] = temp; 
                 }
                 
