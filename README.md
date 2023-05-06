@@ -41,7 +41,7 @@
    
    
    Program codes in multiple files:
-   -Different functions are in multiple files, i.e. business,market,spend_money,talent.
+   -Different functions are in multiple files, i.e. business,market,spend_money.
    -Structs and classes are declared and stored in separate files.
 
 5. Non-standard C/C++ libraries
