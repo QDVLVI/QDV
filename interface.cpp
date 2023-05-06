@@ -39,7 +39,7 @@ int main() {
 				record.push_back(result);
 
 				int data;
-				string code
+				string code;
 				string line;
 				istringstream line_in(line);
 				fin.open("leaderboard.txt");
