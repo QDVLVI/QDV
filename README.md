@@ -24,30 +24,34 @@
     Spend money: Buy cars and houses, consume in different places, change attributes.
 
 4. Features
-   Generation of random game sets or events:
+   5 requirements:
+   1)Generation of random game sets or events:
    -Randomly generate prices for buying/selling items.
    -Randomly generated 5 items appearing each year.
    
-   Data structures for storing game status:
+   2)Data structures for storing game status:
    
    
    
-   Dynamic memory management:
+   3)Dynamic memory management:
    -Goods and company information stored in linked list( pointers & dynamic variable allocation:```new```,```delete```)
    -Map(container) used in market.cpp
    
    
    
-   File input/output (e.g., for loading/saving game status):
+   4)File input/output (e.g., for loading/saving game status):
    -ifstream used for getting information of player,company,storehouse
    -information of playere,company,storehouse is saved in separate files using ofstream defined in function 
    
    
    
-   Program codes in multiple files:
+   5)Program codes in multiple files:
    -Different functions are in multiple files, i.e. business,market,spend_money.
    -Structs and classes are declared and stored in separate files.
 
+  Functionality and special features:
+  
+  
 5. Non-standard C/C++ libraries
 
 
@@ -55,3 +59,4 @@
    Run ```make target``` to compile the game.
    Do ```./target``` to start the game.
    Run ```make clean``` to clean all the generated filles.
+
