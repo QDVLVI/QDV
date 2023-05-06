@@ -404,6 +404,9 @@ int startGame(){
 
                 else if (input == 'q'){
                     readPlayerData(player);
+                   
+                    cout << "(4-Exit)" <<  endl;
+                    
                     return 0;
                 }
 
