@@ -467,6 +467,3 @@ int startGame(){
     return 0;  
 }
 
-int main(){
-    startGame();
-}
