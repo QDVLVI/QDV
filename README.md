@@ -24,7 +24,21 @@
     Spend money: Buy cars and houses, consume in different places, change attributes.
 
 4. Features (code)
+   Generation of random game sets or events:
+   
+   
+   Data structures for storing game status:
+   
+   
+   Dynamic memory management:
+   
+   
+   File input/output (e.g., for loading/saving game status):
+   
+   
+   Program codes in multiple files:
 
 5. Non-standard C/C++ libraries
 
 6. Compilation and execution instructions
+   Run //待补充(e.g. make target) to compile the game. Do //待补充(e.g ./target) to start the game.
