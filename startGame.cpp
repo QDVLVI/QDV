@@ -76,6 +76,7 @@ int startGame(){
         ifstream finPlayer, finCompany, finStorehouse;
         finPlayer.open("player.txt");
         finCompany.open("company.txt");
+        finStorehouse("storehouse.txt");
         if (finPlayer.peek() == ifstream::traits_type::eof() || finCompany.peek() == ifstream::traits_type::eof()){
             cout << "no record found" << endl;
             return 0;
@@ -93,6 +94,8 @@ int startGame(){
         finPlayer >> player.hasHouse;
         finPlayer >> player.hasCar;
         finPlayer >> player.lottery_num;
+        
+        finPlayer.close();
 
         //从file中获取公司信息
         string line;
@@ -115,14 +118,17 @@ int startGame(){
             i++;
         }
         
+        finCompany.close();
+        
         //从file中获取仓库信息
         string name;
         store product;
         while (getline(finStorehouse, line)){
             istringstream line_in(line);
-            line_in >> name >> product.buyInPrice >> product.name >> product.number;
+            line_in >> name >> product.buyInPrice >> product.name >> product.number >> product.actual_price;
             storehouse[name] = product;
         }
+        finStorehouse.close();
     }
 
     else if (temp == 1){
