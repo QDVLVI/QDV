@@ -360,6 +360,7 @@ int startGame(){
             cout << "b-business"<< endl;
             cout << "s-spend money"<< endl;
             cout << "n-go to next year"<< endl;
+            cout << "q-quit and archive"<<endl;
             cout<<"--------------------------------------------------------------------------------"<<endl;
             while (cin >> input){
                 
